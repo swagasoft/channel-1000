@@ -37,6 +37,8 @@ import { HowitworksComponent } from './howitworks/howitworks.component';
 import { PolicyComponent } from './policy/policy.component';
 import { SideNavComponent } from './src/app/dashboard/side-nav/side-nav.component';
 import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
+import { UserTrasanctionsComponent } from './components/user-trasanctions/user-trasanctions.component';
+import { CounterComponent } from './components/counter/counter.component';
 
 
 
@@ -59,7 +61,9 @@ import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
     HowitworksComponent,
     PolicyComponent,
     SideNavComponent,
-    MarketerRegComponent
+    MarketerRegComponent,
+    UserTrasanctionsComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,

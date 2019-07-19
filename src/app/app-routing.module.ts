@@ -1,3 +1,4 @@
+import { UserTrasanctionsComponent } from './components/user-trasanctions/user-trasanctions.component';
 import { ServicesComponent } from './services/services.component';
 import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
 import { PolicyComponent } from './policy/policy.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
 { path: 'services', component: ServicesComponent},
 
 { path: 'welcome', component: WelcomeComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'user-transactions', component: UserTrasanctionsComponent, canActivate:[AuthgaurdGuard]},
 { path: 'dashboard', component: DashboardComponent, canActivate:[AuthgaurdGuard]},
 { path: 'profile', component: ProfileComponent, canActivate:[AuthgaurdGuard]},
 ];

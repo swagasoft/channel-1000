@@ -11,5 +11,18 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit() {
   }
+  openNav() {
+    if(document.getElementById('mySidenav').style.width == '250px'){
+    document.getElementById('mySidenav').style.width = '0';
+    } else {
+    document.getElementById('mySidenav').style.width = '250px';
+    }
+
+}
+
+ closeNav() {
+  document.getElementById('mySidenav').style.width = '0';
+
+}
 
 }
