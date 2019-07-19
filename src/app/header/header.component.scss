@@ -1,0 +1,51 @@
+  /* Navigation*/
+
+  .scrolling-navbar {
+    transition: background .5s ease-in-out, padding .5s ease-in-out;
+  }
+  .top-nav-collapse {
+    background-color: #f9fafc;
+  }
+  footer.page-footer {
+    background-color: #fbfcfd;
+  }
+  @media only screen and (max-width: 768px) {
+    .navbar {
+      background-color: #fdfdfd;
+    }
+  }
+
+  /* Necessary for full page carousel*/
+  html,
+  body,
+  .view {
+    height: 100%;
+  }
+
+  /* Carousel*/
+  .carousel,
+  .carousel-item,
+  .carousel-item.active {
+    height: 100%;
+  }
+  .carousel-inner {
+    height: 100%;
+  }
+  .carousel-item:nth-child(1) {
+    background-image: url("../../assets/money-glass.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  .carousel-item:nth-child(2) {
+    background-image: url("../../assets/gold_invest.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  .carousel-item:nth-child(3) {
+    background-image: url("../../assets/girlmoney.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }

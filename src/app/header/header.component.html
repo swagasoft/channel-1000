@@ -1,0 +1,100 @@
+
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
+
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-1" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-1" data-slide-to="1"></li>
+        <li data-target="#carousel-example-1" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+          <!--Mask-->
+          <div class="view">
+            <div class="full-bg-img flex-center mask rgba-indigo-light white-text">
+              <ul class="animated fadeInUp col-md-12 list-unstyled list-inline">
+                <li>
+                  <h1 class="font-weight-bold text-uppercase">CHANNEL 1000</h1>
+                </li>
+                <li>
+                  <p class="font-weight-bold text-uppercase py-4">Over 150 Millionares in one Year</p>
+                </li>
+                <li class="list-inline-item text-uppercase">
+                  <a  routerLink="/register" class="btn btn-success ml-0 btn-lg btn-rounded">
+                    <i class="fas fa-user-plus fa-sm pr-2" aria-hidden="true"></i>>Sign up!</a>
+                </li>
+                <li class="list-inline-item text-uppercase">
+                  <a routerLink="/login"  class="btn btn-warning btn-lg btn-rounded ml-0">
+                    <i class="fas fa-sign-in fa-sm pr-2" aria-hidden="true"></i>Login in</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--/.Mask-->
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide -->
+        <div class="carousel-item">
+          <!--Mask-->
+          <div class="view">
+            <div class="full-bg-img flex-center mask rgba-purple-light white-text">
+              <ul class="animated fadeInUp col-md-12 list-unstyled">
+                <li>
+                  <h1 class="font-weight-bold text-uppercase">Lots of tutorials at your disposal</h1>
+                </li>
+                <li>
+                  <p class="font-weight-bold text-uppercase py-4">And all of them are FREE!</p>
+                </li>
+                <li>
+                  <a  [routerLink]="['/about']" class="btn btn-success btn-rounded btn-lg">Learn More</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--/.Mask-->
+        </div>
+        <!--/.Second slide -->
+
+        <!--Third slide-->
+        <div class="carousel-item">
+          <!--Mask-->
+          <div class="view">
+            <div class="full-bg-img flex-center mask rgba-blue-light white-text">
+              <ul class="animated fadeInUp col-md-12 list-unstyled">
+                <li>
+                  <h1 class="font-weight-bold text-uppercase">Visit our support forum</h1></li>
+                <li>
+                  <p class="font-weight-bold text-uppercase py-4">Our community can help you with any question</p>
+                </li>
+                <li>
+                  <a  href="" class="btn btn-lg btn-indigo btn-rounded">Support forum</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--/.Mask-->
+        </div>
+        <!--/.Third slide-->
+
+      </div>
+      <!--/.Slides-->
+
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+    </div>
+    <!--/.Carousel Wrapper-->

@@ -1,0 +1,23 @@
+
+<h1> PROFILE PAGE </h1>
+
+<table *ngIf="userDetails">
+<thead aria-colspan="2" >User Profile </thead>
+<tbody>
+  <tr>
+    <td>first name</td>
+    <td>{{userDetails.firstname}} </td>
+    <br>
+    <td>email</td>
+    <br>
+    <td>{{userDetails.email}} </td>
+    <br>
+    <td>role</td>
+    <br>
+    <td>{{userDetails.role}} </td>
+  </tr>
+</tbody>
+</table>
+<br>
+
+<button (click)="onLogout()" >Logout</button>

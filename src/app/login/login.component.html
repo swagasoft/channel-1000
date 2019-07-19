@@ -1,0 +1,71 @@
+
+
+
+<!-- ================================================ -->
+<div class="jumbotron text-center mdb-color info-color-dark white-text mx-2 mb-5">
+
+    <!-- Title -->
+    <h2 class="card-title h2">*****************************</h2>
+
+    <!-- Subtitle -->
+    <p class="my-4 h3"> </p>
+
+    <!-- Grid row -->
+    <div class="row d-flex justify-content-center">
+      <!-- Grid column -->
+      <div class="col-xl-7 pb-2">
+        <p class="card-text">   In just minutes, you'll have the ability to trade stocks,
+           options, mutual funds, ETFs, and bonds. </p>
+      </div>
+
+<!-- Default form login -->
+
+
+    <form class="text-center border border-light p-5" #loginForm="ngForm"
+     (submit)="loginForm.valid && onSubmit(loginForm)" >
+        <p class="h4 mb-4">LOGIN</p>
+
+
+    <!-- Email -->
+    <i class="fas fa-user prefix"></i>
+    <input type="email" id="email" name="email"  #email="ngModel"
+     [(ngModel)]="model.email" required [pattern]="emailRegex"
+     class="form-control mb-4" placeholder="E-mail" autocapitalize="none">
+     <div *ngIf="loginForm.submitted && email.errors" class="bg-danger text-white text-center">
+        <label *ngIf="email?.errors.required" >email is required</label>
+        <label *ngIf="email?.errors.pattern" >email must be valid.</label>
+      </div>
+
+
+     <!-- password -->
+     <i class="fas fa-lock prefix"></i>
+    <input type="password"   [(ngModel)]="model.password" id="password" #password  minlength="6"
+    class="form-control mb-4" placeholder="Password" name="password"  required>
+    <div *ngIf="loginForm.submitted && password.errors" class="bg-danger text-white text-center">
+        <label *ngIf="password?.errors.required">password is required</label>
+        <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
+      </div>
+
+
+    <!-- server error message -->
+    <div *ngIf="serverErrorMessage" class="text-white bg-danger">
+        {{serverErrorMessage}}
+      </div>
+
+
+    <!-- Sign in button -->
+    <div class="form-group ">
+        <input type="submit" class="btn btn-success btn-lg btn-block login-button" value="LOGIN"/>
+
+      </div>
+
+    <!-- Register -->
+    <p>
+        <a routerLink="/register" class="text-white">Create account</a>
+    </p> <br>
+    <p>  <a routerLink="/passwordreset" class="text-white">
+      <small>Forget password?</small></a></p>
+
+
+</form>
+
