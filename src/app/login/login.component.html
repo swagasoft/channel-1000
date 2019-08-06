@@ -4,8 +4,10 @@
 <!-- ================================================ -->
 <div class="jumbotron text-center mdb-color info-color-dark white-text mx-2 mb-5">
 
+
     <!-- Title -->
     <h2 class="card-title h2">*****************************</h2>
+  <flash-messages></flash-messages>
 
     <!-- Subtitle -->
     <p class="my-4 h3"> </p>
@@ -46,11 +48,6 @@
         <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
       </div>
 
-
-    <!-- server error message -->
-    <div *ngIf="serverErrorMessage" class="text-white bg-danger">
-        {{serverErrorMessage}}
-      </div>
 
 
     <!-- Sign in button -->

@@ -16,7 +16,6 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       res => {
         this.userDetails = res['user'];
-        console.log(this.userDetails);
       },
       err => {
         console.log('error getting values..', err);
@@ -27,5 +26,6 @@ export class ProfileComponent implements OnInit {
     this.userService.logout();
     this.router.navigateByUrl('/login');
   }
+
 
 }

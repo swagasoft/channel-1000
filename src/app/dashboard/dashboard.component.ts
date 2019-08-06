@@ -1,4 +1,6 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  userDetails: any;
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-  }
+    this.userService.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res['user'];
+      },
+      err => {
+        console.log('error getting values..', err);
 
+      }
+    )
+
+}
 }

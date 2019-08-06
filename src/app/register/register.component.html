@@ -8,7 +8,6 @@
 
     <!-- Title -->
     <h2 class="card-title bold h2"> INVSTOR'S REGISTRATION</h2>
-
     <!-- Subtitle -->
     <p class="my-4 h3"> Your are about to become an <strong>investor</strong> on Channel1000</p>
 
@@ -20,8 +19,7 @@
            options, mutual funds, ETFs, and bonds. </p>
       </div>
 
-<!-- Default form login -->
-
+<!-- Default reg form -->
 
     <form class="text-center border border-light p-5"  #signup_form="ngForm"
     (submit)="signup_form.valid && onSubmit(signup_form)">
@@ -51,29 +49,20 @@
 
                 <!-- firstname -->
         <i class="fa fa-user fa" aria-hidden="true"></i>
-    <input type="text" id="firstname" name="firstname"  #firstname="ngModel"
-    [(ngModel)]="userService.selectedUser.firstname" required
-     class="form-control mb-4" placeholder="Firstname" autocapitalize="none">
-     <div *ngIf="signup_form.submitted && !firstname.valid"  class="bg-danger text-white text-center">
-        <label >firstname is required</label>
-      </div>
-
-                <!-- lastname -->
-        <i class="fa fa-user fa" aria-hidden="true"></i>
-    <input type="text" id="lastname" name="lastname"  #lastname="ngModel"
-    [(ngModel)]="userService.selectedUser.lastname" required
-     class="form-control mb-4" placeholder="Lastname" autocapitalize="none">
-     <div *ngIf="signup_form.submitted && !lastname.valid"  class="bg-danger text-white text-center">
-        <label >lastname is required</label>
+    <input type="text" id="firstname" name="fullname"  #fullname="ngModel"
+    [(ngModel)]="userService.selectedUser.fullname" required
+     class="form-control mb-4" placeholder="Fullname" autocapitalize="none">
+     <div *ngIf="signup_form.submitted && !fullname.valid"  class="bg-danger text-white text-center">
+        <label >fullname is required</label>
       </div>
 
                 <!-- number -->
         <i class="fa fa-phone square " aria-hidden="true"></i>
-    <input type="number" id="number" name="number"  #number="ngModel"
-    [(ngModel)]="userService.selectedUser.number" required
-     class="form-control mb-4" placeholder="Number" autocapitalize="none">
-     <div *ngIf="signup_form.submitted && !number.valid"  class="bg-danger text-white text-center">
-        <label >phone number is required</label>
+    <input type="text" id="username" name="username"  #username="ngModel"
+    [(ngModel)]="userService.selectedUser.username" required
+     class="form-control mb-4" placeholder="Username" autocapitalize="none">
+     <div *ngIf="signup_form.submitted && !username.valid"  class="bg-danger text-white text-center">
+        <label >username is required</label>
       </div>
 
      <!-- password -->
@@ -86,14 +75,12 @@
       </div>
 
      <!-- password confirm -->
-     <i class="fas fa-lock prefix"></i>
+     <!-- <i class="fas fa-lock prefix"></i>
     <input type="password"  minlength="6"
     class="form-control mb-4" placeholder="Confirm Password" name="conf_password"  id="conf_password" required>
-    <!-- <div *ngIf="p" class="bg-danger text-white text-center">
-        <label *ngIf="password?.errors.required">password is required</label>
-        <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
-      </div> -->
+     -->
 
+    <flash-messages></flash-messages>
 
     <!-- server error message -->
       <!-- show success message -->

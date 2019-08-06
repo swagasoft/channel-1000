@@ -1,3 +1,4 @@
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../services/user.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -16,7 +17,10 @@ export class MarketerRegComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
-  constructor(private router: Router, public userService: UserService) { }
+  constructor(private router: Router,
+     public userService: UserService,
+     private flashMessage: FlashMessagesService
+     ) { }
 
   ngOnInit() {
   }
@@ -31,18 +35,19 @@ export class MarketerRegComponent implements OnInit {
 
       this.userService.postUser(form.value).subscribe(
         res => {
-          this.showSuccessMessage = true;
-          setTimeout(() => {
-            this.showSuccessMessage = false
-          }, 4000);
+
 
           this.resetForm(form);
         },
         err => {
           if(err.status == 442){
             this.serverErrormessages = err.error.join('<br/>');
+          this.flashMessage.show(err.error, {cssClass: 'alert-danger', timeout: 3000});
+
           }else{
-            this.serverErrormessages = 'something went wrong , please contact the admin';
+
+          this.flashMessage.show('something went wrong , please contact the admin', {cssClass: 'alert-danger', timeout: 5000});
+
 
           }
         },
@@ -53,10 +58,9 @@ export class MarketerRegComponent implements OnInit {
 
   resetForm(form: NgForm){
     this.userService.selectedUser = {
-      firstname: '',
-      lastname: '',
+      fullname: '',
       email: '',
-      number: null,
+      username: '',
       role: this.userRole,
       password: ''
     };

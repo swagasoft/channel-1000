@@ -6,11 +6,17 @@
 <a [routerLink]="['/dashboard']" class="text-white bg-info">My Dashboard</a>
 <a [routerLink]="['/profile']" class="text-white bg-info" >Profile</a>
 <a [routerLink]="['/user-transactions']" class="text-white bg-info" >Trasactions</a>
+<a [routerLink]="['/account']" class="text-white bg-info" >Account</a>
 
-<!-- <a [routerLink]="['/admin/transaction']" class="bg-info text-white" >Admin panel</a> -->
+<a [routerLink]="['/admin/transaction']" class="bg-info text-white" >Admin panel</a>
+<a (click)="logout();" class="bg-info text-white" >Logout</a>
 </div>
 
-<span style="font-size:30px;cursor:pointer;
+<span style="font-size:10px;cursor:pointer;
 color: white" (click)="openNav()"><button class="btn btn-info">☰</button> </span>
   </div>
 </div>
+
+
+<!-- ======================================= -->
+

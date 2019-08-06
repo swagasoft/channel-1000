@@ -11,7 +11,6 @@
 
     <!-- Subtitle -->
     <p class="my-4 h3"> Your are about to become a Marketer on Channel1000</p>
-
     <!-- Grid row -->
     <div class="row d-flex justify-content-center">
       <!-- Grid column -->
@@ -49,31 +48,23 @@
         <label *ngIf="email?.errors.pattern" >email must be valid.</label>
       </div>
 
-                <!-- firstname -->
-        <i class="fa fa-user fa" aria-hidden="true"></i>
-    <input type="text" id="firstname" name="firstname"  #firstname="ngModel"
-    [(ngModel)]="userService.selectedUser.firstname" required
-     class="form-control mb-4" placeholder="Firstname" autocapitalize="none">
-     <div *ngIf="signup_form.submitted && !firstname.valid"  class="bg-danger text-white text-center">
-        <label >firstname is required</label>
-      </div>
 
-                <!-- lastname -->
-        <i class="fa fa-user fa" aria-hidden="true"></i>
-    <input type="text" id="lastname" name="lastname"  #lastname="ngModel"
-    [(ngModel)]="userService.selectedUser.lastname" required
-     class="form-control mb-4" placeholder="Lastname" autocapitalize="none">
-     <div *ngIf="signup_form.submitted && !lastname.valid"  class="bg-danger text-white text-center">
-        <label >lastname is required</label>
-      </div>
+                <!-- firstname -->
+                <i class="fa fa-user fa" aria-hidden="true"></i>
+                <input type="text" id="firstname" name="fullname"  #fullname="ngModel"
+                [(ngModel)]="userService.selectedUser.fullname" required
+                 class="form-control mb-4" placeholder="Fullname" autocapitalize="none">
+                 <div *ngIf="signup_form.submitted && !fullname.valid"  class="bg-danger text-white text-center">
+                    <label >fullname is required</label>
+                  </div>
 
                 <!-- number -->
-        <i class="fa fa-phone square " aria-hidden="true"></i>
-    <input type="number" id="number" name="number"  #number="ngModel"
-    [(ngModel)]="userService.selectedUser.number" required
-     class="form-control mb-4" placeholder="Number" autocapitalize="none">
-     <div *ngIf="signup_form.submitted && !number.valid"  class="bg-danger text-white text-center">
-        <label >phone number is required</label>
+        <i class="fa fa-user square " aria-hidden="true"></i>
+    <input type="text" id="username" name="username"  #username="ngModel"
+    [(ngModel)]="userService.selectedUser.username" required
+     class="form-control mb-4" placeholder="Username" autocapitalize="none">
+     <div *ngIf="signup_form.submitted && !username.valid"  class="bg-danger text-white text-center">
+        <label >username is required</label>
       </div>
 
      <!-- password -->
@@ -86,13 +77,13 @@
       </div>
 
      <!-- password confirm -->
-     <i class="fas fa-lock prefix"></i>
+     <!-- <i class="fas fa-lock prefix"></i>
     <input type="password"  minlength="6"
     class="form-control mb-4" placeholder="Confirm Password" name="conf_password"  id="conf_password" required>
     <div *ngIf="signup_form.submitted && password.errors" class="bg-danger text-white text-center">
         <label *ngIf="password?.errors.required">password is required</label>
         <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
-      </div>
+      </div> -->
 
 
     <!-- server error message -->
@@ -104,6 +95,8 @@
       <div *ngIf="serverErrormessages"  class="text-white bg-danger text-center">
           {{serverErrormessages}}
       </div>
+      <flash-messages></flash-messages>
+
     <!-- Sign in button -->
     <div class="form-group ">
         <input type="submit" class="btn btn-success btn-lg btn-block login-button" value="CREATE ACCOUNT"/>

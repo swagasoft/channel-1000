@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { AuthgaurdGuard } from './auth/authgaurd.guard';
 // built-in import
 import { UserService } from './services/user.service';
@@ -10,6 +11,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 
@@ -39,6 +41,11 @@ import { SideNavComponent } from './src/app/dashboard/side-nav/side-nav.componen
 import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
 import { UserTrasanctionsComponent } from './components/user-trasanctions/user-trasanctions.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { FaqComponent } from './faq/faq.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { AccountComponent } from './components/account/account.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
 
 
 
@@ -63,7 +70,11 @@ import { CounterComponent } from './components/counter/counter.component';
     SideNavComponent,
     MarketerRegComponent,
     UserTrasanctionsComponent,
-    CounterComponent
+    CounterComponent,
+    FaqComponent,
+    PaymentComponent,
+    AccountComponent,
+    WhyitworksComponent
   ],
   imports: [
     BrowserModule,
@@ -74,14 +85,18 @@ import { CounterComponent } from './components/counter/counter.component';
     MatListModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FlashMessagesModule.forRoot(),
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+
 
 ],
 schemas: [NO_ERRORS_SCHEMA],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true},
-     UserService, AuthgaurdGuard, NgbModalConfig, NgbModal  ],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+     UserService, AuthgaurdGuard, NgbModalConfig, NgbModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
+import { UserService } from './../../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor( private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,6 +25,9 @@ export class SideNavComponent implements OnInit {
  closeNav() {
   document.getElementById('mySidenav').style.width = '0';
 
+}
+logout(){
+  this.userService.logout();
 }
 
 }

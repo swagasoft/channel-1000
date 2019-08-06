@@ -1,3 +1,6 @@
+import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
+import { AccountComponent } from './components/account/account.component';
+import { FaqComponent } from './faq/faq.component';
 import { UserTrasanctionsComponent } from './components/user-trasanctions/user-trasanctions.component';
 import { ServicesComponent } from './services/services.component';
 import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
@@ -15,6 +18,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -24,10 +28,14 @@ const routes: Routes = [
 { path: 'about', component: AboutComponent},
 { path: 'testimonies', component: TestimoniesComponent},
 { path: 'howitworks', component: HowitworksComponent},
+{ path: 'whyitworks', component: WhyitworksComponent},
 { path: 'policy', component: PolicyComponent},
 { path: 'marketer-reg', component: MarketerRegComponent},
 { path: 'services', component: ServicesComponent},
+{ path: 'faq-questions', component: FaqComponent},
 
+{ path: 'account', component: AccountComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'payment', component: PaymentComponent, canActivate:[AuthgaurdGuard]},
 { path: 'welcome', component: WelcomeComponent, canActivate:[AuthgaurdGuard]},
 { path: 'user-transactions', component: UserTrasanctionsComponent, canActivate:[AuthgaurdGuard]},
 { path: 'dashboard', component: DashboardComponent, canActivate:[AuthgaurdGuard]},
@@ -35,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

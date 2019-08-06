@@ -25,6 +25,8 @@
     "@ng-bootstrap/ng-bootstrap": "^5.0.0",
     "@types/chart.js": "^2.7.55",
     "angular-bootstrap-md": "^8.0.0",
+    "angular2-flash-messages": "^3.0.1",
+    "angular2-jwt": "^0.2.3",
     "animate.css": "^3.7.2",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.3.1",
