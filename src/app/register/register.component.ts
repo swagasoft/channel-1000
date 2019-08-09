@@ -34,12 +34,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.userService.postUser(form.value).subscribe(
       res => {
         this.flashMessage.show('Registration Successful..', {cssClass: 'bg-success text-white', timeout: 3000});
-        setTimeout(()=> {
-        this.router.navigateByUrl('/login');
-
-        }, 1000);
 
         this.resetForm(form);
+        setTimeout(()=> {
+          this.router.navigate(['/login']);
+        }, 5000);
       },
       err => {
         if(err.status == 442){
@@ -67,7 +66,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       email: '',
       username: '',
       role: this.userRole,
-      password: ''
+      password: '',
+      ref_username: ''
+
     };
 
     form.resetForm();

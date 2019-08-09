@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       response => {
         this.userService.setToken(response['token']);
         this.flashMessage.show('login successful...', {cssClass: 'alert-success', timeout: 3000});
-        setTimeout(()=> {this.router.navigateByUrl('/welcome'); }, 3000);
+        setTimeout(()=> {this.router.navigateByUrl('/dashboard'); }, 3000);
 
       },
       err => {

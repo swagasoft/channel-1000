@@ -74,23 +74,8 @@
         <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
       </div>
 
-     <!-- password confirm -->
-     <!-- <i class="fas fa-lock prefix"></i>
-    <input type="password"  minlength="6"
-    class="form-control mb-4" placeholder="Confirm Password" name="conf_password"  id="conf_password" required>
-     -->
-
     <flash-messages></flash-messages>
 
-    <!-- server error message -->
-      <!-- show success message -->
-      <div *ngIf="showSuccessMessage"  class="text-white bg-sucess text-center">
-          Registration Successful...
-      </div>
-      <!-- server error message -->
-      <div *ngIf="serverErrormessages"  class="text-white bg-danger text-center">
-          {{serverErrormessages}}
-      </div>
     <!-- Sign in button -->
     <div class="form-group ">
         <input type="submit" class="btn btn-success btn-lg btn-block login-button" value="CREATE ACCOUNT"/>

@@ -2,7 +2,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../services/user.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-marketer-reg',
@@ -14,24 +14,29 @@ export class MarketerRegComponent implements OnInit {
 
   showSuccessMessage: boolean;
   serverErrormessages: string;
+  referal_username: string;
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
   constructor(private router: Router,
      public userService: UserService,
+     private activateRoute: ActivatedRoute,
      private flashMessage: FlashMessagesService
-     ) { }
+     ) {
+       activateRoute.queryParams.subscribe(params => {
+          this.referal_username = activateRoute.snapshot.params['username'];
+          console.log(this.referal_username);
+       });
+      }
 
   ngOnInit() {
   }
 
-  selectOption() {
-    this.router.navigate(['/register']);
-    }
 
     onSubmit(form: NgForm){
-      // over ride form role value...
+      // over ride form user-role and referal username
       form.value.role = this.userRole;
+      form.value.ref_username = this.referal_username;
 
       this.userService.postUser(form.value).subscribe(
         res => {
@@ -62,7 +67,8 @@ export class MarketerRegComponent implements OnInit {
       email: '',
       username: '',
       role: this.userRole,
-      password: ''
+      password: '',
+      ref_username:''
     };
 
     form.resetForm();

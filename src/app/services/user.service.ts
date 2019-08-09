@@ -20,6 +20,7 @@ export class UserService {
     username : '',
     email   : '',
     password: '',
+    ref_username: ''
   };
 
     noAuthHeader = {headers: new HttpHeaders({NoAuth: 'True'})};

@@ -7,7 +7,6 @@
 
     <!-- Title -->
     <h2 class="card-title h2">*****************************</h2>
-  <flash-messages></flash-messages>
 
     <!-- Subtitle -->
     <p class="my-4 h3"> </p>
@@ -48,12 +47,10 @@
         <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
       </div>
 
-
-
+  <flash-messages></flash-messages>
     <!-- Sign in button -->
     <div class="form-group ">
         <input type="submit" class="btn btn-success btn-lg btn-block login-button" value="LOGIN"/>
-
       </div>
 
     <!-- Register -->
@@ -62,7 +59,5 @@
     </p> <br>
     <p>  <a routerLink="/passwordreset" class="text-white">
       <small>Forget password?</small></a></p>
-
-
 </form>
 

@@ -30,7 +30,7 @@ const routes: Routes = [
 { path: 'howitworks', component: HowitworksComponent},
 { path: 'whyitworks', component: WhyitworksComponent},
 { path: 'policy', component: PolicyComponent},
-{ path: 'marketer-reg', component: MarketerRegComponent},
+{ path: 'link/:username', component: MarketerRegComponent},
 { path: 'services', component: ServicesComponent},
 { path: 'faq-questions', component: FaqComponent},
 

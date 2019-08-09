@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
         console.log('error getting values..', err);
 
       }
-    )
+    );
 
 }
 }
