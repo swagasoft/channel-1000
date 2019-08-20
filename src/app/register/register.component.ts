@@ -68,7 +68,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       role: this.userRole,
       password: '',
       ref_username: ''
-
     };
 
     form.resetForm();
@@ -76,7 +75,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   selectOption() {
-   this.router.navigate(['/marketer-reg']);
+    const result = document.getElementById('select_role') as HTMLInputElement;
+   this.userRole = result.value;
+   console.log('userrole', this.userRole);
    }
 
   ngOnDestroy(){

@@ -47,6 +47,14 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/edit_account');
   }
 
+  saveUserRole(response){
+      localStorage.setItem('user-role', response['doc']['role']);
+  }
+
+  getUserRole(){
+    localStorage.getItem('user-role');
+  }
+
   setToken(token: string) {
    localStorage.setItem('token', token);
 

@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public userService : UserService,
-     private router: Router,
-     private flashMessage: FlashMessagesService,
+    private router: Router,
+    private flashMessage: FlashMessagesService,
 
     ) {
 
@@ -34,16 +34,18 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm){
     this.userService.login(form.value).subscribe(
       response => {
-        this.userService.setToken(response['token']);
-        this.flashMessage.show('login successful...', {cssClass: 'alert-success', timeout: 3000});
-        setTimeout(()=> {this.router.navigateByUrl('/dashboard'); }, 3000);
+      this.userService.saveUserRole(response);
+      this.userService.setToken(response['token']);
+      this.flashMessage.show('login successful...', {cssClass: 'alert-success', timeout: 2000});
+      setTimeout(() => {this.router.navigateByUrl('/dashboard'); }, 2000);
 
       },
       err => {
-        if(err.status ==401 ||404){
-        this.serverErrorMessage = err.error;
+        if(err.status === 401 ||404){
         this.flashMessage.show(err.error, {cssClass: 'alert-danger', timeout: 3000});
 
+      }else{
+        this.flashMessage.show(err , {cssClass: 'alert-danger', timeout: 3000});
       }}
     );
   }

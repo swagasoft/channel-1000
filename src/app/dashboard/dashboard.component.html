@@ -8,6 +8,7 @@
   <li class="list-group-item">Account : {{userDetails?.role}}</li>
   <li class="list-group-item">Stage : {{userDetails?.stage}}</li>
   <li class="list-group-item">Referal link : {{userDetails?.ref_link}}</li>
+  <li class="list-group-item">  : {{userDetails?.downline.length}}</li>
   <li class="list-group-item" *ngIf="!userDetails?.activate"> your account is not active
     make payment to activate your account.
   </li>

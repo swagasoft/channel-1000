@@ -40,20 +40,27 @@ export class MarketerRegComponent implements OnInit {
 
       this.userService.postUser(form.value).subscribe(
         res => {
-
+          this.flashMessage.show('Registration Successful..', {cssClass: 'bg-success text-white', timeout: 3000});
 
           this.resetForm(form);
+          setTimeout(()=> {
+            this.router.navigate(['/login']);
+          }, 5000);
         },
         err => {
           if(err.status == 442){
             this.serverErrormessages = err.error.join('<br/>');
-          this.flashMessage.show(err.error, {cssClass: 'alert-danger', timeout: 3000});
+            this.flashMessage.show(err.error, {cssClass: 'bg-danger text-white', timeout: 3000});
+
+          }else if(err.status == 422){
+             // this.serverErrormessages = 'something went wrong , please contact the admin';
+             this.flashMessage.show(err.error,
+             {cssClass: 'bg-danger text-white', timeout: 5000});
 
           }else{
-
-          this.flashMessage.show('something went wrong , please contact the admin', {cssClass: 'alert-danger', timeout: 5000});
-
-
+             // this.serverErrormessages = 'something went wrong , please contact the admin';
+             this.flashMessage.show('something went wrong , please contact the admin',
+             {cssClass: 'bg-danger text-white', timeout: 5000});
           }
         },
 
@@ -74,5 +81,10 @@ export class MarketerRegComponent implements OnInit {
     form.resetForm();
     this.serverErrormessages = '';
   }
+  selectOption() {
+    const result = document.getElementById('select_role') as HTMLInputElement;
+   this.userRole = result.value;
+   console.log('userrole', this.userRole);
+   }
 
 }

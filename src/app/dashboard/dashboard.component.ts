@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       res => {
         this.userDetails = res['user'];
+        console.log(this.userDetails.downline);
       },
       err => {
         console.log('error getting values..', err);
