@@ -46,6 +46,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { AccountComponent } from './components/account/account.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
+import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 
 
 
@@ -74,7 +76,9 @@ import { WhyitworksComponent } from './components/whyitworks/whyitworks.componen
     FaqComponent,
     PaymentComponent,
     AccountComponent,
-    WhyitworksComponent
+    WhyitworksComponent,
+    AdmindashboardComponent,
+    SidemenuComponent
   ],
   imports: [
     BrowserModule,

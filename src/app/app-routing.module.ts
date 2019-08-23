@@ -1,3 +1,4 @@
+import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
 import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
 import { AccountComponent } from './components/account/account.component';
 import { FaqComponent } from './faq/faq.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
 { path: 'user-transactions', component: UserTrasanctionsComponent, canActivate:[AuthgaurdGuard]},
 { path: 'dashboard', component: DashboardComponent, canActivate:[AuthgaurdGuard]},
 { path: 'profile', component: ProfileComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-dash', component: AdmindashboardComponent, canActivate:[AuthgaurdGuard]},
 ];
 
 @NgModule({
