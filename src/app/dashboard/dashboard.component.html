@@ -37,7 +37,6 @@
     <link href="../../assets/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="../../assets/dashboard/vendor/select2/select2.min.css" rel="stylesheet" media="all">
      <link href="../../assets/dashboard/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-
     <!-- Main CSS-->
     <link href="../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
 
@@ -72,32 +71,32 @@
 
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-chart-bar"></i>Payment</a>
                         </li>
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                            <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active">
+                                <i class="fas fa-table"></i>Refer and Earn</a>
                         </li>
                         <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                            <a [routerLink]="['/rewards']" routerLinkActive="router-link-active">
+                                <i class="far fa-check-square"></i>Rewards Center</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                            <a [routerLink]="['/account']" routerLinkActive="router-link-active">
+                                <i class="fas fa-calendar-alt"></i>My Account</a>
                         </li>
                         <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
+                            <a [routerLink]="['/cashout']" routerLinkActive="router-link-active">
+                                <i class="fas fa-map-marker-alt"></i>Cash Out</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" [routerLink]="['/admin-dash']" routerLinkActive="router-link-active" >
-                                <i class="fas fa-desktop"></i>UI Elements</a>
+                                <i class="fas fa-copy"></i>Administrator</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" (click)="louOut()" >
+                                <i class="fa fa-power-off" aria-hidden="true"></i>Log Out</a>
 
                         </li>
                     </ul>
@@ -122,7 +121,7 @@
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
 
-                                       <p class="font-weight-bold"> {{userDetails?.email}} </p>
+                                       <p class="font-weight-bold">ID: {{userDetails?.cust_id}} </p>
                                     </div>
 
                                 </div>
@@ -143,7 +142,7 @@
                                                     <h5 class="name">
                                                         <a href="#">john doe</a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">{{userDetails?.email}} </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -268,8 +267,8 @@
                             <div class="row w-100">
                                     <div class="col-md-3">
                                         <div class="card border-info mx-sm-1 p-3">
-                                            <div class="card border-info shadow text-info p-3 my-card" > users
-                                              <span class="fa fa-car" aria-hidden="true"> inside</span></div>
+                                            <div class="card border-info shadow text-info p-3 my-card" >
+                                              <span class="fa fa-car" aria-hidden="true"></span></div>
                                             <div class="text-info text-center mt-3"><h4>Cars</h4></div>
                                             <div class="text-info text-center mt-2"><h1>234</h1></div>
                                         </div>

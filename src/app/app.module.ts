@@ -37,7 +37,6 @@ import { ServicesComponent } from './services/services.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
 import { PolicyComponent } from './policy/policy.component';
-import { SideNavComponent } from './src/app/dashboard/side-nav/side-nav.component';
 import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
 import { UserTrasanctionsComponent } from './components/user-trasanctions/user-trasanctions.component';
 import { CounterComponent } from './components/counter/counter.component';
@@ -48,6 +47,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
 import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { CashoutComponent } from './components/cashout/cashout.component';
+import { RewardsComponent } from './components/rewards/rewards.component';
+import { ReferandearnComponent } from './components/referandearn/referandearn.component';
 
 
 
@@ -69,7 +71,6 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
     TestimoniesComponent,
     HowitworksComponent,
     PolicyComponent,
-    SideNavComponent,
     MarketerRegComponent,
     UserTrasanctionsComponent,
     CounterComponent,
@@ -78,7 +79,11 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
     AccountComponent,
     WhyitworksComponent,
     AdmindashboardComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    CashoutComponent,
+    RewardsComponent,
+    ReferandearnComponent,
+
   ],
   imports: [
     BrowserModule,

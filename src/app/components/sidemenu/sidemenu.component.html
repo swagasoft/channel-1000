@@ -37,32 +37,34 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="chart.html">
+                            <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
                                 <i class="fas fa-chart-bar"></i>Payment</a>
                         </li>
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                            <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active" >
+                              <i class="fa fa-users" aria-hidden="true"></i>Referal and Earn</a>
+                        </li>
+
+                        <li>
+                            <a [routerLink]="['/rewards']" routerLinkActive="router-link-active" >
+                                <i class="far fa-check-square"></i>Rewards Center</a>
                         </li>
                         <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                            <a [routerLink]="['/account']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-calendar-alt"></i>My Account</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                            <a [routerLink]="['/cashout']" routerLinkActive="router-link-active" >
+                              <i class="fa fa-money" aria-hidden="true"></i> Cash out</a>
                         </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                        </li>
+
                         <li class="has-sub">
                             <a class="js-arrow" [routerLink]="['/admin-dash']" routerLinkActive="router-link-active"  >
                                 <i class="fas fa-desktop"></i> Administrator</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" (click)="logOut()">
+                                <i class="fa fa-power-off" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
                 </nav>

@@ -50,4 +50,7 @@ loadScript(url: string){
   script.defer = true;
   body.appendChild(script);
 }
+louOut(){
+  this.userService.logout();
+}
 }

@@ -1,3 +1,4 @@
+import { CashoutComponent } from './components/cashout/cashout.component';
 import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
 import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
 import { AccountComponent } from './components/account/account.component';
@@ -20,6 +21,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RewardsComponent } from './components/rewards/rewards.component';
+import { ReferandearnComponent } from './components/referandearn/referandearn.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -37,10 +40,13 @@ const routes: Routes = [
 
 { path: 'account', component: AccountComponent, canActivate:[AuthgaurdGuard]},
 { path: 'payment', component: PaymentComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'rewards', component: RewardsComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'referandearn', component: ReferandearnComponent, canActivate:[AuthgaurdGuard]},
 { path: 'welcome', component: WelcomeComponent, canActivate:[AuthgaurdGuard]},
 { path: 'user-transactions', component: UserTrasanctionsComponent, canActivate:[AuthgaurdGuard]},
 { path: 'dashboard', component: DashboardComponent, canActivate:[AuthgaurdGuard]},
 { path: 'profile', component: ProfileComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'cashout', component: CashoutComponent, canActivate:[AuthgaurdGuard]},
 { path: 'admin-dash', component: AdmindashboardComponent, canActivate:[AuthgaurdGuard]},
 ];
 
