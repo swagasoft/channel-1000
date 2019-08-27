@@ -37,7 +37,7 @@
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" routerLink="login" *ngIf="!userService.isLogedIn()" >
+        <a class="nav-link waves-effect waves-light" [routerLink]="['/login']"  *ngIf="!userService.isLogedIn()" >
           <i  class="fa fa-user" aria-hidden="true"></i> login
         </a>
       </li>

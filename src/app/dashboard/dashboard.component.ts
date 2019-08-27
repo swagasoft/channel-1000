@@ -15,7 +15,12 @@ export class DashboardComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       res => {
         this.userDetails = res['user'];
-        console.log(this.userDetails);
+        // console.log(this.userDetails);
+      localStorage.setItem('userEmail', this.userDetails.email);
+      localStorage.setItem('Username',this.userDetails.username);
+
+
+
       },
       err => {
         console.log('error getting values..', err);

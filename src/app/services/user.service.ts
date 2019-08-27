@@ -47,6 +47,10 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/edit_account');
   }
 
+  transasction(payment){
+    return this.http.post(environment.apiBaseUrl + '/transaction', payment);
+  }
+
   saveUserRole(response){
       localStorage.setItem('user-role', response['doc']['role']);
   }

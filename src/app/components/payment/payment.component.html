@@ -1,1 +1,16 @@
-<p>payment works!</p>
+
+
+ <div style="widows: 100%; display:flex;  justify-content: center;" (click)="paynow()">
+    <div class="example-button-row">
+    <angular4-paystack
+    [key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
+    [email]="('swagasoft@gmail.com')"
+    [amount]="(amountInput)"
+    [ref]="(refInput)"
+    [channels]="['bank']"
+    [class]="'btn btn-success'"
+    (close)="paymentCancel()"
+    (callback)="paymentDone($event)"
+    >PAY NOW</angular4-paystack>
+    </div>
+    </div>

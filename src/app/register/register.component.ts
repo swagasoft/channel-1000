@@ -1,8 +1,9 @@
 import {  FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../services/user.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   public userRole: string = 'investor';
+ @ViewChild('content', {static: false}) content: any;
+
 
   showSuccessMessage: boolean;
   serverErrormessages: string;
@@ -20,16 +23,45 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     public userService: UserService,
     private router: Router,
-    private flashMessage: FlashMessagesService
-     ) { }
+    private flashMessage: FlashMessagesService,
+    config: NgbModalConfig, private modalService: NgbModal
+
+     ) {
+        // customize default values of modals used by this component tree
+    config.backdrop = 'static';
+    config.keyboard = false;
+
+    setTimeout(()=> {
+      this.openModal();
+    }, 2000);
+      }
+
 
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if(!(evt instanceof NavigationEnd)){
+        return ;
+      }
+
+      window.scrollTo(0,0);
+    });
+
   }
+
+
+  openModal() {
+   this.modalService.open(this.content).result.then((result)=> {
+     this.userRole = result;
+     console.log(this.userRole);
+   });
+  }
+
 
   onSubmit(form: NgForm){
     // over ride form role value...
     form.value.role = this.userRole;
+
 
     this.userService.postUser(form.value).subscribe(
       res => {

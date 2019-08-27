@@ -1,7 +1,7 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -29,6 +29,13 @@ export class LoginComponent implements OnInit {
 
   serverErrorMessage: string;
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if(!(evt instanceof NavigationEnd)){
+        return ;
+      }
+
+      window.scrollTo(0,0);
+    });
 
   }
   onSubmit(form: NgForm){
@@ -36,16 +43,16 @@ export class LoginComponent implements OnInit {
       response => {
       this.userService.saveUserRole(response);
       this.userService.setToken(response['token']);
-      this.flashMessage.show('login successful...', {cssClass: 'alert-success', timeout: 2000});
+      this.flashMessage.show('login successful...', {cssClass: 'bg-success text-white', timeout: 2000});
       setTimeout(() => {this.router.navigateByUrl('/dashboard'); }, 2000);
 
       },
       err => {
         if(err.status === 401 ||404){
-        this.flashMessage.show(err.error, {cssClass: 'alert-danger', timeout: 3000});
+        this.flashMessage.show(err.error, {cssClass: 'bg-danger text-white', timeout: 3000});
 
       }else{
-        this.flashMessage.show(err , {cssClass: 'alert-danger', timeout: 3000});
+        this.flashMessage.show(err , {cssClass: 'bg-danger text-white', timeout: 3000});
       }}
     );
   }

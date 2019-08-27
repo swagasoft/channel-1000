@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { Angular4PaystackModule } from 'angular4-paystack';
 
 
 
@@ -98,6 +99,7 @@ import { ReferandearnComponent } from './components/referandearn/referandearn.co
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
+    Angular4PaystackModule
 
 
 
