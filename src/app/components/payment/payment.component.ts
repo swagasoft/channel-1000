@@ -38,7 +38,20 @@ Username:string;
     this.amountInput= 100000;
 
     this.generateRef();
+    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
+    this.loadScript('../../assets/dashboard/js/main.js');
 
+
+  }
+
+  loadScript(url: string){
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 
   paynow() {
@@ -55,7 +68,8 @@ Username:string;
   }
   paymentDone($event) {
     $event.user = this.Username;
-    $event.amount = this.amountInput;
+    $event.email = this.emailInput;
+    $event.amount = 1000;
     console.log($event);
     this.userService.transasction($event).subscribe(
     err => {
@@ -74,5 +88,8 @@ Username:string;
 generateRef() {
   const  ref = '' + Math.floor((Math.random() * 1000000000) + 1); // gene
   this.refInput = ref;
+}
+logOut(){
+  this.userService.logout();
 }
 }

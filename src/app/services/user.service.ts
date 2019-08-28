@@ -36,7 +36,8 @@ export class UserService {
   }
 
   login(authCredentials) {
-    return this.http.post(environment.apiBaseUrl  + '/authenticate', authCredentials, this.noAuthHeader);
+    return this.http.post(environment.apiBaseUrl  + '/authenticate',
+     authCredentials, this.noAuthHeader);
   }
 
   // SECURED ROUTE IN THE SERVER SIDE...
@@ -93,6 +94,6 @@ export class UserService {
   public logout(): void {
    this.deleteToken();
    this.token = '';
-   this.router.navigateByUrl('/');
+   this.router.navigateByUrl('/login');
   }
 }

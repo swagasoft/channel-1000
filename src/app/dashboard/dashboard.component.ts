@@ -1,5 +1,6 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -9,17 +10,23 @@ declare var $: any;
 })
 export class DashboardComponent implements OnInit {
   userDetails: any;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+
+    this.router.events.subscribe((evt) => {
+      if(!(evt instanceof NavigationEnd)){
+        return ;
+      }
+
+      window.scrollTo(0,0);
+    });
     this.userService.getUserProfile().subscribe(
       res => {
         this.userDetails = res['user'];
-        // console.log(this.userDetails);
+        console.log(this.userDetails);
       localStorage.setItem('userEmail', this.userDetails.email);
       localStorage.setItem('Username',this.userDetails.username);
-
-
 
       },
       err => {

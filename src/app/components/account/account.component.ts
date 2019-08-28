@@ -34,12 +34,30 @@ custId: number;
       err => {
         console.log(err);
       }
-    )
+    );
+
+      // load script
+
+      this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
+      this.loadScript('../../assets/dashboard/js/main.js');
+
+  }
+  loadScript(url: string){
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 
   submitProfile(form: NgForm){
     console.log(form.value);
 
+  }
+  logOut(){
+    this.userService.logout();
   }
 
 }

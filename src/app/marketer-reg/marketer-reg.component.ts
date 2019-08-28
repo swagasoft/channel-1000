@@ -2,7 +2,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../services/user.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-marketer-reg',
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./marketer-reg.component.scss']
 })
 export class MarketerRegComponent implements OnInit {
-  public userRole: string = 'marketer';
+  public userRole: string = 'INVESTOR';
 
   showSuccessMessage: boolean;
   serverErrormessages: string;
@@ -30,6 +30,13 @@ export class MarketerRegComponent implements OnInit {
       }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if(!(evt instanceof NavigationEnd)){
+        return ;
+      }
+
+      window.scrollTo(0,0);
+    });
   }
 
 
