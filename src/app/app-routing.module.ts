@@ -1,3 +1,13 @@
+import { AdminLevel4Component } from './components/admin-level4/admin-level4.component';
+import { AdminLevel3Component } from './components/admin-level3/admin-level3.component';
+import { AdminLevel2Component } from './components/admin-level2/admin-level2.component';
+import { AdminLevel1Component } from './components/admin-level1/admin-level1.component';
+import { AdminPayoutComponent } from './components/admin-payout/admin-payout.component';
+import { AdminAccountComponent } from './components/admin-account/admin-account.component';
+import { AdminTransactionComponent } from './components/admin-transaction/admin-transaction.component';
+import { AdminCashoutComponent } from './components/admin-cashout/admin-cashout.component';
+import { AdminInactiveComponent } from './components/admin-inactive/admin-inactive.component';
+import { AdminInvestorsComponent } from './components/admin-investors/admin-investors.component';
 import { CashoutComponent } from './components/cashout/cashout.component';
 import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
 import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
@@ -47,7 +57,18 @@ const routes: Routes = [
 { path: 'dashboard', component: DashboardComponent, canActivate:[AuthgaurdGuard]},
 { path: 'profile', component: ProfileComponent, canActivate:[AuthgaurdGuard]},
 { path: 'cashout', component: CashoutComponent, canActivate:[AuthgaurdGuard]},
+
 { path: 'admin-dash', component: AdmindashboardComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-investors', component: AdminInvestorsComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-inactive', component: AdminInactiveComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-cashout', component: AdminCashoutComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-transaction', component: AdminTransactionComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-account', component: AdminAccountComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-payout', component: AdminPayoutComponent, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-level1', component: AdminLevel1Component, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-level2', component: AdminLevel2Component, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-level3', component: AdminLevel3Component, canActivate:[AuthgaurdGuard]},
+{ path: 'admin-level4', component: AdminLevel4Component, canActivate:[AuthgaurdGuard]},
 ];
 
 @NgModule({

@@ -51,6 +51,17 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { CashoutComponent } from './components/cashout/cashout.component';
 import { RewardsComponent } from './components/rewards/rewards.component';
 import { ReferandearnComponent } from './components/referandearn/referandearn.component';
+import { AdminSidemenuComponent } from './components/admin-sidemenu/admin-sidemenu.component';
+import { AdminInvestorsComponent } from './components/admin-investors/admin-investors.component';
+import { AdminInactiveComponent } from './components/admin-inactive/admin-inactive.component';
+import { AdminCashoutComponent } from './components/admin-cashout/admin-cashout.component';
+import { AdminTransactionComponent } from './components/admin-transaction/admin-transaction.component';
+import { AdminAccountComponent } from './components/admin-account/admin-account.component';
+import { AdminPayoutComponent } from './components/admin-payout/admin-payout.component';
+import { AdminLevel1Component } from './components/admin-level1/admin-level1.component';
+import { AdminLevel2Component } from './components/admin-level2/admin-level2.component';
+import { AdminLevel3Component } from './components/admin-level3/admin-level3.component';
+import { AdminLevel4Component } from './components/admin-level4/admin-level4.component';
 
 
 
@@ -84,6 +95,17 @@ import { ReferandearnComponent } from './components/referandearn/referandearn.co
     CashoutComponent,
     RewardsComponent,
     ReferandearnComponent,
+    AdminSidemenuComponent,
+    AdminInvestorsComponent,
+    AdminInactiveComponent,
+    AdminCashoutComponent,
+    AdminTransactionComponent,
+    AdminAccountComponent,
+    AdminPayoutComponent,
+    AdminLevel1Component,
+    AdminLevel2Component,
+    AdminLevel3Component,
+    AdminLevel4Component,
 
   ],
   imports: [

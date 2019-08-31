@@ -8,10 +8,21 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./cashout.component.scss']
 })
 export class CashoutComponent implements OnInit {
+  account: number;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.userService.loadBalance().subscribe(
+      res => {
+        console.log(res['doc']);
+     this.account =  res['doc']['earnings'];
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
   this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
   this.loadScript('../../assets/dashboard/js/main.js');
   this.router.events.subscribe((evt) => {

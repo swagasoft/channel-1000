@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admindashboard.component.scss']
 })
 export class AdmindashboardComponent implements OnInit {
+users: any;
+transaction: any;
+investment: any;
+marketers: any;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     // load script
@@ -26,7 +31,26 @@ export class AdmindashboardComponent implements OnInit {
     this.loadScript('../../assets/dashboard/vendor/select2/select2.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
+    // http service request
+    this.userService.admindashboard().subscribe(
+      res => {
+        console.log(res);
+        this.users = res['investors'];
+        this.investment = res['allInvestment'];
+        this.transaction = res['allTransaction'];
+        this.marketers = res['marketers'];
+
+
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
+  logOut(){
+    this.userService.logout();
+  }
+
   loadScript(url: string){
     const body = <HTMLDivElement> document.body;
     const script = document.createElement('script');

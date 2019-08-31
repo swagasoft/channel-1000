@@ -28,12 +28,29 @@ newAmount: any;
 refInput: any;
 emailInput: any;
 Username:string;
+accountDetails: any;
+history: any;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.loadBalance().subscribe(
+      res => {
+        this.accountDetails = res['doc'];
+      }
+    );
+
+    this.userService.getTransaction().subscribe(
+      res => {
+         this.history =  res['result'];
+    },
+    err => {
+      console.log('error',err);
+
+    }
+    );
+
     let userEmail = localStorage.getItem('userEmail');
     this.Username = localStorage.getItem('Username');
-    console.log(this.Username);
     this.emailInput = userEmail;
     this.amountInput= 100000;
 

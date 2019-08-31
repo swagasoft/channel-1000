@@ -88,7 +88,7 @@
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
 
-                                       <p class="font-weight-bold"> {{userDetails?.username}} </p>
+                                       <p class="font-weight-bold">  </p>
                                     </div>
 
                                 </div>
@@ -96,16 +96,16 @@
                                     <div class="account-item clearfix js-item-menu">
 
                                         <div class="content">
-                                            <p class="js-acc-btn font-weight-bold">{{userDetails?.cust_id}} </p>
+                                            <p class="js-acc-btn font-weight-bold"> </p>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
 
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">{{userDetails?.fullname}} </a>
+                                                        <a href="#"> </a>
                                                     </h5>
-                                                    <span class="email">{{userDetails?.email}} </span>
+                                                    <span class="email"> </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -123,7 +123,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a (click)="louOut()">
+                                                <a (click)="logOut()">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -152,9 +152,45 @@
 
                         <!-- ######### cards ##############3 -->
 
+                        <!-- payment cards -->
+                        <!-- details card section starts from here -->
+<section class="details-card">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card-content">
+                  <div class="card-desc">
+                      <h3>₦{{accountDetails?.investment | number}} </h3>
+                      <p>investment </p>
+
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card-content">
+                  <div class="card-desc">
+                      <h3>₦{{accountDetails?.earnings | number}} </h3>
+                      <p> profit</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card-content">
+                  <div class="card-desc">
+                      <h3>₦{{accountDetails?.cashout | number}} </h3>
+                        <p>cashout </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- details card section starts from here -->
+                        <!-- payment cards ends -->
+        <p> you can increase your investment by making payment below. </p>
           <div style="widows: 100%; display:flex;  justify-content: center;" (click)="paynow()">
             <div class="example-button-row">
-            <angular4-paystack
+            <angular4-paystack class="btn btn-lg"
             [key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
             [email]="(emailInput)"
             [amount]="(amountInput)"
@@ -163,13 +199,44 @@
             [class]="'btn btn-success'"
             (close)="paymentCancel()"
             (callback)="paymentDone($event)"
-            >PAY NOW</angular4-paystack>
+            >PAY ₦1000 NOW </angular4-paystack>
             </div>
             </div>
 
                         <!-- ######### cards ##############3 -->
 
+                        <!--  payment history -->
+                        <div class="row">
+                          <div class="col-lg-9">
+                              <h2 class="title-1 m-b-25">Payment history</h2>
+                              <div class="table-responsive table--no-card m-b-40">
+                                  <table class="table table-borderless table-striped table-earning"
+                                  >
+                                      <thead>
+                                          <tr>
+                                              <th> #</th>
+                                              <th>Amount</th>
+                                              <th>Status</th>
+                                              <th>reference</th>
 
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr  *ngFor="let item of history">
+                                              <td  > <i class="fa fa-check" aria-hidden="true" style="color: green"></i></td>
+                                              <td> {{item.amount | number}}</td>
+                                              <td>{{item.status}} </td>
+                                              <td>{{item.reference}}</td>
+
+                                          </tr>
+
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+
+                      </div>
+                        <!-- end of payment history -->
 
                     </div>
                 </div>

@@ -33,35 +33,50 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
+                            <a class="js-arrow" [routerLink]="['/admin-dash']" routerLinkActive="router-link-active" >
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
-                                <i class="fas fa-chart-bar"></i>Payment</a>
+                            <a [routerLink]="['/admin-investors']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-chart-bar"></i>Investors</a>
                         </li>
                         <li>
-                            <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active" >
-                              <i class="fa fa-users" aria-hidden="true"></i>Referal and Earn</a>
+                            <a [routerLink]="['/admin-inactive']" routerLinkActive="router-link-active" >
+                              <i class="fa fa-users" aria-hidden="true"></i>InActive  </a>
                         </li>
 
                         <li>
-                            <a [routerLink]="['/rewards']" routerLinkActive="router-link-active" >
-                                <i class="far fa-check-square"></i>Rewards Center</a>
+                            <a [routerLink]="['/admin-cashout']" routerLinkActive="router-link-active" >
+                                <i class="far fa-check-square"></i>Cashout</a>
                         </li>
                         <li>
-                            <a [routerLink]="['/account']" routerLinkActive="router-link-active" >
-                                <i class="fas fa-calendar-alt"></i>My Account</a>
+                            <a [routerLink]="['/admin-transaction']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-calendar-alt"></i>Transaction</a>
                         </li>
                         <li>
-                            <a [routerLink]="['/cashout']" routerLinkActive="router-link-active" >
+                            <a [routerLink]="['/admin-account']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-calendar-alt"></i>Account</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/admin-level1']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-calendar-alt"></i>Level-1</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/admin-level2']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-calendar-alt"></i>Level-2</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/admin-level3']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-calendar-alt"></i>Level-3</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/admin-level4']" routerLinkActive="router-link-active" >
+                                <i class="fas fa-calendar-alt"></i>Level-4</a>
+                        </li>
+
+                        <li>
+                            <a [routerLink]="['/admin-payout']" routerLinkActive="router-link-active" >
                               <i class="fa fa-money" aria-hidden="true"></i> Cash out</a>
-                        </li>
-
-                        <li class="has-sub">
-                            <a class="js-arrow" [routerLink]="['/admin-dash']" routerLinkActive="router-link-active"  >
-                                <i class="fas fa-desktop"></i> Administrator</a>
-
                         </li>
                         <hr size="5">
                         <li class="has-sub">

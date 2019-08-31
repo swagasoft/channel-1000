@@ -34,27 +34,47 @@ export class UserService {
   postUser(user: UserModel) {
     return this.http.post(environment.apiBaseUrl + '/register' , user, this.noAuthHeader);
   }
-
   login(authCredentials) {
     return this.http.post(environment.apiBaseUrl  + '/authenticate',
      authCredentials, this.noAuthHeader);
   }
 
+
   // SECURED ROUTE IN THE SERVER SIDE...
   getUserProfile() {
     return this.http.get(environment.apiBaseUrl + '/dashboard');
   }
+  cashout(amount){
+    return this.http.post(environment.apiBaseUrl + '/user-cashout', amount);
+  }
+  loadBalance(){
+   return this.http.get(environment.apiBaseUrl + '/load-balance');
+  }
+  getTransaction(){
+    return this.http.get(environment.apiBaseUrl + '/get-transactions');
+  }
+
   editAccount() {
     return this.http.get(environment.apiBaseUrl + '/edit_account');
   }
-
   transasction(payment){
     return this.http.post(environment.apiBaseUrl + '/transaction', payment);
   }
-
   saveUserRole(response){
       localStorage.setItem('user-role', response['doc']['role']);
   }
+
+  // ####### admin panel
+  admindashboard(){
+    return this.http.get(environment.apiBaseUrl + '/admin-dashboard');
+  }
+  getInvestors(){
+    return this.http.get(environment.apiBaseUrl + '/get-investors');
+  }
+  usersCashout(){
+    return this.http.get(environment.apiBaseUrl + '/users-cashout');
+  }
+
 
   getUserRole(){
     localStorage.getItem('user-role');
