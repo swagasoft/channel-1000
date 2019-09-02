@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     setTimeout(()=> {
       this.openModal();
-    }, 2000);
+    }, 3.500);
       }
 
 

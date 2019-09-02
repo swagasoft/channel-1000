@@ -1,6 +1,7 @@
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-admin-level1',
@@ -8,20 +9,31 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./admin-level1.component.scss']
 })
 export class AdminLevel1Component implements OnInit {
+level1_users: any;
+  constructor(private router: Router,
+     private userService: UserService,
+     private flashMessage: FlashMessagesService, ) { }
 
-  constructor(private router: Router, private userService: UserService) { }
+  ngOnInit() {this.userService.getLevel_1().subscribe(
+    res => {
+     this.level1_users = res['docs'];
+     console.log(res['docs']);
+    },
+    err => {
+      console.log(err);
+    }
+  );
 
-  ngOnInit() {
 
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
+              this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
+              this.loadScript('../../assets/dashboard/js/main.js');
 
     this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
+      if (!(evt instanceof NavigationEnd)){
         return ;
       }
 
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     });
   }
   loadScript(url: string){
@@ -35,6 +47,22 @@ export class AdminLevel1Component implements OnInit {
   }
   logOut(){
     this.userService.logout();
+  }
+
+  activateUser(user_id){
+    console.log(user_id);
+this.userService.postUserTolevel2('swaga_boy_swag').subscribe(
+  res => {
+    console.log(res);
+    this.flashMessage.show('user moved to level 2 sucessfully', {cssClass:
+      'bg-success text-warning text-center font-weight-bold', timeout: 2000});
+  },
+  err => {
+    console.log(err);
+  }
+)
+
+
   }
 
 }

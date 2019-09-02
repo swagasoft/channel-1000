@@ -139,26 +139,35 @@
           <div class="main-content">
               <div class="section__content section__content--p30">
                   <div class="container-fluid">
-                      <div class="row">
-                          <div class="col-md-12">
-                              <div class="overview-wrap">
-                                  <h4 class="title-1 font-weight-bold">Cashout</h4>
-
-                              </div>
-                          </div>
-                      </div>
-
 
                       <!-- ######### cards ##############3 -->
 
-                      <h1 class="bg-dark text-white"> cashout content</h1>
-                      <h4>balance : #{{account | number}} </h4>
+                      <section class="details-card">
+                        <div class="container">
+                            <div class="row">
 
+                                <div class="col-md-4">
+                                    <div class="card-content">
+                                        <div class="card-desc">
+                                            <h3>₦{{account | number}} </h3>
+                                            <p> Total earnings</p>
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </div>
+                      </section>
 
                       <!-- ######### cards ##############3 -->
 
-
+                      <div class="container ">
+                        <p>Input amount you want to cashout</p>
+                        <form action="#" class="bg-dark">
+                           <input type="number" name='cashout'>
+                            <input type="submit" value="Submit">
+                        </form>
+                        </div>
 
                   </div>
               </div>

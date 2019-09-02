@@ -74,6 +74,12 @@ export class UserService {
   usersCashout(){
     return this.http.get(environment.apiBaseUrl + '/users-cashout');
   }
+  getLevel_1(){
+   return this.http.get(environment.apiBaseUrl + '/level-one-users');
+  }
+  postUserTolevel2(user_id){
+    return this.http.post(environment.apiBaseUrl +'/post-user-level2', user_id);
+  }
 
 
   getUserRole(){

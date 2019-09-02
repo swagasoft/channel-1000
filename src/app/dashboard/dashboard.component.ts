@@ -10,9 +10,16 @@ declare var $: any;
 })
 export class DashboardComponent implements OnInit {
   userDetails: any;
+accountDetails: any;
+
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.userService.loadBalance().subscribe(
+      res => {
+        this.accountDetails = res['doc'];
+      }
+    );
 
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){

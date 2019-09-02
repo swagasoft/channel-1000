@@ -13,6 +13,13 @@ export class CashoutComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if(!(evt instanceof NavigationEnd)){
+        return ;
+      }
+      window.scrollTo(0,0);
+    });
+
     this.userService.loadBalance().subscribe(
       res => {
         console.log(res['doc']);
@@ -25,13 +32,7 @@ export class CashoutComponent implements OnInit {
 
   this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
   this.loadScript('../../assets/dashboard/js/main.js');
-  this.router.events.subscribe((evt) => {
-    if(!(evt instanceof NavigationEnd)){
-      return ;
-    }
 
-    window.scrollTo(0,0);
-  });
   }
 
 

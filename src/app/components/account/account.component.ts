@@ -15,9 +15,10 @@ export class AccountComponent implements OnInit {
 userAccount: any;
 fullname: string;
 email: string;
-userNumber: number;
+username: string;
 userRole: string;
 custId: number;
+ref_link: string;
 
   constructor(private userService: UserService) { }
 
@@ -25,9 +26,11 @@ custId: number;
     this.userService.editAccount().subscribe(
       res => {
         this.userAccount = res['user'];
+        console.log(this.userAccount);
         this.fullname = this.userAccount.fullname;
         this.email = this.userAccount.email;
-        this.userNumber = this.userAccount.number;
+        this.username = this.userAccount.username;
+        this.ref_link = this.userAccount.ref_link;
         this.userRole = this.userAccount.role;
         this.custId = this.userAccount.cust_id;
       },

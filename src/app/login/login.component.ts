@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
       response => {
       this.userService.saveUserRole(response);
       this.userService.setToken(response['token']);
-      this.flashMessage.show('login successful...', {cssClass: 'bg-success text-white text-center', timeout: 2000});
+      this.flashMessage.show('login successful...', {cssClass:
+         'bg-success text-white text-center font-weight-bold', timeout: 2000});
       setTimeout(() => {this.router.navigateByUrl('/dashboard'); }, 2000);
 
       },

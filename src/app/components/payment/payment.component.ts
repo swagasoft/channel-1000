@@ -1,5 +1,6 @@
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Payment {
   amount: number;
@@ -30,7 +31,7 @@ emailInput: any;
 Username:string;
 accountDetails: any;
 history: any;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.loadBalance().subscribe(
@@ -92,6 +93,8 @@ history: any;
     err => {
       console.log('err saving data, try again.');
       this.generateRef();
+      this.router.navigateByUrl('/dashboard');
+
     },
     response => {
       this.generateRef();
