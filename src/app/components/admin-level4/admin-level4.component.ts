@@ -8,10 +8,19 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./admin-level4.component.scss']
 })
 export class AdminLevel4Component implements OnInit {
-
+level4Users: any;
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getLevel_4().subscribe(
+      res => {
+        console.log(res);
+        this.level4Users = res['doc'];
+      },
+      err => {
+        console.log(err);
+      }
+    );
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -35,5 +44,17 @@ export class AdminLevel4Component implements OnInit {
   logOut(){
     this.userService.logout();
   }
+  activateUser(fileID: { user_id: string; }) {
+    console.log(fileID);
+    this.userService.postUserTolevel2(fileID).subscribe(
+  res => {
+    console.log(res);
+    this.level4Users = res['docs'];
 
+  },
+  err => {
+    console.log(err);
+  }
+);
+  }
 }

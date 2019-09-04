@@ -180,7 +180,7 @@
   <tbody>
   <tr *ngFor="let user of level1_users; index as i">
     <th scope="row">{{ i + 1 }}
-       <button (click)="activateUser(user._id)" ><i class="fa fa-check-square"
+       <button (click)="activateUser(user._id, user.username)" ><i class="fa fa-check-square"
       aria-hidden="true" style="font-size: 35px; color: green;"></i></button></th>
     <td class="font-weight-bold" >{{ user.username }}</td>
     <td class="font-weight-bold">{{ user.level  }}</td>
@@ -189,6 +189,10 @@
   </tbody>
 </table>
 
+<div *ngIf="level1_users?.length == 0">
+    <h1 class="text-center bg-warning ">
+       Currently no users for this level</h1>
+ </div>
                   <!-- ######### cards ##############3 -->
 
 

@@ -50,7 +50,7 @@ export class UserService {
   loadBalance(){
    return this.http.get(environment.apiBaseUrl + '/load-balance');
   }
-  getTransaction(){
+  getTransaction(): Observable <any>{
     return this.http.get(environment.apiBaseUrl + '/get-transactions');
   }
 
@@ -74,16 +74,31 @@ export class UserService {
   usersCashout(){
     return this.http.get(environment.apiBaseUrl + '/users-cashout');
   }
-  getLevel_1(){
+  getLevel_1(): Observable <any>{
    return this.http.get(environment.apiBaseUrl + '/level-one-users');
   }
-  postUserTolevel2(user_id){
-    return this.http.post(environment.apiBaseUrl +'/post-user-level2', user_id);
+  getLevel_2(): Observable <any>{
+   return this.http.get(environment.apiBaseUrl + '/level-two-users');
+  }
+  getLevel_3(): Observable <any>{
+   return this.http.get(environment.apiBaseUrl + '/level-three-users');
+  }
+  getLevel_4(): Observable <any>{
+   return this.http.get(environment.apiBaseUrl + '/level-four-users');
+  }
+  postUserTolevel2(post : {user_id : string}): Observable<any>{
+    return this.http.get(environment.apiBaseUrl +`/post-user-level2${post}` );
+  }
+  postUserTolevel_3(post : {user_id : string}): Observable<any>{
+    return this.http.get(environment.apiBaseUrl +`/post-user-level3${post}` );
+  }
+  postUserTolevel_4(post : {user_id : string}): Observable<any>{
+    return this.http.get(environment.apiBaseUrl +`/post-user-level4${post}` );
   }
 
 
   getUserRole(){
-    localStorage.getItem('user-role');
+   return localStorage.getItem('user-role');
   }
 
   setToken(token: string) {

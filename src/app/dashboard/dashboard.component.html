@@ -178,7 +178,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+                            <div class="col-sm-6 col-lg-3" *ngIf="userRole =='INVESTOR'">
                                 <div class="overview-item overview-item--c2">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -196,7 +196,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+
+                            <!-- for marketer -->
+                            <div class="col-sm-6 col-lg-3" *ngIf="userRole =='MARKETER' ">
+                                <div class="overview-item overview-item--c3">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-calendar-note"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2 class="font-weight-bold" > {{userDetails?.downline.length}}
+                                                    </h2>
+                                                <span> Number of referal </span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart3"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  END OF marketer -->
+                            <div class="col-sm-6 col-lg-3" *ngIf="userRole == 'INVESTOR'">
                                 <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -215,6 +237,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
@@ -223,7 +246,7 @@
                                                 <i class="zmdi zmdi-money"></i>
                                             </div>
                                             <div class="text ">
-                                                <h2 class="font-weight-bold">₦{{accountDetails?.earnings | number}} </h2>
+                                                <h2 class="font-weight-bold">₦ {{accountDetails?.earnings | number}} </h2>
                                                 <span>total earnings</span>
                                             </div>
                                         </div>
@@ -236,22 +259,22 @@
                         </div>
 
                         <!-- ######### cards ##############3 -->
-                        <section class="details-card">
+                        <section class="details-card" *ngIf="userRole=='INVESTOR'">
                           <div class="container">
                               <div class="row">
                                   <div class="col-md-4">
                                       <div class="card-content">
                                           <div class="card-desc">
-                                              <h3>₦{{accountDetails?.investment | number}} </h3>
+                                              <h3>₦ {{accountDetails?.investment | number}} </h3>
                                               <p>investment </p>
 
                                           </div>
                                       </div>
                                   </div>
-                                  <div class="col-md-4">
+                                  <div class="col-md-4" >
                                       <div class="card-content">
                                           <div class="card-desc">
-                                              <h3>₦{{accountDetails?.earnings | number}} </h3>
+                                              <h3>₦ {{accountDetails?.earnings | number}} </h3>
                                               <p> profit</p>
                                           </div>
                                       </div>
@@ -259,7 +282,7 @@
                                   <div class="col-md-4">
                                       <div class="card-content">
                                           <div class="card-desc">
-                                              <h3>₦{{accountDetails?.cashout | number}} </h3>
+                                              <h3>₦ {{accountDetails?.cashout | number}} </h3>
                                                 <p>cashout </p>
                                           </div>
                                       </div>

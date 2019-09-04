@@ -38,11 +38,8 @@
                               <img src="../../assets/dashboard/images/icon/logo.png" alt="CoolAdmin">
                           </a>
                       </div>
-                      <div class="login-form">
-
-
-
-                          <form   #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
+                      <div class="login-form" >
+                          <form *ngIf="hideForm"  #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
                         <div class="form-group">
                             <label>Fullname</label>
                             <input class="au-input au-input--full" type="text"  #fullname="ngModel"
@@ -92,10 +89,10 @@
                                 <input type="checkbox" name="aggree">Agree the terms and policy
                             </label>
                         </div>
-                        <flash-messages></flash-messages>
                         <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
 
                     </form>
+                           <flash-messages></flash-messages>
                     <div class="register-link">
                               <p>
                                   Already have account?

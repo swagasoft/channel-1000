@@ -36,11 +36,11 @@
                             <a class="js-arrow" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
+                        <li *ngIf="userRole == 'INVESTOR'">
                             <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
                                 <i class="fas fa-chart-bar"></i>Payment</a>
                         </li>
-                        <li>
+                        <li *ngIf="userRole == 'MARKETER'">
                             <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active" >
                               <i class="fa fa-users" aria-hidden="true"></i>Referal and Earn</a>
                         </li>

@@ -163,12 +163,35 @@
 
                   <!-- ######### cards ##############3 -->
 
-                    <p>admin-level3 works!</p>
-
+                  <p> List of users qualified for level 3</p>
+                  <flash-messages></flash-messages>
+                  <table class="table table-striped">
+                    <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">User</th>
+                      <th scope="col">Level</th>
+                      <th scope="col">Point</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of level3Users; index as i">
+                      <th scope="row">{{ i + 1 }}
+                         <button (click)="activateUser(user._id, user.username)" ><i class="fa fa-check-square"
+                        aria-hidden="true" style="font-size: 35px; color: green;"></i></button></th>
+                      <td class="font-weight-bold" >{{ user.username }}</td>
+                      <td class="font-weight-bold">{{ user.level  }}</td>
+                      <td class="font-weight-bold">{{ user.downline.length }}  </td>
+                    </tr>
+                    </tbody>
+                  </table>
 
 
                   <!-- ######### cards ##############3 -->
-
+                  <div *ngIf="level3Users?.length == 0">
+                      <h1 class="text-center bg-warning ">
+                         Currently no users for this level</h1>
+                   </div>
 
 
               </div>

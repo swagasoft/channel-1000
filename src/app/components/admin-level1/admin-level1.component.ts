@@ -11,10 +11,11 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class AdminLevel1Component implements OnInit {
 level1_users: any;
   constructor(private router: Router,
-     private userService: UserService,
-     private flashMessage: FlashMessagesService, ) { }
+              private userService: UserService,
+              private flashMessage: FlashMessagesService, ) { }
 
-  ngOnInit() {this.userService.getLevel_1().subscribe(
+  ngOnInit() {
+    this.userService.getLevel_1().subscribe(
     res => {
      this.level1_users = res['docs'];
      console.log(res['docs']);
@@ -28,7 +29,7 @@ level1_users: any;
               this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
               this.loadScript('../../assets/dashboard/js/main.js');
 
-    this.router.events.subscribe((evt) => {
+              this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)){
         return ;
       }
@@ -49,20 +50,20 @@ level1_users: any;
     this.userService.logout();
   }
 
-  activateUser(user_id){
-    console.log(user_id);
-this.userService.postUserTolevel2('swaga_boy_swag').subscribe(
+  activateUser(fileID: { user_id: string; }, username) {
+    console.log(fileID);
+    this.flashMessage.show(`${username} moved to level 2`, {cssClass:
+      'bg-success text-white text-center font-weight-bold', timeout: 4000});
+    this.userService.postUserTolevel2(fileID).subscribe(
   res => {
     console.log(res);
-    this.flashMessage.show('user moved to level 2 sucessfully', {cssClass:
-      'bg-success text-warning text-center font-weight-bold', timeout: 2000});
+    this.level1_users = res['docs'];
+
   },
   err => {
     console.log(err);
   }
-)
-
-
+);
   }
 
 }

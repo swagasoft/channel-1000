@@ -1,3 +1,4 @@
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
@@ -8,10 +9,22 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./admin-level3.component.scss']
 })
 export class AdminLevel3Component implements OnInit {
-
-  constructor(private userService: UserService, private router: Router) { }
+level3Users: any;
+  constructor(
+    private userService: UserService,
+     private router: Router,
+    private  flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
+    this.userService.getLevel_3().subscribe(
+      res => {
+        console.log(res);
+        this.level3Users = res['docs'];
+      },
+      err => {
+        console.log(err);
+      }
+    );
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -35,5 +48,20 @@ export class AdminLevel3Component implements OnInit {
   }
   logOut(){
     this.userService.logout();
+  }
+  activateUser(fileID: { user_id: string; }, username) {
+    console.log(fileID);
+    this.flashMessage.show(`${username} moved to level 3`, {cssClass:
+      'bg-success text-white text-center font-weight-bold', timeout: 4000});
+    this.userService.postUserTolevel_4(fileID).subscribe(
+  res => {
+    console.log(res);
+    this.level3Users = res['docs'];
+
+  },
+  err => {
+    console.log(err);
+  }
+);
   }
 }

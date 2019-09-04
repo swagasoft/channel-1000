@@ -11,6 +11,7 @@ declare var $: any;
 export class DashboardComponent implements OnInit {
   userDetails: any;
 accountDetails: any;
+userRole: any;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -20,6 +21,9 @@ accountDetails: any;
         this.accountDetails = res['doc'];
       }
     );
+
+    this.userRole =  this.userService.getUserRole();
+    console.log('USER-ROLE',  this.userRole);
 
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){

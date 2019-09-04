@@ -11,7 +11,9 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  public userRole: string = 'investor';
+  public userRole: string = 'INVESTOR';
+  hideForm : boolean;
+
  @ViewChild('content', {static: false}) content: any;
 
 
@@ -39,6 +41,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    this.hideForm = true;
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){
         return ;
@@ -66,7 +69,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.userService.postUser(form.value).subscribe(
       res => {
         this.flashMessage.show('Registration Successful..', {cssClass: 'bg-success text-white', timeout: 3000});
-
+        this.hideForm = false;
         this.resetForm(form);
         setTimeout(()=> {
           this.router.navigate(['/login']);
