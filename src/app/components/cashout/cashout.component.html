@@ -86,27 +86,15 @@
                           <div class="header-button">
                               <div class="noti-wrap">
                                   <div class="noti__item js-item-menu">
-
-                                     <!-- <p class="font-weight-bold"> {{userDetails?.username}} </p> -->
                                   </div>
 
                               </div>
                               <div class="account-wrap">
                                   <div class="account-item clearfix js-item-menu">
-
                                       <div class="content">
-                                          <!-- <p class="js-acc-btn font-weight-bold">{{userDetails?.cust_id}} </p> -->
                                       </div>
                                       <div class="account-dropdown js-dropdown">
-                                          <div class="info clearfix">
 
-                                              <div class="content">
-                                                  <h5 class="name">
-                                                      <!-- <a href="#">{{userDetails?.fullname}} </a> -->
-                                                  </h5>
-                                                  <!-- <span class="email">{{userDetails?.email}} </span> -->
-                                              </div>
-                                          </div>
                                           <div class="account-dropdown__body">
                                               <div class="account-dropdown__item">
                                                   <a [routerLink]="['/account']" routerLinkActive="router-link-active" >
@@ -138,36 +126,37 @@
           <!-- MAIN CONTENT-->
           <div class="main-content">
               <div class="section__content section__content--p30">
+
                   <div class="container-fluid">
-
                       <!-- ######### cards ##############3 -->
-
                       <section class="details-card">
+
+                <flash-messages></flash-messages>
                         <div class="container">
                             <div class="row">
-
-                                <div class="col-md-4">
+                                <div class="col-md-4" >
                                     <div class="card-content">
                                         <div class="card-desc">
-                                            <h3>₦{{account | number}} </h3>
+                                            <h3>₦ {{account?.earnings | number}} </h3>
                                             <p> Total earnings</p>
                                         </div>
                                     </div>
                                 </div>
 
+                      <div class="col-md-4 ">
+                        <form  #cashoutForm="ngForm" class="bg-dark" (submit)="cashoutForm.valid
+                         && cashOut(cashoutForm, account.user_id)">
+                           <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"
+                             [(ngModel)]="model.cashout"  #cashout="ngModel">
+                            <input type="submit"  value="Submit">
+                        </form>
+                        </div>
                             </div>
                         </div>
                       </section>
 
                       <!-- ######### cards ##############3 -->
 
-                      <div class="container ">
-                        <p>Input amount you want to cashout</p>
-                        <form action="#" class="bg-dark">
-                           <input type="number" name='cashout'>
-                            <input type="submit" value="Submit">
-                        </form>
-                        </div>
 
                   </div>
               </div>

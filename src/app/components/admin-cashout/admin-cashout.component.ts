@@ -16,12 +16,16 @@ export class AdminCashoutComponent implements OnInit {
 this.userService.usersCashout().subscribe(
   res => {
    this.users_cashout = res['result'];
+   console.log(this.users_cashout);
   },
   err => {
     console.log(err);
   }
 );
 
+    this.loadScript('../../assets/dashboard/vendor/jquery-3.2.1.min.js');
+    this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/popper.min.js');
+    this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.js');
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -48,6 +52,19 @@ this.userService.usersCashout().subscribe(
 
   cashout(amount){
     this.userService.cashout(amount);
+  }
+  payUser(id, username, amount){
+    console.log(id, username, amount);
+    this.userService.payOutUser(id, username, amount).subscribe(
+      res => {
+        console.log(res);
+        this.users_cashout = res['result'];
+      },
+      err => {
+        console.log(err);
+      }
+    )
+
   }
 
 }

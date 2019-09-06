@@ -50,6 +50,13 @@ export class UserService {
   loadBalance(){
    return this.http.get(environment.apiBaseUrl + '/load-balance');
   }
+  postCashout(post){
+    return this.http.get(environment.apiBaseUrl + `/post-user-cashout${post}`);
+  }
+  payOutUser(id, username,amount){
+    return this.http.get(environment.apiBaseUrl + `/payout-user${id},${username},${amount}`);
+  }
+
   getTransaction(): Observable <any>{
     return this.http.get(environment.apiBaseUrl + '/get-transactions');
   }

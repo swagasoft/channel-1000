@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     setTimeout(()=> {
       this.openModal();
-    }, 3.500);
+    }, 7000);
       }
 
 
@@ -81,12 +81,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.flashMessage.show(err.error, {cssClass: 'bg-danger text-white', timeout: 3000});
 
         }else if(err.status == 422){
-           // this.serverErrormessages = 'something went wrong , please contact the admin';
            this.flashMessage.show(err.error,
            {cssClass: 'bg-danger text-white', timeout: 5000});
 
         }else{
-           // this.serverErrormessages = 'something went wrong , please contact the admin';
            this.flashMessage.show('something went wrong , please contact the admin',
            {cssClass: 'bg-danger text-white', timeout: 5000});
         }

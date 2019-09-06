@@ -165,9 +165,9 @@
 
                   <div class="row">
                     <div class="col-lg-9">
-                        <h2 class="title-1 m-b-25">Earnings By Items</h2>
+                        <h2 class="title-1 m-b-25">Users requested for cashout</h2>
                         <div class="table-responsive table--no-card m-b-40">
-                            <table class="table table-borderless table-striped table-earning"
+                            <table class="table table-borderless table-striped table-earning "
                             >
                                 <thead>
                                     <tr>
@@ -179,8 +179,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  *ngFor="let user of users_cashout">
-                                        <td  > <i class="fa fa-check" aria-hidden="true" style="color: green"></i></td>
+                                    <tr  *ngFor="let user of users_cashout; index as i">
+                                        <th scope="row">{{ i + 1 }}
+                                            <button (click)="payUser(user._id, user.user, user.cashout)"
+                                            ><i class="fa fa-check-square"
+                                           aria-hidden="true" style="font-size: 40px; color: rgb(248, 19, 172);"></i></button></th>
                                         <td> {{user.user}}</td>
                                         <td>#{{user.cashout | number}} </td>
                                         <td>{{user.date | date}}</td>
@@ -195,8 +198,6 @@
                 </div>
 
                   <!-- ######### cards ##############3 -->
-
-
 
               </div>
           </div>

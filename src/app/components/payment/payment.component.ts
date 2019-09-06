@@ -90,15 +90,15 @@ history: any;
     $event.amount = 1000;
     console.log($event);
     this.userService.transasction($event).subscribe(
-    err => {
+    response => {
       console.log('err saving data, try again.');
       this.generateRef();
       this.router.navigateByUrl('/dashboard');
 
     },
-    response => {
+    error => {
       this.generateRef();
-      console.log('payment details saved in datbase');
+      console.log('payment details saved in datbase',error);
 
     }
 
