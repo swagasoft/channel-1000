@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -8,7 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AdminInactiveComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
@@ -30,6 +31,9 @@ export class AdminInactiveComponent implements OnInit {
     script.async = false;
     script.defer = true;
     body.appendChild(script);
+  }
+  logOut(){
+    this.userService.logout();
   }
 
 }

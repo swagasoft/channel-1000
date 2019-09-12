@@ -56,7 +56,7 @@ import { AdminInvestorsComponent } from './components/admin-investors/admin-inve
 import { AdminInactiveComponent } from './components/admin-inactive/admin-inactive.component';
 import { AdminCashoutComponent } from './components/admin-cashout/admin-cashout.component';
 import { AdminTransactionComponent } from './components/admin-transaction/admin-transaction.component';
-import { AdminAccountComponent } from './components/admin-account/admin-account.component';
+import { AdminAccountComponent } from './components/admin-search/admin-search.component';
 import { AdminPayoutComponent } from './components/admin-payout/admin-payout.component';
 import { AdminLevel1Component } from './components/admin-level1/admin-level1.component';
 import { AdminLevel2Component } from './components/admin-level2/admin-level2.component';

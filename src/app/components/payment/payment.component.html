@@ -2,11 +2,12 @@
 
 
     <!-- ######################################## -->
-    <link href="../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-    <link href="../../assets/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="../../assets/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="../../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="../../../assets/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="../../../assets/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
     <!-- Main CSS-->
-    <link href="../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
+    <link href="../../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
+    <link href="../../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
 
     <div class="page-wrapper">
@@ -62,7 +63,7 @@
                                 <i class="fas fa-copy"></i>Administrator</a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" (click)="louOut()" >
+                            <a class="js-arrow" (click)="logOut()" >
                                 <i class="fa fa-power-off" aria-hidden="true"></i>Log Out</a>
 
                         </li>
@@ -103,7 +104,7 @@
 
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#"> </a>
+                                                        <a ></a>
                                                     </h5>
                                                     <span class="email"> </span>
                                                 </div>
@@ -188,7 +189,7 @@
 <!-- details card section starts from here -->
                         <!-- payment cards ends -->
         <p> you can increase your investment by making payment below. </p>
-          <div style="widows: 100%; display:flex;  justify-content: center;" (click)="paynow()">
+          <div style="widows: 100%; display:flex; justify-content: center;" (click)="paynow()">
             <div class="example-button-row">
             <angular4-paystack class="btn btn-lg"
             [key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"

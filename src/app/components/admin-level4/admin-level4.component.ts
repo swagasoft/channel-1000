@@ -8,7 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./admin-level4.component.scss']
 })
 export class AdminLevel4Component implements OnInit {
-level4Users: any;
+    level4Users: any;
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {

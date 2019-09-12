@@ -1,11 +1,11 @@
-import { UserService } from './../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-account',
-  templateUrl: './admin-account.component.html',
-  styleUrls: ['./admin-account.component.scss']
+  selector: 'app-admin-search',
+  templateUrl: './admin-search.component.html',
+  styleUrls: ['./admin-search.component.scss']
 })
 export class AdminAccountComponent implements OnInit {
 

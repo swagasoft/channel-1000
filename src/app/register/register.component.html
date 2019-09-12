@@ -2,20 +2,7 @@
 
 
 
-<ng-template #content id="content" let-c="close" let-d="dismiss" >
-  <div class="modal-header">
-    <h4 class="modal-title bg-info text-center text-white" id="modal-basic-title">SELECT ACCOUNT TYPE</h4>
 
-  </div>
-  <div class="modal-body">
-    <p>please choose your account type</p> <br>
-    <a [routerLink]="['/policy']" (click)="c('')" > Why choose account type?</a>
-  </div>
-  <div class="modal-footer d-inline-flex ">
-    <a type="button" class="btn btn-outline-dark" (click)="c('INVESTOR')">INVESTOR</a>
-    <a type="button" class="btn btn-outline-dark" (click)="c('MARKETER')">MARKETER</a>
-  </div>
-</ng-template>
 
 <!-- ================================================ -->
 
@@ -34,19 +21,38 @@
               <div class="login-wrap">
                   <div class="login-content">
                       <div class="login-logo">
-                          <a href="#">
+                          <a>
                               <img src="../../assets/dashboard/images/icon/logo.png" alt="CoolAdmin">
                           </a>
                       </div>
-                      <div class="login-form" >
-                          <form *ngIf="hideForm"  #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
+
+                      <!-- ACCOUNT SELECTION -->
+                      <div class="jumbotron" *ngIf="showSelection">
+                        <h2 class="display-4 text-center">Let’s get started by choosing account type</h2>
+
+                        <hr class="my-4">
+                        <div class="row text-center" >
+                            <a class="btn btn-info btn-lg font-weight-bold"(click)="investSelect('INVESTOR')"
+                             role="button">INVETOR</a>
+                            <a class="btn btn-success btn-lg text-right font-weight-bold"
+                             (click)="marketerSelect('MARKETER')"  role="button">MARKETER</a>
+                        </div>
+
+                      </div>
+                      <!--END  ACCOUNT SELECTION -->
+
+                      <flash-messages></flash-messages>
+
+                      <div class="login-form"*ngIf="hideForm" >
+                        <h6 class="text-center text-info "> ACCOUNT :  {{userRole}} </h6>
+                          <form   #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
                         <div class="form-group">
                             <label>Fullname</label>
                             <input class="au-input au-input--full" type="text"  #fullname="ngModel"
                             [(ngModel)]="userService.selectedUser.fullname" required
                              name="fullname" placeholder="Fullname">
                         </div>
-                        <div *ngIf="signup_form.submitted && !fullname.valid"  class="bg-danger text-white text-center">
+                        <div *ngIf="signup_form.submitted && !fullname.valid"  class=" text-danger text-center">
                             <label >fullname is required</label>
                           </div>
 
@@ -57,7 +63,7 @@
                             [(ngModel)]="userService.selectedUser.username" required
                              name="username" placeholder="Username">
                         </div>
-                        <div *ngIf="signup_form.submitted && !username.valid"  class="bg-danger text-white text-center">
+                        <div *ngIf="signup_form.submitted && !username.valid"  class=" text-danger text-center">
                             <label >username is required</label>
                           </div>
 
@@ -68,7 +74,7 @@
                             [(ngModel)]="userService.selectedUser.email" required [pattern]="emailRegex"
                              name="email" placeholder="Email">
                         </div>
-                        <div *ngIf="signup_form.submitted && email.errors" class="bg-danger text-white text-center">
+                        <div *ngIf="signup_form.submitted && email.errors" class=" text-danger text-center">
                             <label *ngIf="email?.errors.required" >email is required</label>
                             <label *ngIf="email?.errors.pattern" >email must be valid.</label>
                           </div>
@@ -79,7 +85,7 @@
                              #password="ngModel" minlength="6"  [(ngModel)]="userService.selectedUser.password"
                             placeholder="Password">
                         </div>
-                        <div *ngIf="signup_form.submitted && password.errors" class="bg-danger text-white text-center">
+                        <div *ngIf="signup_form.submitted && password.errors" class=" text-danger text-center">
                             <label *ngIf="password?.errors.required">password is required</label>
                             <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
                           </div>
@@ -92,7 +98,6 @@
                         <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
 
                     </form>
-                           <flash-messages></flash-messages>
                     <div class="register-link">
                               <p>
                                   Already have account?

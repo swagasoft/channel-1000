@@ -42,16 +42,16 @@ export class LoginComponent implements OnInit {
       this.userService.saveUserRole(response);
       this.userService.setToken(response['token']);
       this.flashMessage.show('login successful...', {cssClass:
-         'bg-success text-white text-center font-weight-bold', timeout: 2000});
+         ' text-success text-center font-weight-bold', timeout: 2000});
       setTimeout(() => {this.router.navigateByUrl('/dashboard'); }, 2000);
 
       },
       err => {
         if(err.status === 401 ||404){
-        this.flashMessage.show(err.error, {cssClass: 'bg-danger text-white text-center', timeout: 3000});
+        this.flashMessage.show(err.error, {cssClass: ' text-danger text-center', timeout: 3000});
 
       }else{
-        this.flashMessage.show(err , {cssClass: 'bg-danger text-white text-center', timeout: 3000});
+        this.flashMessage.show(err , {cssClass: ' text-danger text-center', timeout: 3000});
       }}
     );
   }

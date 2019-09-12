@@ -7,6 +7,8 @@ import { UserService } from '../services/user.service';
   providedIn: 'root'
 })
 export class AdminguardGuard implements CanActivate {
+  userRole: any;
+
   constructor(
     private userService : UserService,
     private router: Router){
@@ -14,12 +16,17 @@ export class AdminguardGuard implements CanActivate {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
-    let adminRole= 'admin'
-    if(String(this.userService.getUserRole()) !== 'admin'){
+    this.userRole = this.userService.getUserRole();
+    const admin = 'ADMIN';
+    console.log(this.userRole);
+    if( this.userRole !== admin){
       this.router.navigateByUrl('/dashboard');
       this.userService.deleteToken();
+    console.log(' returning false....');
       return false;
+
     }
+    console.log('returning true....');
     return true;
   }
 

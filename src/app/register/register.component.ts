@@ -13,9 +13,7 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
 export class RegisterComponent implements OnInit, OnDestroy {
   public userRole: string = 'INVESTOR';
   hideForm : boolean;
-
- @ViewChild('content', {static: false}) content: any;
-
+  showSelection: boolean;
 
   showSuccessMessage: boolean;
   serverErrormessages: string;
@@ -28,20 +26,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private flashMessage: FlashMessagesService,
     config: NgbModalConfig, private modalService: NgbModal
 
-     ) {
-        // customize default values of modals used by this component tree
-    config.backdrop = 'static';
-    config.keyboard = false;
-
-    setTimeout(()=> {
-      this.openModal();
-    }, 7000);
-      }
+     ) {   }
 
 
 
   ngOnInit() {
-    this.hideForm = true;
+    this.hideForm = false;
+    this.showSelection = true;
+
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){
         return ;
@@ -53,13 +45,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
 
-  openModal() {
-   this.modalService.open(this.content).result.then((result)=> {
-     this.userRole = result;
-     console.log(this.userRole);
-   });
-  }
-
 
   onSubmit(form: NgForm){
     // over ride form role value...
@@ -68,8 +53,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.userService.postUser(form.value).subscribe(
       res => {
-        this.flashMessage.show('Registration Successful..', {cssClass: 'bg-success text-white', timeout: 3000});
         this.hideForm = false;
+        this.flashMessage.show('Registration Successful..',
+         {cssClass: 'text-success text-center font-weight-bold', timeout: 3000});
         this.resetForm(form);
         setTimeout(()=> {
           this.router.navigate(['/login']);
@@ -78,15 +64,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
       err => {
         if(err.status == 442){
           this.serverErrormessages = err.error.join('<br/>');
-          this.flashMessage.show(err.error, {cssClass: 'bg-danger text-white', timeout: 3000});
+          this.flashMessage.show(err.error,
+             {cssClass: 'font-weight-bold text-center text-danger', timeout: 3000});
 
         }else if(err.status == 422){
            this.flashMessage.show(err.error,
-           {cssClass: 'bg-danger text-white', timeout: 5000});
+           {cssClass: 'text-danger font-weight-bold text-center', timeout: 5000});
 
         }else{
            this.flashMessage.show('something went wrong , please contact the admin',
-           {cssClass: 'bg-danger text-white', timeout: 5000});
+           {cssClass: 'text-danger text-center', timeout: 5000});
         }
       },
 
@@ -115,6 +102,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
 
+  }
+
+  investSelect(selection){
+    this.userRole =selection;
+    this.showSelection = false;
+    this.hideForm = true;
+  }
+  marketerSelect(selection){
+    this.userRole = selection;
+    this.showSelection = false;
+    this.hideForm = true;
   }
 
 

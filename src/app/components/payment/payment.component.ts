@@ -34,12 +34,7 @@ history: any;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.userService.loadBalance().subscribe(
-      res => {
-        this.accountDetails = res['doc'];
-      }
-    );
-
+    this.refreshAccount();
     this.userService.getTransaction().subscribe(
       res => {
          this.history =  res['result'];
@@ -111,5 +106,12 @@ generateRef() {
 }
 logOut(){
   this.userService.logout();
+}
+refreshAccount(){
+  this.userService.loadBalance().subscribe(
+    res => {
+      this.accountDetails = res['doc'];
+    }
+  );
 }
 }

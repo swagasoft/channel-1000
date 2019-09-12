@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminAccountComponent } from './admin-account.component';
+import { AdminAccountComponent } from './admin-search.component';
 
-describe('AdminAccountComponent', () => {
+describe('AdminSearchComponent', () => {
   let component: AdminAccountComponent;
   let fixture: ComponentFixture<AdminAccountComponent>;
 
