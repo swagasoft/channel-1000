@@ -165,14 +165,35 @@
 
                   <!-- ######### cards ##############3 -->
 
-                              <p>admin-investors works!</p>
-                        <ul *ngFor=" let invest of investors">
-                          <li>user :{{invest.user}} </li>
-                          <li>balance :{{invest.earnings}} </li>
-                          <li>investment : {{invest.investment}} </li>
-                          <li>cashout: {{invest.cashout}} </li>
-                        </ul>
 
+                        <!--Table-->
+<div class="table-responsive" >
+    <table class="table table-striped w-auto">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>user</th>
+            <th>balance</th>
+            <th>invest</th>
+            <th>cashout</th>
+          </tr>
+        </thead>
+        <!--Table head-->
+
+        <!--Table body-->
+        <tbody>
+          <tr class="table-info"  *ngFor=" let invest of investors; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+            <td>{{invest.user}}</td>
+            <td> balance :{{invest.earnings}}</td>
+            <td>investment : {{invest.investment}}</td>
+            <td> cashout: {{invest.cashout}}</td>
+
+          </tr>
+        </tbody>
+        <!--Table body-->
+      </table>
+    </div>
 
 
                   <!-- ######### cards ##############3 -->

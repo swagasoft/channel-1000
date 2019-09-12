@@ -90,6 +90,12 @@ export class UserService {
   getLevel_3(): Observable <any>{
    return this.http.get(environment.apiBaseUrl + '/level-three-users');
   }
+  getInActiveUsers(){
+    return this.http.get(environment.apiBaseUrl + '/get-inactive-users');
+  }
+  deleteUser(user_id){
+    return this.http.get(environment.apiBaseUrl + `/delete-user${user_id}`);
+  }
   getLevel_4(): Observable <any>{
    return this.http.get(environment.apiBaseUrl + '/level-four-users');
   }

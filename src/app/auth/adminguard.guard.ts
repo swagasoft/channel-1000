@@ -18,15 +18,12 @@ export class AdminguardGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
     this.userRole = this.userService.getUserRole();
     const admin = 'ADMIN';
-    console.log(this.userRole);
     if( this.userRole !== admin){
       this.router.navigateByUrl('/dashboard');
       this.userService.deleteToken();
-    console.log(' returning false....');
       return false;
 
     }
-    console.log('returning true....');
     return true;
   }
 

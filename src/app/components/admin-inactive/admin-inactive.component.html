@@ -155,7 +155,7 @@
                       <div class="col-md-12">
                           <div class="overview-wrap">
                               <h4 class="title-1 font-weight-bold">InActive Investor</h4>
-
+                              <flash-messages></flash-messages>
                           </div>
                       </div>
                   </div>
@@ -163,7 +163,39 @@
 
                   <!-- ######### cards ##############3 -->
 
-                  <p>admin-inactive works!</p>
+
+<!--Table-->
+<div class="table-responsive" >
+    <table class="table table-striped w-auto">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Date</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <!--Table head-->
+        <!--Table body-->
+        <tbody>
+          <tr class="table-info"  *ngFor="let details of inActiveInvestors; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ details.email }} </td>
+            <td>{{ details.username}}</td>
+            <td>{{ details.role }}</td>
+            <td>{{ details.date |  date:'medium'  }}</td>
+            <td>
+              <button style=" margin-left:2px" type="button"
+               class="btn btn-sm btn-danger" (click)="deleteUser(details._id, details.username)">X</button>
+               </td>
+          </tr>
+        </tbody>
+        <!--Table body-->
+      </table>
+    </div>
+
 
 
                   <!-- ######### cards ##############3 -->
