@@ -12,6 +12,7 @@ export class AdminPayoutComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    this.readCurrentPayouts();
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -35,5 +36,17 @@ export class AdminPayoutComponent implements OnInit {
   }
   logOut(){
     this.userService.logout();
+  }
+
+  readCurrentPayouts(){
+    this.userService.getPayoutList().subscribe(
+      val => {
+        console.log(val);
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
   }
 }

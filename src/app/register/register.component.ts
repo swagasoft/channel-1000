@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   public userRole: string = 'INVESTOR';
   hideForm : boolean;
   showSelection: boolean;
+  showBtnLoading: boolean;
 
   showSuccessMessage: boolean;
   serverErrormessages: string;
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.hideForm = false;
     this.showSelection = true;
+    this.showBtnLoading = false;
 
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){
@@ -46,16 +48,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     // over ride form role value...
     form.value.role = this.userRole;
+    this.showBtnLoading = true;
 
 
     this.userService.postUser(form.value).subscribe(
       res => {
         this.hideForm = false;
+        this.showBtnLoading = false;
         this.flashMessage.show('Registration Successful..',
-         {cssClass: 'text-success text-center font-weight-bold', timeout: 3000});
+         {cssClass: 'text-white bg-success text-center font-weight-bold', timeout: 3000});
         this.resetForm(form);
         setTimeout(()=> {
           this.router.navigate(['/login']);
@@ -64,16 +68,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
       err => {
         if(err.status == 442){
           this.serverErrormessages = err.error.join('<br/>');
+          this.showBtnLoading = false;
           this.flashMessage.show(err.error,
-             {cssClass: 'font-weight-bold text-center text-danger', timeout: 3000});
+             {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 3000});
 
         }else if(err.status == 422){
+          this.showBtnLoading = false;
            this.flashMessage.show(err.error,
-           {cssClass: 'text-danger font-weight-bold text-center', timeout: 5000});
+           {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 5000});
 
         }else{
+          this.showBtnLoading = false;
            this.flashMessage.show('something went wrong , please contact the admin',
-           {cssClass: 'text-danger text-center', timeout: 5000});
+           {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 5000});
         }
       },
 

@@ -11,7 +11,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class LoginComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+loading: boolean;
 
   constructor(
     public userService : UserService,
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
 
   serverErrorMessage: string;
   ngOnInit() {
+    this.loading= false;
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){
         return ;
@@ -37,21 +38,27 @@ export class LoginComponent implements OnInit {
 
   }
   onSubmit(form: NgForm){
+    this.loading = true;
     this.userService.login(form.value).subscribe(
       response => {
       this.userService.saveUserRole(response);
+      this.loading = false;
       this.userService.setToken(response['token']);
       this.flashMessage.show('login successful...', {cssClass:
-         ' text-success text-center font-weight-bold', timeout: 2000});
+         ' text-white bg-success text-center font-weight-bold', timeout: 2000});
       setTimeout(() => {this.router.navigateByUrl('/dashboard'); }, 2000);
 
       },
       err => {
         if(err.status === 401 ||404){
-        this.flashMessage.show(err.error, {cssClass: ' text-danger text-center', timeout: 3000});
+          this.loading = false;
+        this.flashMessage.show(err.error, {cssClass:
+          'font-weight-bold text-white bg-danger text-center', timeout: 3000});
 
       }else{
-        this.flashMessage.show(err , {cssClass: ' text-danger text-center', timeout: 3000});
+        this.loading = false;
+        this.flashMessage.show(err , {cssClass:
+           'font-weight-bold text-white bg-danger text-center', timeout: 3000});
       }}
     );
   }

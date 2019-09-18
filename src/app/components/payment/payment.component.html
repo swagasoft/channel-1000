@@ -155,40 +155,10 @@
 
                         <!-- payment cards -->
                         <!-- details card section starts from here -->
-<section class="details-card">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-4">
-              <div class="card-content">
-                  <div class="card-desc">
-                      <h3>₦ {{accountDetails?.investment | number}} </h3>
-                      <p>investment </p>
 
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card-content">
-                  <div class="card-desc">
-                      <h3>₦ {{accountDetails?.earnings | number}} </h3>
-                      <p> profit</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card-content">
-                  <div class="card-desc">
-                      <h3>₦ {{accountDetails?.cashout | number}} </h3>
-                        <p>cashout </p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
 <!-- details card section starts from here -->
                         <!-- payment cards ends -->
-        <p> you can increase your investment by making payment below. </p>
+        <small class="text-center text-info"> Click the button below to make payment </small>
           <div style="widows: 100%; display:flex; justify-content: center;" (click)="paynow()">
             <div class="example-button-row">
             <angular4-paystack class="btn btn-lg"
@@ -200,12 +170,43 @@
             [class]="'btn btn-success'"
             (close)="paymentCancel()"
             (callback)="paymentDone($event)"
-            >PAY ₦1000 NOW </angular4-paystack>
+            >PAY <strong> ₦1000</strong> NOW </angular4-paystack>
             </div>
             </div>
 
                         <!-- ######### cards ##############3 -->
 
+                        <section class="details-card">
+                          <div class="container">
+                              <div class="row">
+                                  <div class="col-md-4">
+                                      <div class="card-content">
+                                          <div class="card-desc">
+                                              <h3>₦ {{accountDetails?.investment | number}} </h3>
+                                              <p>investment </p>
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="card-content">
+                                          <div class="card-desc">
+                                              <h3>₦ {{accountDetails?.earnings | number}} </h3>
+                                              <p> profit</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="card-content">
+                                          <div class="card-desc">
+                                              <h3>₦ {{accountDetails?.cashout | number}} </h3>
+                                                <p>cashout </p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </section>
                         <!--  payment history -->
                         <div class="row">
                           <div class="col-lg-9">

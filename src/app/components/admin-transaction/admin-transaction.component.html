@@ -164,7 +164,44 @@
 
                   <!-- ######### cards ##############3 -->
 
-                  <p>admi- transaction</p>
+                <!--Table-->
+<div class="table-responsive" >
+    <table class="table table-striped w-auto">
+      <flash-messages></flash-messages>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Amount</th>
+            <th>Message</th>
+            <th>Ref</th>
+            <th>Tranx</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <!--Table head-->
+        <!--Table body-->
+        <tbody>
+          <tr class="table-info"  *ngFor="let details of transactions; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ details.user }} </td>
+            <td>{{ details.amount}}</td>
+            <td>{{ details.message}}</td>
+            <td>{{ details.status }}</td>
+            <td>{{ details.reference }}</td>
+            <td>{{ details.transaction }}</td>
+            <td>{{ details.date |  date:'medium'  }}</td>
+            <td>
+              <button style=" margin-left:2px" type="button"
+               class="btn btn-sm btn-danger" (click)="deleteTranx(details._id)">X</button>
+               </td>
+          </tr>
+        </tbody>
+        <!--Table body-->
+      </table>
+    </div>
 
 
                   <!-- ######### cards ##############3 -->

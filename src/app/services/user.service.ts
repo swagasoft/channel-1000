@@ -57,6 +57,10 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + `/payout-user${id},${username},${amount}`);
   }
 
+  getPayoutList(){
+    return this.http.get(environment.apiBaseUrl + `/get-recent-payouts`);
+  }
+
   getTransaction(): Observable <any>{
     return this.http.get(environment.apiBaseUrl + '/get-transactions');
   }
@@ -95,6 +99,15 @@ export class UserService {
   }
   deleteUser(user_id){
     return this.http.get(environment.apiBaseUrl + `/delete-user${user_id}`);
+  }
+  queryUserDetails(detaills){
+    return this.http.get(environment.apiBaseUrl + `/query-user-details${detaills}`);
+  }
+  deleteTrasaction(user_id){
+    return this.http.get(environment.apiBaseUrl + `/delete-transactions${user_id}`);
+  }
+  getAllTransactions(){
+    return this.http.get(environment.apiBaseUrl + '/get-transanctions');
   }
   getLevel_4(): Observable <any>{
    return this.http.get(environment.apiBaseUrl + '/level-four-users');

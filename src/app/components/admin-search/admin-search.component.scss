@@ -1,0 +1,51 @@
+.b-select-wrap {
+  border: none;
+  color: #1092C9;
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+}
+
+.b-select-wrap::after {
+  content: "⌄";
+  position: absolute;
+  right: 0px;
+  top: -15px;
+  z-index: 1;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
+  font-size: 35px;
+}
+
+.b-select {
+  padding: 5px 15px;
+  background-color: white;
+  border: 0;
+  outline: none;
+  font-size: 22px;
+  -webkit-appearance: none; /* for webkit browsers */
+  -moz-appearance: none; /* for firefox */
+  appearance: none; /* for modern browsers */
+}
+
+/* remove default caret for ie */
+.b-select::-ms-expand {
+ display:none;
+}
+
+// slist styling...
+ol {
+  counter-reset: li; /* Initiate a counter */
+  list-style: none; /* Remove default numbering */
+  *list-style: decimal; /* Keep using default numbering for IE6/7 */
+  font: 15px 'trebuchet MS', 'lucida sans';
+  padding: 0;
+  margin-bottom: 4em;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+ol ol {
+  margin: 0 0 0 2em; /* Add some left margin for inner lists */
+}

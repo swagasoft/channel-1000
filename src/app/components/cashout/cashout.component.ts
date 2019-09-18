@@ -25,21 +25,21 @@ export class CashoutComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
+      if(!(evt instanceof NavigationEnd)) {
         return ;
       }
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     });
 
     this.userService.loadBalance().subscribe(
       res => {
         console.log(res['doc']);
      this.account =  res['doc'];
-     this.earnings =  res['doc']['earnings'];
-     console.log(this.earnings);
-      },
+     this.earnings = res['doc']['earnings'];
+
+    },
       err => {
-        console.log('ERROR',err);
+        console.log('ERROR', err);
       }
     );
     this.loadScript('../../assets/dashboard/vendor/jquery-3.2.1.min.js');
@@ -51,20 +51,19 @@ export class CashoutComponent implements OnInit {
 
   }
   cashOut(form:NgForm, id){
-    console.log('userID',id)
     form.value.user = id;
-    console.log(form.value.cashout);
-
     if(form.value.cashout < 1000){
+      console.log('USER BALANCE', this.earnings );
       this.flashMessage.show('cash out must be above 1000', {cssClass:
-        'bg-danger text-white text-center ', timeout: 5000});
+        ' text-danger text-center font-weight-bold ', timeout: 5000});
     }else{
       if(form.value.cashout  > this.earnings ){
+        console.log('USER BALANCE', this.earnings );
         this.flashMessage.show('You requested more than your balance', {cssClass:
-          'bg-danger text-white text-center ', timeout: 5000});
+          ' text-danger text-center font-weight-bold ', timeout: 5000});
       }else{
         this.flashMessage.show(`₦ ${form.value.cashout} cashout successful...`, {cssClass:
-          'bg-success text-white text-center font-weight-bold', timeout: 8000});
+          ' text-success text-center font-weight-bold', timeout: 8000});
         this.userService.postCashout(form.value.cashout).subscribe(
           res => {
             console.log('response', res);
