@@ -15,8 +15,8 @@ export class CashoutComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-     private router: Router,
-     private flashMessage:FlashMessagesService) {
+    private router: Router,
+    private flashMessage: FlashMessagesService) {
 
    }
    model = {
@@ -34,9 +34,7 @@ export class CashoutComponent implements OnInit {
     this.userService.loadBalance().subscribe(
       res => {
         console.log(res['doc']);
-     this.account =  res['doc'];
-     this.earnings = res['doc']['earnings'];
-
+        this.account =  res['doc'];
     },
       err => {
         console.log('ERROR', err);

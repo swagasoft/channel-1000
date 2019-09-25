@@ -1,57 +1,58 @@
 <!--Navbar -->
-<nav class="mb-1 navbar  fixed-top navbar-expand-lg mdb-color text-white info-color-dark">
-  <a class="navbar-brand" routerLink="/">CHANNEL1000</a>
-  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+<nav class="mb-0  navbar  fixed-top navbar-expand-lg text-info ">
+  <a class="navbar-brand text-info" routerLink="/">CHANNEL1000</a>
+  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
     aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon bg-info"></span>
+    <span class="navbar-toggler-icon "></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/services']" routerLinkActive="services" >Services
+        <a class="nav-link text-info" [routerLink]="['/services']" routerLinkActive="services" >Services
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " [routerLink]="['/about']" routerLinkActive="about" >About</a>
+        <a class="nav-link text-info" [routerLink]="['/about']" routerLinkActive="about" >About</a>
         <span class="sr-only">(current)</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/howitworks']" routerLinkActive="router-link-active" >How it Works</a>
+        <a class="nav-link text-info" [routerLink]="['/howitworks']"
+           routerLinkActive="router-link-active" >How it Works</a>
         <span class="sr-only">(current)</span>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+        <a class="nav-link dropdown-toggle text-info" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Features
         </a> <span class="sr-only">(current)</span>
 
-        <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" [routerLink]="['/testimonies']" routerLinkActive="router-link-activeS" >Testimonies</a>
-          <a class="dropdown-item"  [routerlink]="['/faq-questions']" routerLinkActive="active"></a>
-          <a class="dropdown-item" [routerLink]="['/howitworks']" routerLinkActive="active"> How it works</a>
-          <a class="dropdown-item" [routerLink]="['/whyitworks']" routerLinkActive="active"> Why it works</a>
-          <a class="dropdown-item" [routerLink]="['/policy']" routerLinkActive="active">Terms & Policy</a>
-          <a class="dropdown-item" [routerLink]="['/faq-questions']" routerLinkActive="active"> Faq</a>
+        <div class="dropdown-menu dropdown-default " aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item text-info" [routerLink]="['/testimonies']"  >Testimonies</a>
+          <a class="dropdown-item text-info"  [routerlink]="['/faq-questions']"></a>
+          <a class="dropdown-item text-info" [routerLink]="['/howitworks']"> How it works</a>
+          <a class="dropdown-item text-info" [routerLink]="['/whyitworks']"> Why it works</a>
+          <a class="dropdown-item text-info" [routerLink]="['/policy']" >Terms & Policy</a>
+          <a class="dropdown-item text-info" [routerLink]="['/faq-questions']" > Faq</a>
         </div>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" [routerLink]="['/login']"  *ngIf="!userService.isLogedIn()" >
+        <a class="nav-link btn btn-sm btn-info waves-light" [routerLink]="['/login']"  *ngIf="!userService.isLogedIn()" >
           <i  class="fa fa-user" aria-hidden="true"></i> login
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" [routerLink]="['/register']"  *ngIf="!userService.isLogedIn()" >
+        <a class="nav-link btn btn-sm btn-info waves-light" [routerLink]="['/register']"  *ngIf="!userService.isLogedIn()" >
           <i class="fa fa-plus"></i> Register
         </a>
       </li>
       <li  *ngIf="userService.isLogedIn()" class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+        <a class="nav-link navbar-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-user text-info"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+        <div class="dropdown-menu dropdown-menu-right dropdown-default bg-info"
           aria-labelledby="navbarDropdownMenuLink-333">
           <a class="dropdown-item" [routerLink]="['/dashboard']">Dashboard</a>
           <a class="dropdown-item" [routerLink]="['/account']">Edit Account</a>

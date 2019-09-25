@@ -1,59 +1,177 @@
-.carousel-item {
-  height: 150vh;
-  min-height: 600px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-section {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
-.lnr {
-  display: inline-block;
-  fill: currentColor;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.05em;
-  stroke-width: 1;
+// a,
+// a:hover {
+//   text-decoration: none;
+//   display: inline-block;
+//   -webkit-transition: 0.3s ease-in-out;
+//   transition: 0.3s ease-in-out;
+// }
+
+img {
+  // display: inline-block;
+  height: 100%;
+  max-width: 100%;
 }
 
-.services-icon {
-  margin-bottom: 20px;
-  font-size: 30px;
-}
-bgc2, .vLine, .hLine {
-    background-color: #0F52BA;
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1300px;
+  }
 }
 
-.quote-icon {
-  font-size: 40px;
-  margin-bottom: 20px;
+#main-carousel {
+  margin-top: 20px;
+  text-shadow: 1px 2px 3px #0000001f;
 }
-.services-icon {
-    font-size: 60px;
-    margin-left: 2rem;
+
+#main-carousel h5 {
+  font-size: 2rem;
+  font-family: inherit;
+  font-weight: 300;
+  -webkit-animation: leftToRight 1s ease-in-out .5s;
+          animation: leftToRight 1s ease-in-out .5s;
 }
-.karosel1{
-background-image: url('../../assets/girlmoney.jpg');
-height: 100%;
-width: 100%;
 
-
+#main-carousel h2 {
+  font-size: 3.6rem;
+  font-weight: 900;
+  font-family: inherit;
+  letter-spacing: 2px;
+  -webkit-animation: topToBottom 1s linear .3s;
+          animation: topToBottom 1s linear .3s;
 }
-.karosel2{
-background-image: url('../../assets/app+pics/family_smile.jpg');
-width: 100%;
-height: 100%;
-
+.carousel{
+  // min-height: 100vh;
 }
-.karosel3{
-background-image: url('../../assets/app+pics/woman-handling-money2.jpg');
-width: 100%;
-height: 100%;
+
+#main-carousel .carousel-caption {
+  right: 15%;
+  bottom: unset;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: left;
+}
+
+#main-carousel .carousel-control-next,
+#main-carousel .carousel-control-prev {
+  top: 50%;
+  bottom: unset;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 4%;
+  font-size: 3.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  -webkit-transition: 5s all;
+  transition: 5s all;
+}
+
+#main-carousel .carousel-control-next {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+#main-carousel .carousel-control-prev {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+#main-carousel .btn-info {
+  background: transparent;
+  text-transform: uppercase;
+  border: 0;
+  font-family: "helveticaregular";
+  font-size: 1.8rem;
+  position: relative;
+  padding: 20px 0 0;
+  margin: 20px 0 0;
+}
+
+#main-carousel .btn-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 63px;
+  height: 5px;
+  background-color: #fff;
+}
 
 
+@-webkit-keyframes leftToRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-80px);
+            transform: translateX(-80px);
+  }
+  80% {
+    -webkit-transform: translateX(20px);
+            transform: translateX(20px);
+    opacity: .7;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes leftToRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-80px);
+            transform: translateX(-80px);
+  }
+  80% {
+    -webkit-transform: translateX(20px);
+            transform: translateX(20px);
+    opacity: .7;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes topToBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  80% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    opacity: .7;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes topToBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  80% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    opacity: .7;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
 }
