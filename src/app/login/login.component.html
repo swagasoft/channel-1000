@@ -1,11 +1,7 @@
 
+<app-navbar></app-navbar>
     <!-- Main CSS-->
     <link href="../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
-
-
-
-
-
 
 <!-- ########################################### -->
 
@@ -19,8 +15,10 @@
                               <img src="../../assets/dashboard/images/icon/logo.png" alt="">
                           </a>
                       </div>
-                      <div class="d-flex justify-content-center affix">
-                          <flash-messages></flash-messages>
+                      <div class="col d-flex justify-content-center affix">
+                        <div class="toast-container">
+                            <flash-messages ></flash-messages>
+                        </div>
                         </div>
 
 
@@ -56,7 +54,7 @@
                                   </label>
                               </div>
 
-                              <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">
+                              <button class="au-btn au-btn--block primary-color-dark m-b-20" type="submit">
                                   <i class="fa fa-spinner fa-spin" *ngIf="loading"></i> sign in</button>
 
                           </form>
@@ -73,6 +71,7 @@
       </div>
 
   </div>
+  <app-footer></app-footer>
 
 
 

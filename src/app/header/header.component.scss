@@ -4,13 +4,6 @@ button:focus {
           box-shadow: none;
 }
 
-// a,
-// a:hover {
-//   text-decoration: none;
-//   display: inline-block;
-//   -webkit-transition: 0.3s ease-in-out;
-//   transition: 0.3s ease-in-out;
-// }
 
 img {
   // display: inline-block;
@@ -45,9 +38,7 @@ img {
   -webkit-animation: topToBottom 1s linear .3s;
           animation: topToBottom 1s linear .3s;
 }
-.carousel{
-  // min-height: 100vh;
-}
+
 
 #main-carousel .carousel-caption {
   right: 15%;
@@ -89,8 +80,8 @@ img {
   font-family: "helveticaregular";
   font-size: 1.8rem;
   position: relative;
-  padding: 20px 0 0;
-  margin: 20px 0 0;
+  // padding: 20px 0 0;
+  // margin: 20px 0 0;
 }
 
 #main-carousel .btn-info::before {

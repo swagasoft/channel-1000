@@ -11,7 +11,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class CashoutComponent implements OnInit {
   account: any;
-  earnings: any;
+  earnings: number;
 
   constructor(
     private userService: UserService,
@@ -35,6 +35,8 @@ export class CashoutComponent implements OnInit {
       res => {
         console.log(res['doc']);
         this.account =  res['doc'];
+       this.earnings = res['doc']['earnings'];
+       console.log(res['doc']['earnings']);
     },
       err => {
         console.log('ERROR', err);

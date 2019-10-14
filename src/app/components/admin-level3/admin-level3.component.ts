@@ -10,25 +10,19 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AdminLevel3Component implements OnInit {
 level3Users: any;
+loading: boolean;
+
   constructor(
     private userService: UserService,
-     private router: Router,
+    private router: Router,
     private  flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
-    this.userService.getLevel_3().subscribe(
-      res => {
-        console.log(res);
-        this.level3Users = res['docs'];
-      },
-      err => {
-        console.log(err);
-      }
-    );
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
+  this.loading = false;
+  this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
+  this.loadScript('../../assets/dashboard/js/main.js');
 
-    this.router.events.subscribe((evt) => {
+  this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){
         return ;
       }
@@ -50,18 +44,33 @@ level3Users: any;
     this.userService.logout();
   }
   activateUser(fileID: { user_id: string; }, username) {
-    console.log(fileID);
+    this.loading = true;
     this.flashMessage.show(`${username} moved to level 3`, {cssClass:
       'bg-success text-white text-center font-weight-bold', timeout: 4000});
     this.userService.postUserTolevel_4(fileID).subscribe(
   res => {
-    console.log(res);
+    this.getLevle3Users();
+    this.loading = false;
     this.level3Users = res['docs'];
 
   },
   err => {
+    this.loading = false;
+    this.getLevle3Users();
     console.log(err);
   }
 );
+  }
+
+  getLevle3Users(){
+    this.userService.getLevel_3().subscribe(
+      res => {
+        console.log(res);
+        this.level3Users = res['docs'];
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

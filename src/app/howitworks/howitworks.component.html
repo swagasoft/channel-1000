@@ -1,22 +1,40 @@
 <app-navbar></app-navbar>
+
+<!-- header -->
+<div class="jumbotron p-0  grey lighten-4 text-dark">
+
+  <!-- Card image -->
+  <div class="view overlay rounded-top waves-light" mdbWavesEffect>
+    <img src="../../assets/how-it-works.jpg" class="img-fluid" alt="Sample image">
+    <a >
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body text-center mb-3">
+
+    <!-- Title -->
+    <h3 class="card-title h3 my-4"><strong>HOW IT WORKS</strong></h3>
+    <!-- Text -->
+    <!-- Button -->
+    <a mdbBtn  routerLink="/" rounded="true" class=" primary-color-dark text-white mb-4" mdbWavesEffect>Home</a>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+
+<!-- end header -->
 <div class="container">
-
-    <div class="section-header">
-        <h2 class="dark-text">How it Works</h2>
-        <h6>
-            We design & develop qaulity products to help small & medium level business.
-        </h6>
-    </div>
-
     <div class="row">
         <div class="col-md-6 col-sm-6">
             <div class="feature">
                 <div class="feature-icon">
                    <i class="fa fa-cogs" aria-hidden="true"></i>
                 </div>
-                <h5>Exchange of goods and services</h5>
+                <h5>Create account in channel1000</h5>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    <a class="font-weight-bold" routerLink="/register">Register </a> as an investor or a marketer
                 </p>
             </div>
 
@@ -24,9 +42,9 @@
                 <div class="feature-icon">
                     <i class="fa fa-line-chart" aria-hidden="true"></i>
                 </div>
-                <h5>Business Profit </h5>
+                <h5>Register as an investor </h5>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Initiate the payment of N1000 via wire transfer or paystack.
                 </p>
             </div>
 
@@ -34,9 +52,10 @@
                 <div class="feature-icon">
                     <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                 </div>
-                <h5>Business skills</h5>
+                <h5>Funds Transfer</h5>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    You will need to send your payment details (like username, email, phone etc)
+                    to the admin Via...
                 </p>
             </div>
         </div>
@@ -74,3 +93,4 @@
         </div>
     </div>
 </div>
+<app-footer></app-footer>

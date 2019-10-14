@@ -1,18 +1,25 @@
 a{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font:bold;
+  font-weight: bold;
   color: rgb(255, 255, 255);
 
 }
 p{
+  font-weight: bold;
   color: rgb(255, 255, 255);
 }
 
 li{
-
+font-weight: bold;
   color: rgb(255, 255, 255);
 }
 .dropdown-menu{
   background-color: black;
 }
-
+.router-link-active{
+  background-color: black;
+}
+a:hover{
+text-decoration: underline;
+text-decoration-line: underline;
+}

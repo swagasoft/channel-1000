@@ -41,6 +41,7 @@ loading: boolean;
     this.loading = true;
     this.userService.login(form.value).subscribe(
       response => {
+        console.log(response)
       this.userService.saveUserRole(response);
       this.loading = false;
       this.userService.setToken(response['token']);
@@ -50,6 +51,7 @@ loading: boolean;
 
       },
       err => {
+        console.log(err);
         if(err.status === 401 ||404){
           this.loading = false;
         this.flashMessage.show(err.error, {cssClass:

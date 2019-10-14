@@ -9,18 +9,12 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AdminLevel4Component implements OnInit {
     level4Users: any;
+    loading: boolean;
+
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getLevel_4().subscribe(
-      res => {
-        console.log(res);
-        this.level4Users = res['doc'];
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  this.loading = false;
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -45,16 +39,30 @@ export class AdminLevel4Component implements OnInit {
     this.userService.logout();
   }
   activateUser(fileID: { user_id: string; }) {
-    console.log(fileID);
-    this.userService.postUserTolevel2(fileID).subscribe(
+    this.loading = true;
+    this.userService.postUserTolevel_4(fileID).subscribe(
   res => {
+    this.loading = false;
+    this.getLevel4Users();
     console.log(res);
     this.level4Users = res['docs'];
 
   },
   err => {
+    this.loading =false;
+    this.getLevel4Users();
     console.log(err);
   }
 );
+  }
+  getLevel4Users(){
+    this.userService.getLevel_4().subscribe(
+      res => {
+        this.level4Users = res['doc'];
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

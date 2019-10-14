@@ -10,22 +10,16 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AdminLevel2Component implements OnInit {
 leve2users: any;
+loading: boolean;
+
   constructor(
     private router:Router,
     private flashMessage: FlashMessagesService,
      private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getLevel_2().subscribe(
-      res => {
-       this.leve2users = res['docs'];
-       console.log(res['docs']);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-
+    this.loading = false;
+    this.getlevel2Users();
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -50,19 +44,34 @@ leve2users: any;
     this.userService.logout();
   }
   activateUser(fileID: { user_id: string; }, username) {
+    this.loading = true;
     console.log(fileID);
     this.flashMessage.show(`${username} moved to level 3`, {cssClass:
       'bg-success text-white text-center font-weight-bold', timeout: 4000});
     this.userService.postUserTolevel_3(fileID).subscribe(
   res => {
     console.log(res);
+    this.loading = false;
+    this.getlevel2Users();
     this.leve2users = res['docs'];
 
   },
   err => {
+    this.getlevel2Users();
     console.log(err);
   }
 );
+  }
+
+  getlevel2Users(){
+    this.userService.getLevel_2().subscribe(
+      res => {
+       this.leve2users = res['docs'];
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

@@ -12,6 +12,8 @@ export class AdminAccountComponent implements OnInit {
 userInvestment: any;
 userDetails: any;
 payout: any;
+loading: boolean;
+
   constructor(private router: Router, private userService: UserService) { }
 
   model = {
@@ -21,6 +23,7 @@ payout: any;
   ngOnInit() {
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
+    this.loading = false;
 
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){
@@ -43,8 +46,9 @@ payout: any;
     this.userService.logout();
   }
   searchUser(form: NgForm){
-      const query = form.value.search;
-      this.userService.queryUserDetails(query).subscribe(
+    this.loading = true;
+    const query = form.value.search;
+    this.userService.queryUserDetails(query).subscribe(
         response => {
           console.log(response['getTest']);
           console.log(response['queryInvest']);
@@ -55,8 +59,10 @@ payout: any;
           console.log(response['trans']);
           this.userInvestment =  response['queryInvest'];
           form.value.search = '';
+          this.loading = false;
         },
         err => {
+          this.loading = false;
           console.log(err);
         }
       );

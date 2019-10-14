@@ -167,7 +167,13 @@
                 <!--Table-->
 <div class="table-responsive" >
     <table class="table table-striped w-auto">
-      <flash-messages></flash-messages>
+      <div class="row d-flex justify-content-center">
+        <div class="col" *ngIf="loading">
+            <flash-messages></flash-messages>
+                    <div class="loader"></div>
+        </div>
+      </div>
+
         <thead>
           <tr>
             <th>#</th>

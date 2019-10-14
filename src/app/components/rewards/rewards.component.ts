@@ -8,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RewardsComponent implements OnInit {
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, ) {
 
   }
 
   ngOnInit() {
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
-
+    this.getHighRank();
   }
 
 
@@ -30,5 +30,16 @@ export class RewardsComponent implements OnInit {
   }
   logOut(){
     this.userService.logout();
+  }
+
+  getHighRank(){
+    this.userService.getHighRank().subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }

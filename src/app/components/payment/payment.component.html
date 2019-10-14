@@ -2,12 +2,12 @@
 
 
     <!-- ######################################## -->
+    <!-- ######################################## -->
     <link href="../../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="../../../assets/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="../../../assets/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
     <!-- Main CSS-->
     <link href="../../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
-    <link href="../../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
 
     <div class="page-wrapper">
@@ -17,7 +17,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="../../assets/dashboard/images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="../../assets/dashboard/images/icon/logo.png" alt="logo" />
                         </a>
 
                         <button class="hamburger hamburger--slider" type="button">
@@ -138,13 +138,13 @@
             <!-- HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
-            <div class="main-content">
+            <div class="main-content mb-5">
                 <div class="section__content section__content--p30">
-                    <div class="container-fluid">
+                    <div class="container-fluid  text-white">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-center text-white">
                                 <div class="overview-wrap">
-                                    <h4 class="title-1 font-weight-bold">Payment</h4>
+                                    <h4 class="title-1 font-weight-bold"> Payment on the go</h4>
 
                                 </div>
                             </div>
@@ -158,10 +158,11 @@
 
 <!-- details card section starts from here -->
                         <!-- payment cards ends -->
-        <small class="text-center text-info"> Click the button below to make payment </small>
+        <small class="text-center text-info justify-content-center d-flex">
+           Click the button below to make payment </small>
           <div style="widows: 100%; display:flex; justify-content: center;" (click)="paynow()">
             <div class="example-button-row">
-            <angular4-paystack class="btn btn-lg"
+            <angular4-paystack class="btn btn-lg display-block font"
             [key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
             [email]="(emailInput)"
             [amount]="(amountInput)"
@@ -170,13 +171,13 @@
             [class]="'btn btn-success'"
             (close)="paymentCancel()"
             (callback)="paymentDone($event)"
-            >PAY <strong> ₦1000</strong> NOW </angular4-paystack>
+            ><h1 class="text-white">CLICK FOR PAYMENT </h1></angular4-paystack>
             </div>
             </div>
 
                         <!-- ######### cards ##############3 -->
 
-                        <section class="details-card">
+                        <section class="details-card  text-white">
                           <div class="container">
                               <div class="row">
                                   <div class="col-md-4">

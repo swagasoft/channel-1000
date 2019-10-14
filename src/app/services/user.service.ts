@@ -64,6 +64,9 @@ export class UserService {
   getTransaction(): Observable <any>{
     return this.http.get(environment.apiBaseUrl + '/get-transactions');
   }
+  getHighRank(){
+    return this.http.get(environment.apiBaseUrl+ '/get-high-ranked')
+  }
 
   editAccount() {
     return this.http.get(environment.apiBaseUrl + '/edit_account');

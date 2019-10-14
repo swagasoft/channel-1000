@@ -154,7 +154,7 @@
                   <div class="row">
                       <div class="col-md-12">
                           <div class="overview-wrap">
-                              <h4 class="title-1 font-weight-bold">Level-4</h4>
+                              <h4 class="title-1 font-weight-bold">Qualifield user for Level-4</h4>
 
                           </div>
                       </div>
@@ -162,9 +162,20 @@
 
 
                   <!-- ######### cards ##############3 -->
+                       <!-- loader -->
+                   <div class="col d-flex justify-content-center affix">
+                      <div class="toast-container">
+                      <flash-messages></flash-messages>
+                      </div>
+                    </div>
 
-                  <p> List of users qualified for level 2</p>
-<flash-messages></flash-messages>
+
+                      <div *ngIf="loading" class="col d-flex justify-content-center affix">
+                        <div class="lds-spinner toast-container"><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div>
+                    </div><div></div><div></div><div></div></div>
+                      </div>
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -181,7 +192,7 @@
       aria-hidden="true" style="font-size: 35px; color: green;"></i></button></th>
     <td class="font-weight-bold" >{{ user.username }}</td>
     <td class="font-weight-bold">{{ user.level  }}</td>
-    <td class="font-weight-bold">{{ user.downline.length }}  </td>
+    <td class="font-weight-bold">{{ user.point }}  </td>
   </tr>
   </tbody>
 </table>

@@ -10,6 +10,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AdminTransactionComponent implements OnInit {
   transactions: any;
+  loading: boolean;
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -22,13 +23,13 @@ export class AdminTransactionComponent implements OnInit {
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
-    this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
-        return ;
-      }
+    // this.router.events.subscribe((evt) => {
+    //   if(!(evt instanceof NavigationEnd)){
+    //     return ;
+    //   }
 
-      window.scrollTo(0,0);
-    });
+    //   window.scrollTo(0,0);
+    // });
   }
   loadScript(url: string){
     const body = <HTMLDivElement> document.body;
@@ -41,11 +42,14 @@ export class AdminTransactionComponent implements OnInit {
   }
   logOut(){
     this.userService.logout();
+    this.loading = false;
   }
   readTransactions() {
+    this.loading = true;
     this.userService.getAllTransactions().subscribe( val => {
       console.log(val);
       this.transactions = val['trans'];
+      this.loading = false;
     },
     error => {
       console.log(error);
@@ -53,10 +57,12 @@ export class AdminTransactionComponent implements OnInit {
     );
   }
   deleteTranx(id){
+    this.loading = true;
     this.userService.deleteTrasaction(id).subscribe(
       response => {
+        this.loading = false;
         this.flashMessage.show(`Transaction deleted `,
-        {cssClass: ' text-white bg-warning text-center font-weight-bold', timeout: 2000});
+        {cssClass: ' text-white bg-info text-center font-weight-bold', timeout: 2000});
         this.readTransactions();
       }
     );

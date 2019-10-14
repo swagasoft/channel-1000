@@ -10,22 +10,15 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class AdminLevel1Component implements OnInit {
 level1_users: any;
+loading: boolean;
+
   constructor(private router: Router,
               private userService: UserService,
               private flashMessage: FlashMessagesService, ) { }
 
   ngOnInit() {
-    this.userService.getLevel_1().subscribe(
-    res => {
-     this.level1_users = res['docs'];
-     console.log(res['docs']);
-    },
-    err => {
-      console.log(err);
-    }
-  );
-
-
+    this.loading = false;
+   this.getlevel1Users();
               this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
               this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -51,19 +44,35 @@ level1_users: any;
   }
 
   activateUser(fileID: { user_id: string; }, username) {
-    console.log(fileID);
-    this.flashMessage.show(`${username} moved to level 2`, {cssClass:
-      'bg-success text-white text-center font-weight-bold', timeout: 4000});
+    this.loading = true;
     this.userService.postUserTolevel2(fileID).subscribe(
   res => {
+    this.flashMessage.show(`${username} UPGRADED TO LEVEL TWO`, {cssClass:
+      'bg-success text-white text-center font-weight-bold', timeout: 4000});
+      this.loading = false;
     console.log(res);
-    this.level1_users = res['docs'];
+    this.getlevel1Users();
 
   },
   err => {
+    this.flashMessage.show(`ERROR UPGRADING ${username} `, {cssClass:
+      'bg-danger text-white text-center font-weight-bold', timeout: 4000});
     console.log(err);
+    this.loading = false;
+    this.getlevel1Users();
   }
 );
   }
 
+  getlevel1Users(){
+    this.userService.getLevel_1().subscribe(
+      res => {
+        console.log('RESPOONSE',  res);
+       this.level1_users = res['docs'];
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }

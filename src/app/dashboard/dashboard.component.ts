@@ -50,9 +50,7 @@ userRole: any;
     this.loadScript('../../assets/dashboard/vendor/jquery-3.2.1.min.js');
     this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/popper.min.js');
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    // this.loadScript('../../assets/dashboard/vendor/counter-up/jquery.waypoints.min.js');
-    // this.loadScript('../../assets/dashboard/vendor/counter-up/jquery.counterup.min.js');
-    this.loadScript('../../assets/dashboard/vendor/select2/select2.min.js');
+    // this.loadScript('../../assets/dashboard/vendor/select2/select2.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
 }
@@ -66,7 +64,7 @@ loadScript(url: string){
   script.defer = true;
   body.appendChild(script);
 }
-louOut(){
+louOut() {
   this.userService.logout();
 }
 }

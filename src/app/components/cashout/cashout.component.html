@@ -127,9 +127,9 @@
           <div class="main-content">
               <div class="section__content section__content--p30">
 
-                  <div class="container-fluid">
+                  <div class="container-fluid  primary-color">
                       <!-- ######### cards ##############3 -->
-                      <section class="details-card">
+                      <section class="details-card  primary-color-dark text-white">
 
                         <div class="container">
                             <flash-messages></flash-messages>
@@ -144,6 +144,7 @@
                                 </div>
 
                       <div class="col-md-4 ">
+                        <small>you can  only cashout when your balance is more than 1000 </small>
                         <form  #cashoutForm="ngForm" class="bg-dark" (submit)="cashoutForm.valid
                          && cashOut(cashoutForm, account.user_id)">
                            <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"
