@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rewards.component.scss']
 })
 export class RewardsComponent implements OnInit {
-
+userRole: any;
   constructor(private userService: UserService, ) {
 
   }
 
   ngOnInit() {
+    this.userRole = this.userService.getUserRole();
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
     this.getHighRank();

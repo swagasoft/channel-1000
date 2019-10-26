@@ -16,13 +16,14 @@ userAccount: any;
 fullname: string;
 email: string;
 username: string;
-userRole: string;
 custId: number;
 ref_link: string;
+userRole: any;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userRole = this.userService.getUserRole();
     this.userService.editAccount().subscribe(
       res => {
         this.userAccount = res['user'];

@@ -54,7 +54,7 @@
                           <a [routerLink]="['/cashout']" routerLinkActive="router-link-active">
                               <i class="fas fa-map-marker-alt"></i>Cash Out</a>
                       </li>
-                      <li class="has-sub">
+                      <li class="has-sub" *ngIf="userRole ==='ADMIN'">
                           <a class="js-arrow" [routerLink]="['/admin-dash']" routerLinkActive="router-link-active" >
                               <i class="fas fa-copy"></i>Administrator</a>
                       </li>

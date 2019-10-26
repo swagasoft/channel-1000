@@ -23,11 +23,11 @@ loading: boolean;
   this.loadScript('../../assets/dashboard/js/main.js');
 
   this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
+      if (!(evt instanceof NavigationEnd)) {
         return ;
       }
 
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     });
   }
 
@@ -40,7 +40,7 @@ loading: boolean;
     script.defer = true;
     body.appendChild(script);
   }
-  logOut(){
+  logOut() {
     this.userService.logout();
   }
   activateUser(fileID: { user_id: string; }, username) {

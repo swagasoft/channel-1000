@@ -8,10 +8,11 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./referandearn.component.scss']
 })
 export class ReferandearnComponent implements OnInit {
-
+userRole: any;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.userRole = this.userService.getUserRole();
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
     this.router.events.subscribe((evt) => {

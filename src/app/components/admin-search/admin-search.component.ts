@@ -1,3 +1,4 @@
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
@@ -12,9 +13,12 @@ export class AdminAccountComponent implements OnInit {
 userInvestment: any;
 userDetails: any;
 payout: any;
+transaction: any;
 loading: boolean;
+userQuery: any;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private flashMessage: FlashMessagesService,
+     private userService: UserService) { }
 
   model = {
     searchOption: '',
@@ -48,21 +52,28 @@ loading: boolean;
   searchUser(form: NgForm){
     this.loading = true;
     const query = form.value.search;
+    console.log(query);
     this.userService.queryUserDetails(query).subscribe(
         response => {
-          console.log(response['getTest']);
-          console.log(response['queryInvest']);
-          console.log(response['payout']);
+         this.userQuery = query
           this.payout =  response['payout'];
-          console.log(response['userDetails']);
-          this.userService = response['userDetails'];
-          console.log(response['trans']);
+          this.userDetails = response['userDetails'];
+          this.transaction = (response['trans']);
+          console.log(this.transaction);
+
           this.userInvestment =  response['queryInvest'];
+          console.log(this.userDetails);
+
           form.value.search = '';
           this.loading = false;
+          console.log(response);
+
         },
         err => {
           this.loading = false;
+          this.flashMessage.show(err.error, {cssClass:
+            'font-weight-bold text-white bg-danger text-center', timeout: 3000});
+
           console.log(err);
         }
       );

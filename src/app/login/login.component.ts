@@ -42,19 +42,17 @@ loading: boolean;
     this.userService.login(form.value).subscribe(
       response => {
         console.log(response)
-      this.userService.saveUserRole(response);
-      this.loading = false;
-      this.userService.setToken(response['token']);
-      this.flashMessage.show('login successful...', {cssClass:
-         ' text-white bg-success text-center font-weight-bold', timeout: 2000});
-      setTimeout(() => {this.router.navigateByUrl('/dashboard'); }, 2000);
+        this.userService.saveUserRole(response);
+        this.loading = false;
+        this.userService.setToken(response['token']);
+        this.router.navigateByUrl('/dashboard');
 
       },
       err => {
         console.log(err);
         if(err.status === 401 ||404){
           this.loading = false;
-        this.flashMessage.show(err.error, {cssClass:
+          this.flashMessage.show(err.error, {cssClass:
           'font-weight-bold text-white bg-danger text-center', timeout: 3000});
 
       }else{

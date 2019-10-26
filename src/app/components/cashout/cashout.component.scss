@@ -4,8 +4,13 @@ section{
 .details-card {
 background: #ecf0f1;
 }
+
+/* End card section */
 .router-link-active{
-  background-color: rgb(151, 193, 241);
+  background-color: rgb(5, 10, 15);
+  color: #ffffff;
+}
+li{
   font-weight: bold;
 }
 
@@ -69,4 +74,12 @@ input[type = submit]{
   padding-top:40px;
   border-radius:5px;
   margin: 0 auto;
+}
+
+.toast-container{
+  position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
 }

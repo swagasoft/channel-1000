@@ -24,6 +24,7 @@ const PAYMENT: Payment[] = [
 })
 export class PaymentComponent implements OnInit {
 exactAmount: any;
+userRole: any;
 amountInput: any;
 newAmount: any;
 refInput: any;
@@ -35,6 +36,7 @@ history: any;
 
   ngOnInit() {
     this.refreshAccount();
+      this.userRole = this.userService.getUserRole();
     this.userService.getTransaction().subscribe(
       res => {
          this.history =  res['result'];

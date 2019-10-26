@@ -56,7 +56,7 @@
                           <a [routerLink]="['/cashout']" routerLinkActive="router-link-active">
                               <i class="fas fa-map-marker-alt"></i>Cash Out</a>
                       </li>
-                      <li class="has-sub">
+                      <li class="has-sub" *ngIf="userRole ==='ADMIN'">
                           <a class="js-arrow" [routerLink]="['/admin-dash']" routerLinkActive="router-link-active" >
                               <i class="fas fa-copy"></i>Administrator</a>
                       </li>
@@ -132,9 +132,15 @@
                       <section class="details-card  primary-color-dark text-white">
 
                         <div class="container">
-                            <flash-messages></flash-messages>
+
+                          <div class="col d-flex justify-content-center affix">
+                            <div class="toast-container">
+                                <flash-messages ></flash-messages>
+                            </div>
+                            </div>
+
                             <div class="row">
-                                <div class="col-md-4" >
+                                <div class="col-6" >
                                     <div class="card-content">
                                         <div class="card-desc">
                                             <h3>₦ {{account?.earnings | number}} </h3>
@@ -143,7 +149,7 @@
                                     </div>
                                 </div>
 
-                      <div class="col-md-4 ">
+                      <div class="col-6 ">
                         <small>you can  only cashout when your balance is more than 1000 </small>
                         <form  #cashoutForm="ngForm" class="bg-dark" (submit)="cashoutForm.valid
                          && cashOut(cashoutForm, account.user_id)">

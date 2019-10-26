@@ -29,11 +29,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
      ) {   }
 
+     model = {
+       confirmPassword: ''
+     }
+
 
 
   ngOnInit() {
     this.hideForm = false;
-    this.showSelection = true;
     this.showBtnLoading = false;
 
     this.router.events.subscribe((evt) => {
@@ -61,9 +64,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.flashMessage.show('Registration Successful..',
          {cssClass: 'text-white bg-success text-center font-weight-bold', timeout: 3000});
         this.resetForm(form);
-        setTimeout(()=> {
-          this.router.navigate(['/login']);
-        }, 5000);
+
+        this.showSelection = true;
       },
       err => {
         if(err.status == 442){
@@ -85,6 +87,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
       },
 
     );
+  }
+
+  goToLogin(){
+    this.router.navigate(['/login']);
   }
 
   resetForm(form: NgForm){

@@ -163,54 +163,55 @@
 
                   <!-- ######### cards ##############3 -->
 
-                  <div class="container">
-                    <div class="row" style="margin-top:50px;">
-                    <div class="col-md-4 mx-auto col-12">
-                          <div class="b-select-wrap">
-                            <select class="form-control b-select">
-                              <option>Username</option>
-                              <option>Email</option>
-                            </select>
-                          </div>
-                        </div>
 
-                        <!-- search form -->
-                        <form #searchUserForm="ngForm"  (submit)="searchUserForm.valid && searchUser(searchUserForm)">
-                          <div class="">
-                            <div class="">
+                  <div class="container">
+                        <form class="form-inline" #searchUserForm="ngForm"  (submit)="searchUserForm.valid && searchUser(searchUserForm)">
+                            <div class="form-group mx-sm-3 mb-2">
+                              <label for="username" class="sr-only">Username</label>
                               <input class="form-control " type="text" name=""  name="search"
                               #cashout="ngModel"  [(ngModel)]="model.searchOption" placeholder="enter username ">
                             </div>
-                            <div class="">
-                              <input class="btn btn-lg btn-info"
-                               type="submit" value="Search">
-                            </div>
-                          </div>
-                        </form>
-
-                      </div>
+                            <button type="submit" class="btn btn-primary mb-2">Search</button>
+                          </form>
                   </div>
 
                   <!-- loader -->
                     <div class="row" *ngIf="loading">
-                      <div class=" col justify-centent-center d-flex  ">
+                      <div class=" col justify-centent-center d-flex ">
                           <div class="loader"></div>
                       </div>
                     </div>
 
-
+                    <!-- flash messaage -->
+                    <div class="col d-flex justify-content-center affix">
+                        <div class="toast-container">
+                            <flash-messages ></flash-messages>
+                        </div>
+                        </div>
 
                   <!-- ###### search result..... -->
+                  <ol class="rounded-list font-weight-bold text-left" >
+                    <li *ngIf="userQuery" class="list-group-item rgba-grey-slight"> Account Details for {{userQuery}}</li>
+                    <li class="" >Earnings :      {{userInvestment?.earnings | number}}</li>
+                    <li  class="">Username :      {{userInvestment?.user }}</li>
+                    <li  class=""> Investment:    {{userInvestment?.investment | number}} </li>
+                    <li  class=""> cashout :      {{userInvestment?.cashout | number}} </li>
+                </ol>
 
+                  <ol class="rounded-list font-weight-bold text-left" >
+                    <li class="" >Fullname :     {{userDetails?.fullname}}</li>
+                    <li class="" >Email :     {{userDetails?.email}}</li>
+                    <li class="" >Level :     {{userDetails?.level}}</li>
+                    <li class="" > Downline :     {{userDetails?.point}}</li>
+                    <li class="" > Reg-date :     {{userDetails?.date}}</li>
+                </ol>
 
-                  <ol class="rounded-list font-weight-bold text-center" >
-
-                    <li class="list-group-item active"> Account Details</li>
-                    <li class="bg-info" >Earnings :      {{userInvestment?.earnings | number}}</li>
-                    <li  class="bg-info">Username :      {{userInvestment?.user }}</li>
-                    <li  class="bg-info"> Investment:    {{userInvestment?.investment | number}} </li>
-                    <li  class="bg-info"> cashout :      {{userInvestment?.cashout | number}} </li>
-
+                <!-- payouts -->
+                <ol *ngFor="let item of payout" class="rounded-list font-weight-bold text-left" >
+                  <h6> Paid out</h6>
+                    <li class="" >Amount :      {{ item.amount | number}}</li>
+                    <li  class="">Username :      {{ item.username }}</li>
+                    <li  class="">  date:    {{item.date}} </li>
                 </ol>
                   <!-- ###### end search result..... -->
 

@@ -12,6 +12,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class CashoutComponent implements OnInit {
   account: any;
   earnings: number;
+  userRole: any;
 
   constructor(
     private userService: UserService,
@@ -24,6 +25,7 @@ export class CashoutComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.userRole = this.userService.getUserRole();
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)) {
         return ;
