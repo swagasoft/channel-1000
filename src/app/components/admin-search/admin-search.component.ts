@@ -18,7 +18,7 @@ loading: boolean;
 userQuery: any;
 
   constructor(private router: Router, private flashMessage: FlashMessagesService,
-     private userService: UserService) { }
+              private userService: UserService) { }
 
   model = {
     searchOption: '',
@@ -55,23 +55,24 @@ userQuery: any;
     console.log(query);
     this.userService.queryUserDetails(query).subscribe(
         response => {
-         this.userQuery = query
-          this.payout =  response['payout'];
-          this.userDetails = response['userDetails'];
-          this.transaction = (response['trans']);
-          console.log(this.transaction);
-
-          this.userInvestment =  response['queryInvest'];
-          console.log(this.userDetails);
-
-          form.value.search = '';
-          this.loading = false;
           console.log(response);
+         this.userQuery = query
+         this.payout =  response['payout'];
+         this.userDetails = response['userDetails'];
+         this.transaction = (response['trans']);
+         console.log(this.transaction);
+
+         this.userInvestment =  response['queryInvest'];
+         console.log(this.userDetails);
+
+         form.value.search = '';
+         this.loading = false;
+         console.log(response);
 
         },
         err => {
           this.loading = false;
-          this.flashMessage.show(err.error, {cssClass:
+          this.flashMessage.show("user not found", {cssClass:
             'font-weight-bold text-white bg-danger text-center', timeout: 3000});
 
           console.log(err);

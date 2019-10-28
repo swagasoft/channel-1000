@@ -21,13 +21,13 @@
 
                       <!-- ACCOUNT SELECTION -->
                       <div class="jumbotron " *ngIf="showSelection">
-                        <h2 class="display-4 text-center">  Welcome to Channel1000</h2>
+                        <h2 class="display-4 text-center">  Registration sucessful</h2>
 
                         <hr class="my-4">
                         <div class="d-flex justify-content-center  ">
                             <div class=" text-center" >
                                 <a class="btn indigo btn-lg font-weight-bold"(click)="goToLogin()"
-                                 role="button">continue to login</a>
+                                 role="button">click to login</a>
 
                                  <p>you can now login with your credentials</p>
                             </div>
@@ -41,9 +41,8 @@
                         </div>
                         </div>
 
-                      <div class="login-form mb-5">
-                        <h6 class="text-center text-info "> ACCOUNT :  {{userRole}} </h6>
-                          <form   #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
+                      <div  *ngIf="hideForm" class="login-form mb-5">
+                          <form    #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
                         <div class="form-group">
                             <!-- <label>Fullname</label> -->
                             <input class="au-input au-input--full" type="text"  #fullname="ngModel"

@@ -36,11 +36,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.hideForm = false;
+    this.hideForm = true;
     this.showBtnLoading = false;
 
     this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
+      if(!(evt instanceof NavigationEnd)) {
         return ;
       }
 
@@ -61,27 +61,25 @@ export class RegisterComponent implements OnInit, OnDestroy {
       res => {
         this.hideForm = false;
         this.showBtnLoading = false;
-        this.flashMessage.show('Registration Successful..',
-         {cssClass: 'text-white bg-success text-center font-weight-bold', timeout: 3000});
         this.resetForm(form);
-
+        this.hideForm = false;
         this.showSelection = true;
       },
       err => {
-        if(err.status == 442){
+        if(err.status == 442) {
           this.serverErrormessages = err.error.join('<br/>');
           this.showBtnLoading = false;
           this.flashMessage.show(err.error,
              {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 3000});
 
-        }else if(err.status == 422){
+        } else if(err.status == 422) {
           this.showBtnLoading = false;
-           this.flashMessage.show(err.error,
+          this.flashMessage.show(err.error,
            {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 5000});
 
-        }else{
+        } else {
           this.showBtnLoading = false;
-           this.flashMessage.show('something went wrong , please contact the admin',
+          this.flashMessage.show('something went wrong , please contact the admin',
            {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 5000});
         }
       },
@@ -89,11 +87,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
   }
 
-  goToLogin(){
+  goToLogin() {
     this.router.navigate(['/login']);
   }
 
-  resetForm(form: NgForm){
+  resetForm(form: NgForm) {
     this.userService.selectedUser = {
       fullname: '',
       email: '',
@@ -109,20 +107,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   selectOption() {
     const result = document.getElementById('select_role') as HTMLInputElement;
-   this.userRole = result.value;
-   console.log('userrole', this.userRole);
+    this.userRole = result.value;
+    console.log('userrole', this.userRole);
    }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
 
   }
 
-  investSelect(selection){
+  investSelect(selection) {
     this.userRole =selection;
     this.showSelection = false;
     this.hideForm = true;
   }
-  marketerSelect(selection){
+  marketerSelect(selection) {
     this.userRole = selection;
     this.showSelection = false;
     this.hideForm = true;

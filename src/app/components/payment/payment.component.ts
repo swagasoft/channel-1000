@@ -82,6 +82,7 @@ history: any;
     this.generateRef();
   }
   paymentDone($event) {
+    console.info('PAYMENT SUBMIT');
     $event.user = this.Username;
     $event.email = this.emailInput;
     $event.amount = 1000;

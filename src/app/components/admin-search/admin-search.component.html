@@ -191,19 +191,19 @@
 
                   <!-- ###### search result..... -->
                   <ol class="rounded-list font-weight-bold text-left" >
-                    <li *ngIf="userQuery" class="list-group-item rgba-grey-slight"> Account Details for {{userQuery}}</li>
+                    <li *ngIf="userQuery" class="list-group-item rgba-grey-slight"></li>
                     <li class="" >Earnings :      {{userInvestment?.earnings | number}}</li>
                     <li  class="">Username :      {{userInvestment?.user }}</li>
                     <li  class=""> Investment:    {{userInvestment?.investment | number}} </li>
                     <li  class=""> cashout :      {{userInvestment?.cashout | number}} </li>
                 </ol>
 
-                  <ol class="rounded-list font-weight-bold text-left" >
-                    <li class="" >Fullname :     {{userDetails?.fullname}}</li>
-                    <li class="" >Email :     {{userDetails?.email}}</li>
-                    <li class="" >Level :     {{userDetails?.level}}</li>
-                    <li class="" > Downline :     {{userDetails?.point}}</li>
-                    <li class="" > Reg-date :     {{userDetails?.date}}</li>
+                  <ol  *ngFor="let item of  userDetails" class="rounded-list font-weight-bold text-left" >
+                    <li class="" >Fullname :     {{item.fullname}}</li>
+                    <li class="" >Email :     {{item.email}}</li>
+                    <li class="" >Level :     {{item.level}}</li>
+                    <li class="" > Downline :     {{item.point}}</li>
+                    <li class="" > Reg-date :     {{item.date}}</li>
                 </ol>
 
                 <!-- payouts -->

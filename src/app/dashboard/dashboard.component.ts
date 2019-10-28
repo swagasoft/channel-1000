@@ -19,6 +19,7 @@ userRole: any;
     this.userService.loadBalance().subscribe(
       res => {
         this.accountDetails = res['doc'];
+        console.log(this.userDetails);
       }
     );
 
