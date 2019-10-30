@@ -1,16 +1,11 @@
-/*
-/* Created by Filipe Pina
- * Specific styles of signin, register, component
- */
-/*
- * General styles
- */
 
- body, html{
-  height: 100%;
-background-repeat: no-repeat;
-background-color: #d3d3d3;
-font-family: 'Oxygen', sans-serif;
+
+ .toast-container{
+  position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
 }
 
 .main{
@@ -76,6 +71,3 @@ form{
   margin-bottom: 40px;
 }
 
-// .loginForm{
-//   padding-bottom: 100px;
-// }

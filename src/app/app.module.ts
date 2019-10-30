@@ -38,7 +38,6 @@ import { ServicesComponent } from './services/services.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
 import { PolicyComponent } from './policy/policy.component';
-import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
 import { UserTrasanctionsComponent } from './components/user-trasanctions/user-trasanctions.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FaqComponent } from './faq/faq.component';
@@ -62,6 +61,7 @@ import { AdminLevel1Component } from './components/admin-level1/admin-level1.com
 import { AdminLevel2Component } from './components/admin-level2/admin-level2.component';
 import { AdminLevel3Component } from './components/admin-level3/admin-level3.component';
 import { AdminLevel4Component } from './components/admin-level4/admin-level4.component';
+import { UserReferalComponent } from './components/user-referal/user-referal.component';
 
 
 
@@ -83,7 +83,6 @@ import { AdminLevel4Component } from './components/admin-level4/admin-level4.com
     TestimoniesComponent,
     HowitworksComponent,
     PolicyComponent,
-    MarketerRegComponent,
     UserTrasanctionsComponent,
     CounterComponent,
     FaqComponent,
@@ -106,6 +105,7 @@ import { AdminLevel4Component } from './components/admin-level4/admin-level4.com
     AdminLevel2Component,
     AdminLevel3Component,
     AdminLevel4Component,
+    UserReferalComponent,
 
   ],
   imports: [

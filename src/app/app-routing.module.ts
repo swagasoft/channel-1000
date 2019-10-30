@@ -16,7 +16,6 @@ import { AccountComponent } from './components/account/account.component';
 import { FaqComponent } from './faq/faq.component';
 import { UserTrasanctionsComponent } from './components/user-trasanctions/user-trasanctions.component';
 import { ServicesComponent } from './services/services.component';
-import { MarketerRegComponent } from './marketer-reg/marketer-reg.component';
 import { PolicyComponent } from './policy/policy.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
 import { AboutComponent } from './about/about.component';
@@ -34,6 +33,7 @@ import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RewardsComponent } from './components/rewards/rewards.component';
 import { ReferandearnComponent } from './components/referandearn/referandearn.component';
+import { UserReferalComponent } from './components/user-referal/user-referal.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -45,7 +45,7 @@ const routes: Routes = [
 { path: 'howitworks', component: HowitworksComponent},
 { path: 'whyitworks', component: WhyitworksComponent},
 { path: 'policy', component: PolicyComponent},
-{ path: 'link/:username', component: MarketerRegComponent},
+{ path: 'link/:username', component: UserReferalComponent},
 { path: 'services', component: ServicesComponent},
 { path: 'faq-questions', component: FaqComponent},
 
