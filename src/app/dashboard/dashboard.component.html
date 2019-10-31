@@ -155,6 +155,11 @@
                       </div>
                   </div>
                   <div>
+
+                    <div *ngIf="!activate" class="card text-center p-3 bg-warning text-dark">
+                      <p>To activate your account, you need to Make PAYMENT</p>
+                    </div>
+
                     <a mdbBtn [routerLink]="['/payment']"
                          type="button" class=" btn btn-success text-white btn-lg p-3 m-3" >MAKE PAYMENT</a>
                   </div>
@@ -170,9 +175,9 @@
                                   </div>
                                   <div class="row mt-3">
                                       <div class="col-12 text-center">
-                                          <h2 class="text-info"> {{userDetails?.group}}</h2>
+                                          <h2 class="text-info"> {{userDetails?.ref_count}}</h2>
                                           <p class="text-secondary display -4 ">
-                                            Group</p>
+                                            Referal </p>
 
                                       </div>
                                   </div>
@@ -216,13 +221,6 @@
                                       </div>
                                   </div>
 
-                                  <div class="row mt-3" *ngIf="userRole =='MARKETER'">
-                                      <div class="col-12 text-center">
-                                          <h2 class="text-info"> {{userDetails?.downline.length}}</h2>
-                                          <p class="text-secondary">  Number of referal </p>
-
-                                      </div>
-                                  </div>
                               </div>
                           </div>
                       </div>
