@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class AdmindashboardComponent implements OnInit {
 users: any;
 transaction: any;
-investment: any;
-marketers: any;
+allPayouts: any;
+activatedUsers: any;
 
   constructor(private userService: UserService) { }
 
@@ -24,13 +24,13 @@ marketers: any;
 
 
     // http service request
-    this.userService.admindashboard().subscribe(
+ this.userService.admindashboard().subscribe(
       res => {
         console.log(res);
         this.users = res['investors'];
-        this.investment = res['allInvestment'];
+        this.allPayouts = res['findAllPayout'];
         this.transaction = res['allTransaction'];
-        this.marketers = res['marketers'];
+        this.activatedUsers = res['ActivatedUsers'];
 
 
       },

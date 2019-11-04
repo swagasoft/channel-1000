@@ -181,10 +181,10 @@
                                 <tbody>
                                     <tr  *ngFor="let user of users_cashout; index as i">
                                         <th scope="row">{{ i + 1 }}
-                                            <button (click)="payUser(user._id, user.user, user.cashout)"
+                                            <button (click)="payUser(user._id, user.username, user.cashout)"
                                             ><i class="fa fa-check-square"
                                            aria-hidden="true" style="font-size: 40px; color: rgb(248, 19, 172);"></i></button></th>
-                                        <td> {{user.user}}</td>
+                                        <td> {{user.username}}</td>
                                         <td>#{{user.cashout | number}} </td>
                                         <td>{{user.date | date}}</td>
 
