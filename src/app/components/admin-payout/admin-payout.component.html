@@ -165,6 +165,35 @@
 
                   <p>admin- payout!</p>
 
+                  <div class="table-responsive" >
+                    <table class="table table-striped w-auto">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Role</th>
+
+                          </tr>
+                        </thead>
+                        <!--Table head-->
+                        <!--Table body-->
+                        <tbody>
+                          <tr class="table-info"  *ngFor="let details of payouts; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ details.amount }} </td>
+                            <td>{{ details.username}}</td>
+                            <td>{{ details.date |  date}}</td>
+
+                            <td>
+                              <button style=" margin-left:2px" type="button"
+                               class="btn btn-sm btn-danger" (click)="deleteUser(details._id)">X</button>
+                               </td>
+                          </tr>
+                        </tbody>
+                        <!--Table body-->
+                      </table>
+                    </div>
 
                   <!-- ######### cards ##############3 -->
 

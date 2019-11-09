@@ -149,7 +149,7 @@
                                 </div>
 
                       <div class="col-6 ">
-                        <small>you can  only cashout when your balance is more than 1000 </small>
+                        <!-- <small>you can  only cashout when your balance is more than 1000 </small> -->
                         <form  #cashoutForm="ngForm" class="bg-dark" (submit)="cashoutForm.valid
                          && cashOut(cashoutForm, account.user_id)">
                            <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"

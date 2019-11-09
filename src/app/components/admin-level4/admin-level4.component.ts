@@ -14,7 +14,8 @@ export class AdminLevel4Component implements OnInit {
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-  this.loading = false;
+    this.getLevel4Users();
+     this.loading = false;
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
 
@@ -58,6 +59,7 @@ export class AdminLevel4Component implements OnInit {
   getLevel4Users(){
     this.userService.getLevel_4().subscribe(
       res => {
+        console.log(res);
         this.level4Users = res['doc'];
       },
       err => {

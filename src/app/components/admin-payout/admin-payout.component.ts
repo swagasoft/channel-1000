@@ -8,7 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./admin-payout.component.scss']
 })
 export class AdminPayoutComponent implements OnInit {
-
+payouts : any;
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -42,11 +42,15 @@ export class AdminPayoutComponent implements OnInit {
     this.userService.getPayoutList().subscribe(
       val => {
         console.log(val);
+        this.payouts = val['doc'];
       },
       err => {
         console.log(err);
 
       }
     );
+  }
+  deleteUser(id){
+    console.log(id);
   }
 }

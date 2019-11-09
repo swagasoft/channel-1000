@@ -18,6 +18,7 @@ loading: boolean;
     private  flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
+    this.getLevle3Users();
   this.loading = false;
   this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
   this.loadScript('../../assets/dashboard/js/main.js');

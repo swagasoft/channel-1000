@@ -62,6 +62,7 @@ import { AdminLevel2Component } from './components/admin-level2/admin-level2.com
 import { AdminLevel3Component } from './components/admin-level3/admin-level3.component';
 import { AdminLevel4Component } from './components/admin-level4/admin-level4.component';
 import { UserReferalComponent } from './components/user-referal/user-referal.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 
 
@@ -106,6 +107,7 @@ import { UserReferalComponent } from './components/user-referal/user-referal.com
     AdminLevel3Component,
     AdminLevel4Component,
     UserReferalComponent,
+    ForgetPasswordComponent,
 
   ],
   imports: [
