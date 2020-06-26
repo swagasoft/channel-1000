@@ -20,6 +20,7 @@ loading: boolean;
   ngOnInit() {
     this.getLevle3Users();
   this.loading = false;
+  this.loadScript('../../../assets/dashboard/vendor/jquery-3.2.1.min.js');
   this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
   this.loadScript('../../assets/dashboard/js/main.js');
 

@@ -39,10 +39,7 @@
                           <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
                               <i class="fas fa-chart-bar"></i>Payment</a>
                       </li>
-                      <li>
-                          <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active">
-                              <i class="fas fa-table"></i>Refer and Earn</a>
-                      </li>
+
                       <li>
                           <a [routerLink]="['/rewards']" routerLinkActive="router-link-active">
                               <i class="far fa-check-square"></i>Rewards Center</a>
@@ -140,25 +137,46 @@
                   <div class="container-fluid">
                       <div class="row">
                           <div class="col-md-12">
-                              <div class="overview-wrap">
-                                  <h4 class="title-1 font-weight-bold">Reward</h4>
 
-                              </div>
                           </div>
                       </div>
 
 
                       <!-- ######### cards ##############3 -->
 
-                      <h1 class="bg-dark text-white"> Reward content</h1>
+                      <h3 class="bg-dark p-2 text-center text-white"> Reward Center</h3>
 
                       <!-- ######### cards ##############3 -->
 
+                        <!-- ffff -->
+                        <div class="container">
+                          <h2>Reward Center</h2>
+                          <p class="text-center text-info">Users will be rewarded at 15 referal</p>
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Referal</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr  *ngFor="let item of top_users; index as i">
+                                <td>{{i+1}}</td>
+                                <td> {{item.ref_count}} </td>
+                                <td>{{item.username}} </td>
+                                <td>{{item.role}} </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
 
-
+                        <!-- ddd -->
                   </div>
               </div>
           </div>
+          <app-footer></app-footer>
           <!-- END MAIN CONTENT-->
           <!-- END PAGE CONTAINER-->
       </div>

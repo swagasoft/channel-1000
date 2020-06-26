@@ -41,70 +41,68 @@
                         </div>
                         </div>
 
-                      <div  *ngIf="hideForm" class="login-form mb-5">
-                          <form    #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
+                      <div  *ngIf="hideForm" class="login-form pb-5">
+                          <form    #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)"
+                          (ketdown.enter)="signup_form.valid && onSubmit(signup_form)">
                         <div class="form-group">
-                            <!-- <label>Fullname</label> -->
+                            <!-- <small>Fullname</small> -->
                             <input class="au-input au-input--full" type="text"  #fullname="ngModel"
                             [(ngModel)]="userService.selectedUser.fullname" required
                              name="fullname" placeholder="Fullname">
                         </div>
                         <div *ngIf="signup_form.submitted && !fullname.valid"  class=" text-danger text-center">
-                            <label >fullname is required</label>
+                            <small >fullname is required</small>
                           </div>
 
 
                         <div class="form-group">
-                            <!-- <label>Username</label> -->
+                            <!-- <small>Username</small> -->
                             <input class="au-input au-input--full" type="text"  #username="ngModel"
                             [(ngModel)]="userService.selectedUser.username" required
                              name="username" placeholder="Username">
                         </div>
                         <div *ngIf="signup_form.submitted && !username.valid"  class=" text-danger text-center">
-                            <label >username is required</label>
+                            <small >username is required</small>
                           </div>
 
 
                         <div class="form-group">
-                            <!-- <label>Email Address</label> -->
+                            <!-- <small>Email Address</small> -->
                             <input class="au-input au-input--full" type="email"  #email="ngModel"
                             [(ngModel)]="userService.selectedUser.email" required [pattern]="emailRegex"
                              name="email" placeholder="Email Address">
                         </div>
                         <div *ngIf="signup_form.submitted && email.errors" class=" text-danger text-center">
-                            <label *ngIf="email?.errors.required" >email is required</label>
-                            <label *ngIf="email?.errors.pattern" >email must be valid.</label>
+                            <small *ngIf="email?.errors.required" >email is required</small>
+                            <small *ngIf="email?.errors.pattern" >email must be valid.</small>
                           </div>
 
                         <div class="form-group">
-                            <!-- <label>Password</label> -->
+                            <!-- <small>Password</small> -->
                             <input class="au-input au-input--full" type="password" name="password"  required
                              #password="ngModel" minlength="6"  [(ngModel)]="userService.selectedUser.password"
                             placeholder="Password">
                         </div>
                         <div *ngIf="signup_form.submitted && password.errors" class=" text-danger text-center">
-                            <label *ngIf="password?.errors.required">password is required</label>
-                            <label *ngIf="password?.errors.minlength">password must be at least 6 </label>
+                            <small *ngIf="password?.errors.invalid">password is required</small>
+                            <small *ngIf="password?.errors.minlength">password must be at least 6 </small>
                           </div>
 
                         <div class="form-group">
-                            <!-- <label>Password</label> -->
+                            <!-- <small>Password</small> -->
                             <input class="au-input au-input--full" type="password" name="passwordConf"  required
                              #passwordConf="ngModel" minlength="6"  [(ngModel)]="model.confirmPassword"
                             placeholder="Confirm password">
                         </div>
-                        <div *ngIf=" passwordConf.touched && password.value !== model.confirmPassword && passwordConf.dirty"
-                         class=" text-danger text-center">
-                            <label class="font-weight-bold">password not matched!</label>
-                          </div>
+
 
                         <div class="login-checkbox">
-                            <label class="text-dark">
+                            <small class="text-dark">
                                by creating account you Agree to the terms and <a [routerLink]="['/policy']" > policy</a>
-                            </label>
+                            </small>
                         </div>
-                        <button [disabled]="password.value !== model.confirmPassword"
-                         class="au-btn au-btn--block primary-color-dark m-b-20" type="submit">
+                        <button [disabled]="password.value !== model.confirmPassword || showBtnLoading"
+                         class="au-btn au-btn--block primary-color-dark p-b-20" type="submit">
 
                             <i class="fa fa-spinner fa-spin" *ngIf="showBtnLoading"></i> register</button>
 

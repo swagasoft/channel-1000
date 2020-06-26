@@ -31,8 +31,8 @@ export class UserService {
 
   }
 
-  postUser(user: UserModel) {
-    return this.http.post(environment.apiBaseUrl + '/register' , user, this.noAuthHeader);
+  postUser(userDetails) {
+    return this.http.post(environment.apiBaseUrl + '/register' , userDetails, this.noAuthHeader);
   }
   login(authCredentials) {
     return this.http.post(environment.apiBaseUrl  + '/authenticate',
@@ -125,6 +125,9 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl +`/post-user-level4${post}` );
   }
 
+  getRewardUsers(){
+    return this.http.get(environment.apiBaseUrl + '/get-reward-users');
+  }
 
   getUserRole(){
    return localStorage.getItem('user-role');

@@ -9,9 +9,10 @@ declare var $: any;
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  userDetails: any;
+  userDetails$: any;
 accountDetails: any;
 userRole: any;
+loading: boolean = true;
 referal_count: any;
 activate: any;
 
@@ -57,12 +58,13 @@ alignWindow(){
 getDashboardInformations(){
   this.userService.getUserProfile().subscribe(
     res => {
-      this.userDetails = res['user'];
-      console.log(this.userDetails);
-      this.activate = this.userDetails.activate;
+      this.userDetails$ = res['user'];
+      this.loading = false;
+      console.log(this.userDetails$);
+      this.activate = this.userDetails$.activate;
       console.log('ACTIVATE', this.activate);
-    localStorage.setItem('userEmail', this.userDetails.email);
-    localStorage.setItem('Username',this.userDetails.username);
+    localStorage.setItem('userEmail', this.userDetails$.email);
+    localStorage.setItem('Username',this.userDetails$.username);
 
     },
     err => {

@@ -1,5 +1,6 @@
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-rewards',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RewardsComponent implements OnInit {
 userRole: any;
+top_users : any;
   constructor(private userService: UserService, ) {
 
   }
@@ -16,7 +18,8 @@ userRole: any;
     this.userRole = this.userService.getUserRole();
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
-    this.getHighRank();
+
+    this.getRewarder();
   }
 
 
@@ -33,14 +36,12 @@ userRole: any;
     this.userService.logout();
   }
 
-  getHighRank(){
-    this.userService.getHighRank().subscribe(
+  getRewarder(){
+    this.userService.getRewardUsers().subscribe(
       res => {
         console.log(res);
-      },
-      error => {
-        console.log(error);
+        this.top_users = res;
       }
-    )
+    );
   }
 }

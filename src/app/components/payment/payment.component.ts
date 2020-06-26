@@ -31,12 +31,13 @@ refInput: any;
 emailInput: any;
 Username:string;
 accountDetails: any;
+loading = false;
 history: any;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.refreshAccount();
-      this.userRole = this.userService.getUserRole();
+    this.userRole = this.userService.getUserRole();
     this.userService.getTransaction().subscribe(
       res => {
          this.history =  res['result'];
@@ -81,7 +82,35 @@ history: any;
     console.log('you just cancel a payment!');
     this.generateRef();
   }
+
+  manualPayment(){
+    this.loading = true;
+    let trans = {
+      user : this.Username,
+      email : this.emailInput,
+      amount : 1000,
+      message :'manual',
+      status : 'success',
+      reference: 1234567890
+    }
+
+    this.userService.transasction(trans).subscribe(
+      res => {
+        this.loading = false;
+        this.generateRef();
+        this.router.navigateByUrl('/dashboard');
+      },
+      err => {
+        this.loading = false;
+        this.generateRef();
+        console.log('payment details saved in datbase',err);
+
+      }
+    );
+  }
+
   paymentDone($event) {
+    this.loading = true;
     console.info('PAYMENT SUBMIT');
     $event.user = this.Username;
     $event.email = this.emailInput;
@@ -89,12 +118,13 @@ history: any;
     console.log($event);
     this.userService.transasction($event).subscribe(
     response => {
-      console.log('err saving data, try again.');
+      this.loading = false;
       this.generateRef();
       this.router.navigateByUrl('/dashboard');
 
     },
     error => {
+      this.loading = false;
       this.generateRef();
       console.log('payment details saved in datbase',error);
 

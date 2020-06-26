@@ -16,11 +16,11 @@ userRole: any;
     this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
     this.loadScript('../../assets/dashboard/js/main.js');
     this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
+      if(!(evt instanceof NavigationEnd)) {
         return ;
       }
 
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     });
   }
 

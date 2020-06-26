@@ -44,10 +44,7 @@
                             <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
                                 <i class="fas fa-chart-bar"></i>Payment</a>
                         </li>
-                        <li>
-                            <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active">
-                                <i class="fas fa-table"></i>Refer and Earn</a>
-                        </li>
+
                         <li>
                             <a [routerLink]="['/rewards']" routerLinkActive="router-link-active">
                                 <i class="far fa-check-square"></i>Rewards Center</a>
@@ -92,7 +89,7 @@
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
 
-                                       <p class="font-weight-bold"> {{userDetails?.username}}   </p>
+                                       <p class="font-weight-bold"> {{userDetails$?.username}}   </p>
                                     </div>
 
                                 </div>
@@ -100,16 +97,16 @@
                                     <div class="account-item clearfix js-item-menu">
 
                                         <div class="content">
-                                            <p class="js-acc-btn font-weight-bold"> {{userDetails?.cust_id}} </p>
+                                            <p class="js-acc-btn font-weight-bold"> {{userDetails$?.cust_id}} </p>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
 
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a >{{userDetails?.fullname}} </a>
+                                                        <a >{{userDetails$?.fullname}} </a>
                                                     </h5>
-                                                    <span class="email">{{userDetails?.email}} </span>
+                                                    <span class="email">{{userDetails$?.email}} </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -144,22 +141,22 @@
 <div class="container">
 
   <!-- Feature Cards -->
-  <section class="d-flex bg-light" id="feature-cards">
+  <section class="d-flex bg-light" id="feature-cards" >
       <div class="container d-flex justify-content-center">
           <div class="row align-items-center justify-content-center">
               <div class="col-12 align-self-center">
                   <div class="row">
                       <div class="col-12 col-lg-7 mx-auto text-center">
                           <h6 class="text-muted font-weight-bold mb-5 text-uppercase"
-                          >{{userDetails?.fullname}} </h6>
+                          >{{userDetails$?.fullname}} </h6>
                       </div>
-                  </div>
-                  <div>
 
-                    <div *ngIf="!activate" class="card text-center p-3 bg-warning text-dark">
+                  </div>
+
+                  <div *ngIf="!activate">
+                    <div  class="card text-center p-3 bg-warning text-dark">
                       <p>To activate your account, you need to Make PAYMENT</p>
                     </div>
-
                     <a mdbBtn [routerLink]="['/payment']"
                          type="button" class=" btn btn-success text-white btn-lg p-3 m-3" >MAKE PAYMENT</a>
                   </div>
@@ -175,7 +172,7 @@
                                   </div>
                                   <div class="row mt-3">
                                       <div class="col-12 text-center">
-                                          <h2 class="text-info"> {{userDetails?.ref_count}}</h2>
+                                          <h2 class="text-info"> {{userDetails$?.ref_count}}</h2>
                                           <p class="text-secondary display -4 ">
                                             Referal </p>
 
@@ -195,8 +192,8 @@
                                   </div>
                                   <div class="row mt-3 text-center">
                                       <div class="col-12 ">
-                                          <h2 class="text-info text-center pl-3">{{userDetails?.level}} </h2>
-                                          <p class="text-secondary text-center ">This is Your Current level</p>
+                                          <h2 class="text-info text-center pl-3">{{userDetails$?.level}} </h2>
+                                          <p class="text-secondary text-center "> Current level</p>
 
                                       </div>
                                   </div>
@@ -213,8 +210,10 @@
                                   </div>
                                   <div class="row mt-3" >
                                       <div class="col-12 text-center">
-                                          <h2 class="text-info"> {{userDetails?.point}}
-                                          - Point </h2>
+                                          <h2 *ngIf="userDetails$?.level == 'LEVEL-1'" class="text-info"> {{userDetails$?.point}}/4 - Point </h2>
+                                          <h2 *ngIf="userDetails$?.level == 'LEVEL-2'" class="text-info"> {{userDetails$?.point}}/16 - Point </h2>
+                                          <h2 *ngIf="userDetails$?.level == 'LEVEL-3'" class="text-info"> {{userDetails$?.point}}/64 - Point </h2>
+                                          <h2 *ngIf="userDetails$?.level == 'LEVEL-4'" class="text-info"> {{userDetails$?.point}}/256 - Point </h2>
                                           <p class="text-secondary">
                                            <span> point earn so far</span> </p>
 
@@ -234,26 +233,39 @@
                                   </div>
                                   <div class="row mt-3">
                                       <div class="col-12 text-center">
-                                          <h2 class="text-info">₦ {{userDetails?.earnings | number}} </h2>
+                                          <h2 class="text-info">₦ {{userDetails$?.earnings | number}} </h2>
                                           <p class="text-secondary">total earnings</p>
                                             <br>
 
                                       </div>
                                   </div>
                               </div>
+
+                          </div>
+                          <div class=" text-white ">
+                            <!-- <h5> downline(s) : {{userDetails$?.group | number}} </h5> -->
                           </div>
                       </div>
 
                   </div>
+
+                  <!-- loading.... -->
+                  <div *ngIf="loading" #loading class=" mb-5 col d-flex justify-content-center affix">
+                    <div class="toast-container">
+                      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div>
+                      </div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    </div>
+                  </div>
+
                   <!-- content val -->
                     <!-- ######### cards ##############3 -->
                     <section class="details-card" *ngIf="userRole=='INVESTOR'">
-                        <div class="container">
+                        <div class="container m-0">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="card-content">
                                         <div class="card-desc">
-                                            <h3>₦ {{userDetails?.investment | number}} </h3>
+                                            <h3>₦ {{userDetails$?.investment | number}} </h3>
                                             <p>investment </p>
 
                                         </div>
@@ -262,7 +274,7 @@
                                 <div class="col-md-4" >
                                     <div class="card-content">
                                         <div class="card-desc">
-                                            <h3>₦ {{userDetails?.earnings | number}} </h3>
+                                            <h3>₦ {{userDetails$?.earnings | number}} </h3>
                                             <p> profit</p>
                                         </div>
                                     </div>
@@ -270,12 +282,13 @@
                                 <div class="col-md-4">
                                     <div class="card-content">
                                         <div class="card-desc">
-                                            <h3>₦ {{userDetails?.cashout | number}} </h3>
+                                            <h3>₦ {{userDetails$?.cashout | number}} </h3>
                                               <p>cashout </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <p class="text-center  mt-4"> Referal Link :<strong class=""> {{userDetails$?.ref_link}}</strong> </p>
                         </div>
                       </section>
                       <!-- ######### cards ##############3 -->
@@ -293,5 +306,3 @@
         </div>
 
     </div>
-
-

@@ -19,6 +19,8 @@ username: string;
 custId: number;
 ref_link: string;
 userRole: any;
+loading: boolean = true;
+edit_form: boolean = false;
 
   constructor(private userService: UserService) { }
 
@@ -27,6 +29,7 @@ userRole: any;
     this.userService.editAccount().subscribe(
       res => {
         this.userAccount = res['user'];
+        this.loading = false;
         console.log(this.userAccount);
         this.fullname = this.userAccount.fullname;
         this.email = this.userAccount.email;
@@ -62,6 +65,10 @@ userRole: any;
   }
   logOut(){
     this.userService.logout();
+  }
+
+  editDetails(){
+    this.edit_form = true;
   }
 
 }

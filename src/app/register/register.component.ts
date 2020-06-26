@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
      ) {   }
 
+
      model = {
        confirmPassword: ''
      }
@@ -55,9 +56,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     // over ride form role value...
     form.value.role = this.userRole;
     this.showBtnLoading = true;
+    var userDetails = new FormData();
+    userDetails = form.value;
+    console.log(userDetails);
 
-
-    this.userService.postUser(form.value).subscribe(
+    this.userService.postUser(userDetails).subscribe(
       res => {
         this.hideForm = false;
         this.showBtnLoading = false;

@@ -40,10 +40,7 @@
                           <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
                               <i class="fas fa-chart-bar"></i>Payment</a>
                       </li>
-                      <li>
-                          <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active">
-                              <i class="fas fa-table"></i>Refer and Earn</a>
-                      </li>
+
                       <li>
                           <a [routerLink]="['/rewards']" routerLinkActive="router-link-active">
                               <i class="far fa-check-square"></i>Rewards Center</a>
@@ -154,7 +151,7 @@
                          && cashOut(cashoutForm, account.user_id)">
                            <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"
                              [(ngModel)]="model.cashout"  #cashout="ngModel">
-                            <input type="submit"  value="Submit">
+                            <input type="submit"  value="CASHOUT">
                         </form>
                         </div>
                             </div>
@@ -167,6 +164,7 @@
                   </div>
               </div>
           </div>
+          <app-footer></app-footer>
           <!-- END MAIN CONTENT-->
           <!-- END PAGE CONTAINER-->
       </div>

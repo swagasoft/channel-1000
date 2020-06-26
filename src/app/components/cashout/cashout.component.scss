@@ -7,7 +7,8 @@ background: #ecf0f1;
 
 /* End card section */
 .router-link-active{
-  background-color: rgb(82, 118, 153);
+  background-color: rgb(205, 205, 245);
+
 }
 li{
   font-weight: bold;
@@ -59,9 +60,9 @@ input{
 }
 input[type = submit]{
   width:100px;
-  background-color:#1bec37;
+  background-color:#301bec;
   border-radius:5px;
-  border:2px solid #4443ea;
+  border:2px solid #0dd5f0;
   color:#fff
 }
 

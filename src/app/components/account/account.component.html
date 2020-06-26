@@ -37,10 +37,7 @@
                             <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
                                 <i class="fas fa-chart-bar"></i>Payment</a>
                         </li>
-                        <li>
-                            <a [routerLink]="['/referandearn']" routerLinkActive="router-link-active">
-                                <i class="fas fa-table"></i>Refer and Earn</a>
-                        </li>
+
                         <li>
                             <a [routerLink]="['/rewards']" routerLinkActive="router-link-active">
                                 <i class="far fa-check-square"></i>Rewards Center</a>
@@ -139,97 +136,54 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h6 class="title-1 font-weight-bold">MY Acount</h6>
+                                    <!-- <h6 class="title-1 font-weight-bold">MY Acount</h6> -->
 
                                 </div>
                             </div>
                         </div>
 
-
-                        <!-- ######### cards ##############3 -->
-
-                        <div class="container bootstrap snippets">
-                            <div class="row">
-                              <div class="col-xs-12 col-sm-9">
-
-                                <form class="form-horizontal" #profile_form="ngForm"
-                                 (submit)="submitProfile(profile_form)">
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                    <h4 class="panel-title">User info</h4>
-                                    </div>
-
-                                    <div class="panel-body">
-                                      <div class="form-group">
-                                        <label class="col-sm-2 control-label">referal link</label>
-                                        <div class="col-sm-10">
-                                          <input type="text" readonly class="form-control" value="{{ref_link}}"
-                                           >
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="panel-body">
-                                      <div class="form-group">
-                                        <label class="col-sm-2 control-label">fullname</label>
-                                        <div class="col-sm-10">
-                                          <input type="text" class="form-control" value="{{fullname}}"
-                                           >
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="panel-body">
-                                      <div class="form-group">
-                                        <label class="col-sm-2 control-label">email</label>
-                                        <div class="col-sm-10">
-                                          <input type="text" class="form-control"
-                                           value="{{email}}" readonly name="email">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="panel-body">
-                                      <div class="form-group">
-                                        <label class="col-sm-2 control-label">Username</label>
-                                        <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="username"
-                                           value="{{username}}"  name="userNumber" readonly>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div class="panel-body">
-                                      <div class="form-group">
-                                        <label class="col-sm-2 control-label">role</label>
-                                        <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="userRole"
-                                          value="{{userRole}} " readonly >
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                  </div>
-                                  <input type="submit" class="btn btn-success"
-                                   value="update profile">
-                                  </form>
-
-                              </div>
-
-
-                              <div class="card">
-                                <div class="panel">
-                                 <a class="btn btn-warning"> CHOOSE PAYMENT METHOD</a>
-                                </div>
-
-                              </div>
-
-                        <!-- ######### cards ##############3 -->
-
-
-
+                         <!-- loading.... -->
+                  <div *ngIf="loading" #loading class=" mb-5 col d-flex justify-content-center affix">
+                      <div class="toast-container">
+                        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div>
+                        </div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                      </div>
                     </div>
-                </div>
-            </div>
+
+
+            <ul class="list-group" if="edit_form == false">
+                <li class="list-group-item active text-center"> DETAILS </li>
+                <li class="list-group-item"> FULLNAME : {{fullname}}</li>
+                <li class="list-group-item">USERNAME : {{username}} </li>
+                <li class="list-group-item">EMAIL : {{email}} </li>
+                <li class="list-group-item">ROLE : {{userRole}} </li>
+                <li class="list-group-item">REFERAL :     {{ref_link}} </li>
+                <button (click)="editDetails()" class="btn-success btn-sm mt-2">ADD/EDIT</button>
+              </ul>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
+
+            <div *ngIf="edit_form">
+              <!-- Default form subscription -->
+<form class="text-center border border-light p-5" action="#!">
+    <p class="h4 mb-4">BANK INFORMATION</p>
+
+    <small class="text-danger">MAKE SURE YOU ENTER YOUR CORRECT RECORD, THIS CANNOT BE EDITED AFTER THIS UPDATE</small>
+    <p>
+        <!-- <a href="" target="_blank">See the last newsletter</a> -->
+    </p>
+
+    <!-- Name -->
+    <input type="text"  class="form-control mb-4" placeholder="Bank Name">
+    <!-- Email -->
+    <input type="text"  class="form-control mb-4" placeholder="Bank Acount Name">
+    <input type="number"  class="form-control mb-4" placeholder="Bank Acount Number">
+    <!-- Sign in button -->
+    <button class="btn btn-info btn-block" type="submit">UPDATE RECORD</button>
+</form>
+<!-- Default form subscription -->
+            </div>
+
         </div>
 
     </div>

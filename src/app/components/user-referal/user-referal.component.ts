@@ -19,15 +19,12 @@ export class UserReferalComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(   public userService: UserService,
-    private router: Router,
-    private flashMessage: FlashMessagesService,
-    private activateRoute: ActivatedRoute,
-    config: NgbModalConfig, private modalService: NgbModal) {
+                 private router: Router,
+                 private flashMessage: FlashMessagesService,
+                 private activateRoute: ActivatedRoute,
+                 config: NgbModalConfig, private modalService: NgbModal) {
 
-      activateRoute.queryParams.subscribe(params => {
-        this.referal_username = activateRoute.snapshot.params['username'];
-        console.log(this.referal_username);
-     });
+
     }
 
     model = {
@@ -35,6 +32,13 @@ export class UserReferalComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.activateRoute.queryParams.subscribe(params => {
+      const  REFERAL = this.activateRoute.snapshot.params['username'];
+      let smallLetterRef =  REFERAL.toLowerCase();
+      this.referal_username = smallLetterRef;
+      console.log(this.referal_username);
+   });
+
     this.hideForm = true;
     this.showBtnLoading = false;
     this.alignWindow();
@@ -56,9 +60,12 @@ export class UserReferalComponent implements OnInit {
     form.value.role = this.userRole;
     form.value.ref_username = this.referal_username;
     this.showBtnLoading = true;
+    var userDetails = new FormData();
+    userDetails = form.value;
 
+    console.log(userDetails);
 
-    this.userService.postUser(form.value).subscribe(
+    this.userService.postUser(userDetails).subscribe(
       res => {
         this.hideForm = false;
         this.showBtnLoading = false;

@@ -5,7 +5,7 @@
 
 <app-navbar></app-navbar>
 <!-- Main CSS-->
-<link href="../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
+<link href="../../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
 
 
 
@@ -44,6 +44,7 @@
                         </div>
 
                       <div  *ngIf="hideForm" class="login-form mb-5">
+                          <div *ngIf="referal_username"> <p class="text-info text-center"> {{referal_username}}</p> </div>
                           <form    #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)">
                         <div class="form-group">
                             <!-- <label>Fullname</label> -->
