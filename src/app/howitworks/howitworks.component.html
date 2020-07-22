@@ -1,5 +1,9 @@
 <app-navbar></app-navbar>
 
+
+
+<ion-content>
+
 <!-- header -->
 <div class="jumbotron p-0  grey lighten-4 text-dark">
 
@@ -23,6 +27,68 @@
 </div>
 <!-- Jumbotron -->
 
+<ion-grid class="ion-text-center">
+  <ion-row>
+    <ion-col>
+      <div class="feature">
+        <div class="feature-icon">
+           <i class="fa fa-cogs" aria-hidden="true"></i>
+        </div>
+        <h5>Select your package</h5>
+        <p>
+            <a class="font-weight-bold" routerLink="/register">Register </a>
+            register with either N1,000, N2,000, N5,000 or N10,000 depending on the product type.
+        </p>
+    </div>
+    </ion-col>
+    <ion-col>
+      <div class="feature">
+        <div class="feature-icon">
+           <i class="fa fa-cogs" aria-hidden="true"></i>
+        </div>
+        <h5>The structure</h5>
+        <p>
+            The customer registers 2 persons below his or her down-line
+        </p>
+    </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="feature">
+        <div class="feature-icon">
+           <i class="fa fa-cogs" aria-hidden="true"></i>
+        </div>
+        <h5>Where the 2 down-lines were registered by a marketer; </h5>
+        <p>
+          For N1,000 option, the company pays N125 each for the two down lines
+           (i.e. N250) to the marketer(s) that registered the down lines and takes
+            N125 each for the two  down lines (i.e. N250) as service charge and
+           pays the customer a bonus of N1,500. This gives a total of the N2,000.
+        </p>
+
+        <p>
+          For N2,000 option, the company pays N250 each for the two down lines (i.e. N500)
+          to the marketer(s) that registered the down lines and takes N250 each for the two
+           down lines (i.e. N500)
+          as service charge and pays the customer a bonus of N3,000. This gives a total of the N4,000.
+        </p>
+        <p>
+          For N5,000 option, the company pays N500 each for the two down lines (i.e. N1000)
+           to the marketer(s) that registered the down lines and takes N750 each for the two
+            down lines (i.e. N1,500)
+          as service charge and pays the customer a bonus of N7,500. This gives a total of the N10,000.
+        </p>
+        <p>
+          For N10,000 option, the company pays N1,000 each for the two down lines
+           (i.e. N2,000) to the marketer(s) that registered the down lines and takes
+            N1,500 each for the two  down lines (i.e. N3,000) as service charge and pays
+          the customer a bonus of N15,000. This gives a total of the N20,000.
+        </p>
+    </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
 <!-- end header -->
 <div class="container">
@@ -32,9 +98,10 @@
                 <div class="feature-icon">
                    <i class="fa fa-cogs" aria-hidden="true"></i>
                 </div>
-                <h5>Create account in channel1000</h5>
+                <h5>Select your package</h5>
                 <p>
-                    <a class="font-weight-bold" routerLink="/register">Register </a> as an investor or a marketer
+                    <a class="font-weight-bold" routerLink="/register">Register </a>
+                    register with either N1,000, N2,000, N5,000 or N10,000 depending on the product type.
                 </p>
             </div>
 
@@ -42,9 +109,10 @@
                 <div class="feature-icon">
                     <i class="fa fa-line-chart" aria-hidden="true"></i>
                 </div>
-                <h5>Register as an investor </h5>
+                <h5>Structure </h5>
                 <p>
-                    Initiate the payment of N1000 via wire transfer or paystack.
+                  The customer registers 2 persons below his or her down-line
+
                 </p>
             </div>
 
@@ -94,3 +162,4 @@
     </div>
 </div>
 <app-footer></app-footer>
+</ion-content>

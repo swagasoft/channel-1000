@@ -11,13 +11,27 @@ p{
 
 li{
 font-weight: bold;
+font-size: 15px;
+margin-top: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.nav-link{
+font-weight: bold;
   color: rgb(255, 255, 255);
 }
 .dropdown-menu{
   background-color: black;
 }
+a{
+  font-size: 15px;
+}
 
 a:hover{
 text-decoration: underline;
 text-decoration-line: underline;
+}
+
+.router-link-active{
+  text-decoration: underline;
 }

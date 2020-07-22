@@ -64,6 +64,7 @@ import { AdminLevel4Component } from './components/admin-level4/admin-level4.com
 import { UserReferalComponent } from './components/user-referal/user-referal.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { NavMobileAdminComponent } from './components/nav-mobile-admin/nav-mobile-admin.component';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -115,6 +116,7 @@ import { NavMobileAdminComponent } from './components/nav-mobile-admin/nav-mobil
   imports: [
     BrowserModule,
     NgbModule,
+    IonicModule,
     FormsModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -125,7 +127,8 @@ import { NavMobileAdminComponent } from './components/nav-mobile-admin/nav-mobil
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
-    Angular4PaystackModule
+    Angular4PaystackModule,
+    IonicModule.forRoot()
 
 
 
