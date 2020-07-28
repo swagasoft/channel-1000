@@ -45,8 +45,12 @@ loading: boolean;
         this.userService.saveUserRole(response);
         this.loading = false;
         this.userService.setToken(response['token']);
-        this.router.navigateByUrl('/dashboard');
+      localStorage.setItem('username', response['doc']['username']);
+      localStorage.setItem('fullname',response['doc']['fullname']);
+      localStorage.setItem('package',response['doc']['package']);
+      localStorage.setItem('role',response['doc']['role']);
 
+        this.router.navigateByUrl('/tabs/dashboard');
       },
       err => {
         console.log(err);

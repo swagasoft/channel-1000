@@ -33,7 +33,7 @@ Username:string;
 accountDetails: any;
 loading = false;
 history: any;
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.refreshAccount();

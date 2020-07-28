@@ -5,4 +5,6 @@ export class UserModel {
   password: string;
   role: string;
   ref_username: string;
+  package: string;
+  confirmPassword : string
 }

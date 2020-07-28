@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
+import { UserModel } from 'src/app/models/user-model.model';
 
 @Component({
   selector: 'app-user-referal',
@@ -27,9 +28,7 @@ export class UserReferalComponent implements OnInit {
 
     }
 
-    model = {
-      confirmPassword: ''
-    }
+
 
   ngOnInit() {
     this.activateRoute.queryParams.subscribe(params => {
@@ -53,6 +52,19 @@ export class UserReferalComponent implements OnInit {
       window.scrollTo(0,0);
     });
   }
+
+
+
+  model: UserModel = {
+    fullname: '',
+    role: '',
+    username : '',
+    email   : '',
+    password: '',
+    ref_username: '',
+    package:'',
+    confirmPassword: ''
+  };
 
 
   onSubmit(form: NgForm) {
@@ -94,13 +106,15 @@ export class UserReferalComponent implements OnInit {
     );
   }
   resetForm(form: NgForm) {
-    this.userService.selectedUser = {
+    this.model = {
       fullname: '',
       email: '',
       username: '',
       role: this.userRole,
       password: '',
-      ref_username: ''
+      package : '',
+      ref_username: '',
+      confirmPassword:''
     };
 
     form.resetForm();

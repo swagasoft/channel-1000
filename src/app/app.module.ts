@@ -65,6 +65,8 @@ import { UserReferalComponent } from './components/user-referal/user-referal.com
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { NavMobileAdminComponent } from './components/nav-mobile-admin/nav-mobile-admin.component';
 import { IonicModule } from '@ionic/angular';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { LogedinNavComponent } from './components/logedin-nav/logedin-nav.component';
 
 
 
@@ -111,6 +113,9 @@ import { IonicModule } from '@ionic/angular';
     UserReferalComponent,
     ForgetPasswordComponent,
     NavMobileAdminComponent,
+    TabsComponent,
+    LogedinNavComponent,
+    LogedinNavComponent
 
   ],
   imports: [

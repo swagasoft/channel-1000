@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ToastController, AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -14,22 +15,51 @@ export class UserService {
   token: any;
 
 
-  selectedUser: UserModel = {
-    fullname: '',
-    role: '',
-    username : '',
-    email   : '',
-    password: '',
-    ref_username: ''
-  };
 
     noAuthHeader = {headers: new HttpHeaders({NoAuth: 'True'})};
     AuthHeader = {headers: new HttpHeaders().set('Authorization',
     `Bearer ${localStorage.getItem('token')}`)};
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,
+              public toastController: ToastController,public alertController: AlertController) {
 
   }
+
+
+  async generalAlert(header, message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: `${header}`,
+      message: `${message}`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+  async generalToast(header, message, timeout) {
+    const toast = await this.toastController.create({
+      header : `${header}`,
+      message: `${message}`,
+      duration:  3000
+    });
+    toast.present();
+  }
+
 
   postUser(userDetails) {
     return this.http.post(environment.apiBaseUrl + '/register' , userDetails, this.noAuthHeader);
@@ -76,6 +106,10 @@ export class UserService {
   }
   saveUserRole(response){
       localStorage.setItem('user-role', response['doc']['role']);
+  }
+
+  getUser(){
+    localStorage.getItem('username');
   }
 
   // ####### admin panel
@@ -130,7 +164,19 @@ export class UserService {
   }
 
   getUserRole(){
-   return localStorage.getItem('user-role');
+   return localStorage.getItem('role');
+  }
+
+  getUsername(){
+   return localStorage.getItem('username');
+  }
+
+  getPackage(){
+   return localStorage.getItem('package');
+  }
+
+  getfullname(){
+   return localStorage.getItem('fullname');
   }
 
   setToken(token: string) {
@@ -167,6 +213,11 @@ export class UserService {
   public logout(): void {
    this.deleteToken();
    this.token = '';
+   localStorage.removeItem('username');
+   localStorage.removeItem('fullname');
+   localStorage.removeItem('package');
+   localStorage.removeItem('role');
    this.router.navigateByUrl('/login');
+
   }
 }

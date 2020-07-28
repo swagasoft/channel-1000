@@ -1,6 +1,7 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 declare var $: any;
 
 @Component({
@@ -17,14 +18,14 @@ referal_count: any;
 activate: any;
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.getDashboardInformations();
     this.alignWindow();
 
+
     this.userRole =  this.userService.getUserRole();
-    console.log('USER-ROLE',  this.userRole);
     // load script
     this.loadScript('../../assets/dashboard/vendor/jquery-3.2.1.min.js');
     this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/popper.min.js');
@@ -32,6 +33,9 @@ activate: any;
     this.loadScript('../../assets/dashboard/js/main.js');
 
 }
+
+
+
 
 loadScript(url: string){
   const body = <HTMLDivElement> document.body;
@@ -56,6 +60,7 @@ alignWindow(){
 }
 
 getDashboardInformations(){
+  console.log('get my dash')
   this.userService.getUserProfile().subscribe(
     res => {
       this.userDetails$ = res['user'];

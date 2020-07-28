@@ -1,275 +1,154 @@
+<app-logedin-nav></app-logedin-nav>
 
 
-
-    <!-- ######################################## -->
-    <!-- ######################################## -->
-    <link href="../../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-    <link href="../../../assets/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="../../../assets/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <!-- Main CSS-->
-    <link href="../../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
-
-
-    <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="../../assets/dashboard/images/icon/logo.png" alt="logo" />
-                        </a>
-
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
+<ion-content>
+  <div class="main-content mb-5">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid  text-white">
+            <div class="row">
+                <div class="col-md-12 text-center text-white">
+                    <div class="overview-wrap">
+                        <h4 class="title-1 font-weight-bold"> Payment on the go</h4>
+                      <img src="../../../assets/atm_cards2.jpg"  width="250" alt="">
                     </div>
                 </div>
             </div>
 
-            <!-- MOBILE NAV -->
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
 
-                        </li>
-                        <li>
-                            <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
-                                <i class="fas fa-chart-bar"></i>Payment</a>
-                        </li>
+            <!-- ######### cards ##############3 -->
 
-                        <li>
-                            <a [routerLink]="['/rewards']" routerLinkActive="router-link-active">
-                                <i class="far fa-check-square"></i>Rewards Center</a>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/account']" routerLinkActive="router-link-active">
-                                <i class="fas fa-calendar-alt"></i>My Account</a>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/cashout']" routerLinkActive="router-link-active">
-                                <i class="fas fa-map-marker-alt"></i>Cash Out</a>
-                        </li>
-                        <li class="has-sub" *ngIf="userRole ==='ADMIN'">
-                            <a class="js-arrow" [routerLink]="['/admin-dash']" routerLinkActive="router-link-active" >
-                                <i class="fas fa-copy"></i>Administrator</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" (click)="logOut()" >
-                                <i class="fa fa-power-off" aria-hidden="true"></i>Log Out</a>
-
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
-
-        <!-- MENU SIDEBAR-->
-        <app-sidemenu></app-sidemenu>
-        <!-- END MENU SIDEBAR-->
-
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-
-                            <div class="header-button">
-                                <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
-
-                                       <p class="font-weight-bold">  </p>
-                                    </div>
-
-                                </div>
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-
-                                        <div class="content">
-                                            <p class="js-acc-btn font-weight-bold"> </p>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a ></a>
-                                                    </h5>
-                                                    <span class="email"> </span>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a [routerLink]="['/account']" routerLinkActive="router-link-active" >
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a [routerLink]="['/cashout']" routerLinkActive="router-link-active" >
-                                                        <i class="zmdi zmdi-settings"></i>Cash out</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
-                                                        <i class="zmdi zmdi-money-box"></i>Payment</a>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a (click)="logOut()">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- HEADER DESKTOP-->
-
-            <!-- MAIN CONTENT-->
-            <div class="main-content mb-5">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid  text-white">
-                        <div class="row">
-                            <div class="col-md-12 text-center text-white">
-                                <div class="overview-wrap">
-                                    <h4 class="title-1 font-weight-bold"> Payment on the go</h4>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- ######### cards ##############3 -->
-
-                        <!-- payment cards -->
-                        <!-- details card section starts from here -->
+            <!-- payment cards -->
+            <!-- details card section starts from here -->
 
 <!-- details card section starts from here -->
-                        <!-- payment cards ends -->
-        <small class="text-center text-info justify-content-center d-flex">
-           Click the button below to make payment </small>
-          <div  (click)="paynow()">
-            <div class="example-button-row  justify-content-center d-flex">
-            <angular4-paystack class="btn btn-sm display-block font"
-            [key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
-            [email]="(emailInput)"
-            [amount]="(amountInput)"
-            [ref]="(refInput)"
-            [channels]="['bank']"
-            [class]="'btn btn-success'"
-            (close)="paymentCancel()"
-            (callback)="paymentDone($event)"
-            ><h1 class="text-white">BANK TRANSFER </h1></angular4-paystack>
-            </div>
+            <!-- payment cards ends -->
+<small class="text-center text-info justify-content-center d-flex">
+Click the button below to make payment </small>
+<div  (click)="paynow()">
 
-            <br>
 
-            <div class="example-button-row justify-content-center d-flex">
-            <angular4-paystack class="btn btn-sm display-block font"
-            [key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
-            [email]="(emailInput)"
-            [amount]="(amountInput)"
-            [ref]="(refInput)"
-            [channels]="['card']"
-            [class]="'btn btn-success'"
-            (close)="paymentCancel()"
-            (callback)="paymentDone($event)"
-            ><h1 class="text-white">PAY WITH CARD </h1></angular4-paystack>
-            </div>
-            </div>
-            <br>
-            <button (click)="manualPayment()" class="btn btn-lg btn-success"> AUTOMATIC PAYMENT</button>
+<div class="example-button-row justify-content-center d-flex">
+<angular4-paystack *ngIf="userService.getPackage() == 'PACKAGE1000'"
+ class="btn btn-sm display-block font"
+[key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
+[email]="(emailInput)"
+amount="100000"
+[ref]="(refInput)"
+[channels]="['card']"
+[class]="'btn btn-success'"
+(close)="paymentCancel()"
+(callback)="paymentDone($event)"
+><h6 class="text-white">PAY ₦1000 NOW</h6></angular4-paystack>
 
-                        <!-- ######### cards ##############3 -->
+<angular4-paystack *ngIf="userService.getPackage() == 'PACKAGE2000'"
+ class="btn btn-sm display-block font"
+[key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
+[email]="(emailInput)"
+amount="200000"
+[ref]="(refInput)"
+[channels]="['card']"
+[class]="'btn btn-success'"
+(close)="paymentCancel()"
+(callback)="paymentDone($event)"
+><h6 class="text-white">PAY ₦2000 NOW</h6></angular4-paystack>
 
-                        <section class="details-card  text-white">
-                          <div class="container">
-                              <div class="row">
-                                  <div class="col-md-4">
-                                      <div class="card-content">
-                                          <div class="card-desc">
-                                              <h3>₦ {{accountDetails?.investment | number}} </h3>
-                                              <p>investment </p>
+<angular4-paystack *ngIf="userService.getPackage() == 'PACKAGE5000'"
+ class="btn btn-sm display-block font"
+[key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
+[email]="(emailInput)"
+amount="500000"
+[ref]="(refInput)"
+[channels]="['card']"
+[class]="'btn btn-success'"
+(close)="paymentCancel()"
+(callback)="paymentDone($event)"
+><h6 class="text-white">PAY ₦5000 NOW</h6></angular4-paystack>
 
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <div class="card-content">
-                                          <div class="card-desc">
-                                              <h3>₦ {{accountDetails?.earnings | number}} </h3>
-                                              <p> profit</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <div class="card-content">
-                                          <div class="card-desc">
-                                              <h3>₦ {{accountDetails?.cashout | number}} </h3>
-                                                <p>cashout </p>
-                                          </div>
-                                      </div>
-                                  </div>
+<angular4-paystack *ngIf="userService.getPackage() == 'PACKAGE10000'"
+ class="btn btn-sm display-block font"
+[key]="'pk_test_df7b7b6f7fd624a2a98103f1d1ffd1aaf0cd17c7'"
+[email]="(emailInput)"
+amount="1000000"
+[ref]="(refInput)"
+[channels]="['card']"
+[class]="'btn btn-success'"
+(close)="paymentCancel()"
+(callback)="paymentDone($event)"
+><h6 class="text-white">PAY ₦10000 NOW</h6></angular4-paystack>
+</div>
+</div>
+<br>
+
+
+
+            <!-- ######### cards ##############3 -->
+
+            <section class="details-card  text-white">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="card-content">
+                              <div class="card-desc">
+                                  <h3>₦ {{accountDetails?.investment | number}} </h3>
+                                  <p>investment </p>
+
                               </div>
                           </div>
-                        </section>
-                        <!--  payment history -->
-                        <div class="row">
-                          <div class="col-lg-9">
-                              <h2 class="title-1 m-b-25">Payment history</h2>
-                              <div class="table-responsive table--no-card m-b-40">
-                                  <table class="table table-borderless table-striped table-earning"
-                                  >
-                                      <thead>
-                                          <tr>
-                                              <th> #</th>
-                                              <th>Amount</th>
-                                              <th>Status</th>
-                                              <th>reference</th>
-
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          <tr  *ngFor="let item of history">
-                                              <td  > <i class="fa fa-check" aria-hidden="true" style="color: green"></i></td>
-                                              <td> {{item.amount | number}}</td>
-                                              <td>{{item.status}} </td>
-                                              <td>{{item.reference}}</td>
-
-                                          </tr>
-
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-
                       </div>
-                        <!-- end of payment history -->
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- loading.... -->
-            <div *ngIf="loading" #loading class=" mb-5 col d-flex justify-content-center affix">
-              <div class="toast-container">
-                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div>
-                </div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                      <div class="col-md-4">
+                          <div class="card-content">
+                              <div class="card-desc">
+                                  <h3>₦ {{accountDetails?.earnings | number}} </h3>
+                                  <p> profit</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="card-content">
+                              <div class="card-desc">
+                                  <h3>₦ {{accountDetails?.cashout | number}} </h3>
+                                    <p>cashout </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
-            <app-footer></app-footer>
-        </div>
+            </section>
+            <!--  payment history -->
+            <div class="row">
+              <div class="col-lg-9">
+                  <h2 class="title-1 m-b-25">Payment history</h2>
+                  <div class="table-responsive table--no-card m-b-40">
+                      <table class="table table-borderless table-striped table-earning"
+                      >
+                          <thead>
+                              <tr>
+                                  <th> #</th>
+                                  <th>Amount</th>
+                                  <th>Status</th>
+                                  <th>reference</th>
 
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr  *ngFor="let item of history">
+                                  <td  > <i class="fa fa-check" aria-hidden="true" style="color: green"></i></td>
+                                  <td> {{item.amount | number}}</td>
+                                  <td>{{item.status}} </td>
+                                  <td>{{item.reference}}</td>
+
+                              </tr>
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
+          </div>
+            <!-- end of payment history -->
+
+        </div>
     </div>
+</div>
+</ion-content>
 

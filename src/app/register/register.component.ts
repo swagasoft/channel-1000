@@ -2,8 +2,9 @@ import {  FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../services/user.service';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { UserModel } from '../models/user-model.model';
 
 @Component({
   selector: 'app-register',
@@ -12,9 +13,10 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   public userRole: string = 'INVESTOR';
-  hideForm : boolean;
+  showForm : boolean;
   showSelection: boolean;
   showBtnLoading: boolean;
+  selectpackage = true;
 
   showSuccessMessage: boolean;
   serverErrormessages: string;
@@ -25,30 +27,60 @@ export class RegisterComponent implements OnInit, OnDestroy {
     public userService: UserService,
     private router: Router,
     private flashMessage: FlashMessagesService,
+    private route: ActivatedRoute,
     config: NgbModalConfig, private modalService: NgbModal
 
      ) {   }
 
 
-     model = {
-       confirmPassword: ''
-     }
+
+
+
+  model = {
+    fullname: '',
+    role: '',
+    username : '',
+    email   : '',
+    password: '',
+    ref_username:'',
+    package:'',
+    confirmPassword: '',
+  };
 
 
 
   ngOnInit() {
-    this.hideForm = true;
-    this.showBtnLoading = false;
-
+    console.log('referal', this.route.snapshot.queryParams['ref']);
+    const Referral =  this.route.snapshot.queryParams['ref'];
+    if (Referral){
+      console.log('there is referal')
+      this.model.ref_username = Referral;
+      console.log(this.model.ref_username);
+    }
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)) {
         return ;
       }
-
       window.scrollTo(0,0);
     });
 
   }
+
+  ionViewWillEnter(){
+    this.selectpackage = true;
+    this.showForm = false;
+    this.showBtnLoading = false;
+   }
+
+  selectPackage(value, role){
+    console.log(value, role)
+    this.selectpackage = false;
+    this.showForm = true;
+    this.model.package = value;
+    this.model.role = role;
+  }
+
+
 
 
 
@@ -56,35 +88,22 @@ export class RegisterComponent implements OnInit, OnDestroy {
     // over ride form role value...
     form.value.role = this.userRole;
     this.showBtnLoading = true;
-    var userDetails = new FormData();
-    userDetails = form.value;
-    console.log(userDetails);
+    console.log(this.model);
 
-    this.userService.postUser(userDetails).subscribe(
+    this.userService.postUser(this.model).subscribe(
       res => {
-        this.hideForm = false;
         this.showBtnLoading = false;
         this.resetForm(form);
-        this.hideForm = false;
         this.showSelection = true;
+        this.userService.generalAlert('success', res['message']);
+        setTimeout(()=> {
+          this.goToLogin();
+        },3000)
       },
       err => {
-        if(err.status == 442) {
-          this.serverErrormessages = err.error.join('<br/>');
           this.showBtnLoading = false;
-          this.flashMessage.show(err.error,
-             {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 3000});
+          this.userService.generalToast('error', err.error.message, 3000);
 
-        } else if(err.status == 422) {
-          this.showBtnLoading = false;
-          this.flashMessage.show(err.error,
-           {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 5000});
-
-        } else {
-          this.showBtnLoading = false;
-          this.flashMessage.show('something went wrong , please contact the admin',
-           {cssClass: 'font-weight-bold bg-danger text-center text-white', timeout: 5000});
-        }
       },
 
     );
@@ -95,13 +114,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   resetForm(form: NgForm) {
-    this.userService.selectedUser = {
+    this.model = {
       fullname: '',
       email: '',
       username: '',
       role: this.userRole,
       password: '',
-      ref_username: ''
+      ref_username: null,
+      package : '',
+      confirmPassword:''
     };
 
     form.resetForm();
