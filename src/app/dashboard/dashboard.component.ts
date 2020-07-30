@@ -18,7 +18,9 @@ referal_count: any;
 activate: any;
 
 
-  constructor(public userService: UserService, private router: Router) { }
+  constructor(public userService: UserService, private router: Router) { 
+    console.log('construct fire..')
+  }
 
   ngOnInit() {
     this.getDashboardInformations();
@@ -33,6 +35,11 @@ activate: any;
     this.loadScript('../../assets/dashboard/js/main.js');
 
 }
+
+ionDidViewEnter(){
+  console.log('fire init... ion did view..')
+}
+
 
 
 

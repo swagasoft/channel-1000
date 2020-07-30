@@ -26,13 +26,13 @@ export class AppComponent {
     },
 
     {
-      title: 'Transfer',
-      url: '/tabs/transfer',
+      title: 'Payment',
+      url: '/tabs/payment',
       icon: 'archive'
     },
     {
       title: 'Home',
-      url: '/home',
+      url: '/',
       icon: 'home'
     },
 

@@ -111,16 +111,28 @@ history: any;
 
   paymentDone($event) {
     this.loading = true;
-    console.info('PAYMENT SUBMIT');
+    console.info('PAYMENT SUBMIT',$event);
     $event.user = this.Username;
     $event.email = this.emailInput;
-    $event.amount = 1000;
+    $event.package = localStorage.getItem('package');
+    if($event.package =='PACKAGE1000'){
+      $event.amount = 1000;
+    }else if($event.package == 'PACKAGE2000'){
+      $event.amount = 2000;
+    }else if($event.package == 'PACKAGE5000'){
+      $event.amount = 5000;
+    }else if($event.package == 'PACKAGE10000'){
+      $event.amount = 10000;
+    }
+
+  
+    
     console.log($event);
     this.userService.transasction($event).subscribe(
     response => {
       this.loading = false;
       this.generateRef();
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/tabs/dashboard');
 
     },
     error => {
