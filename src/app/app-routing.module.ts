@@ -50,8 +50,8 @@ const routes: Routes = [
 { path: 'services', component: ServicesComponent},
 { path: 'faq-questions', component: FaqComponent},
 
-{path: 'tabs', component: TabsComponent,
- children: [
+{path: 'tabs', component: TabsComponent},
+
   { path: 'account', component: AccountComponent, canActivate:[AuthgaurdGuard]},
   { path: 'payment', component: PaymentComponent, canActivate:[AuthgaurdGuard]},
   { path: 'rewards', component: RewardsComponent, canActivate:[AuthgaurdGuard]},
@@ -83,7 +83,7 @@ const routes: Routes = [
   canActivate:[AuthgaurdGuard, AdminguardGuard]},
   { path: 'admin-level4', component: AdminLevel4Component,
    canActivate:[AuthgaurdGuard, AdminguardGuard]}
- ]},
+
 
 ];
 

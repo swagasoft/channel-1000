@@ -18,26 +18,32 @@ referal_count: any;
 activate: any;
 
 
-  constructor(public userService: UserService, private router: Router) { 
+  constructor(public userService: UserService, private router: Router) {
     console.log('construct fire..')
   }
 
   ngOnInit() {
-    this.getDashboardInformations();
+    console.log('dashboard init fires')
     this.alignWindow();
 
 
     this.userRole =  this.userService.getUserRole();
     // load script
-    this.loadScript('../../assets/dashboard/vendor/jquery-3.2.1.min.js');
-    this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/popper.min.js');
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
+    // this.loadScript('../../assets/dashboard/vendor/jquery-3.2.1.min.js');
+    // this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/popper.min.js');
+    // this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
+    // this.loadScript('../../assets/dashboard/js/main.js');
 
 }
 
-ionDidViewEnter(){
-  console.log('fire init... ion did view..')
+ionViewWillEnter(){
+  this.getDashboardInformations();
+  console.log('fire will enter')
+
+}
+
+ngOnChanges() {
+  console.log('ng changrddddd')
 }
 
 
@@ -67,7 +73,7 @@ alignWindow(){
 }
 
 getDashboardInformations(){
-  console.log('get my dash')
+  console.log('get my dash information')
   this.userService.getUserProfile().subscribe(
     res => {
       this.userDetails$ = res['user'];

@@ -125,14 +125,14 @@ history: any;
       $event.amount = 10000;
     }
 
-  
-    
+
+
     console.log($event);
     this.userService.transasction($event).subscribe(
     response => {
       this.loading = false;
       this.generateRef();
-      this.router.navigateByUrl('/tabs/dashboard');
+      this.router.navigateByUrl('/dashboard');
 
     },
     error => {

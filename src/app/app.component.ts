@@ -15,19 +15,19 @@ export class AppComponent {
 
      {
       title: 'Dashboard',
-      url: '/tabs/dashboard',
+      url: '/dashboard',
       icon: 'list'
     },
 
     {
       title: 'Transactions',
-      url: '/tabs/transactions',
+      url: '/transactions',
       icon: 'paper-plane'
     },
 
     {
       title: 'Payment',
-      url: '/tabs/payment',
+      url: '/payment',
       icon: 'archive'
     },
     {

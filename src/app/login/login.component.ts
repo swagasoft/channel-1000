@@ -50,20 +50,15 @@ loading: boolean;
       localStorage.setItem('package',response['doc']['package']);
       localStorage.setItem('role',response['doc']['role']);
 
-        this.router.navigateByUrl('/tabs/dashboard');
+        this.router.navigateByUrl('/dashboard');
       },
       err => {
         console.log(err);
-        if(err.status === 401 ||404){
-          this.loading = false;
-          this.flashMessage.show(err.error, {cssClass:
-          'font-weight-bold text-white bg-danger text-center', timeout: 3000});
 
-      }else{
-        this.loading = false;
-        this.flashMessage.show(err , {cssClass:
-           'font-weight-bold text-white bg-danger text-center', timeout: 3000});
-      }}
+          this.loading = false;
+          this.flashMessage.show(err.error.message, {cssClass:
+          'font-weight-bold text-white bg-danger text-center', timeout: 3000});
+      }
     );
   }
 

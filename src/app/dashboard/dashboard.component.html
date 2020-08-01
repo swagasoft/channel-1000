@@ -18,7 +18,7 @@
                 <div  class="card text-center p-3 bg-warning text-dark">
                   <p>To activate your account, you need to Make PAYMENT</p>
                 </div>
-                <a mdbBtn [routerLink]="['/tabs/payment']"
+                <a mdbBtn [routerLink]="['/payment']"
                      type="button" class=" btn btn-success text-white btn-lg p-3 m-3" >MAKE PAYMENT</a>
               </div>
               <h2 class="text-center font-weight-bold">
@@ -37,7 +37,7 @@
                               </div>
                               <div class="row mt-3">
                                   <div class="col-12 text-center">
-                                      <h3 class="text-info"> {{userDetails$?.referals.length}}/2</h3>
+                                      <h3 class="text-info"> {{userDetails$?.downline.length}}/2</h3>
                                       <p class="text-secondary display -4 ">
                                         Expected Referral </p>
 
@@ -111,7 +111,8 @@
               </div>
 
               <ion-card color="dark">
-                <p class="text-center">Referral Link : {{userDetails$?.ref_link}} </p>
+                <small class="text-white text-center"> share your referal link to earn bonus</small>
+               <ion-input [value]="userDetails$?.ref_link"> </ion-input>
               </ion-card>
           </div>
       </div>
@@ -153,7 +154,7 @@
                               </div>
                               <div class="row mt-3">
                                   <div class="col-12 text-center">
-                                      <h3 class="text-info"> {{userDetails$?.referals.length}}</h3>
+                                      <h3 class="text-info"> {{userDetails$?.downline.length}}</h3>
                                       <p class="text-secondary display -4 ">
                                         Referrals </p>
 
@@ -191,7 +192,7 @@
                               </div>
                               <div class="row mt-3" >
                                   <div class="col-12 text-center">
-                                      <h3 class="text-info"> {{userDetails$?.all_referals.length}} </h3>
+                                      <h3 class="text-info"> {{userDetails$?.downline.length}} </h3>
                                       <p class="text-secondary">
                                        <span>All Referrals </span> </p>
 
