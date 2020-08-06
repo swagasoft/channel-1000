@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   showSelection: boolean;
   showBtnLoading: boolean;
   selectpackage = true;
+  loading = false;
 
   showSuccessMessage: boolean;
   serverErrormessages: string;
@@ -50,6 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    this.scrollToTop();
     console.log('referal', this.route.snapshot.queryParams['ref']);
     const Referral =  this.route.snapshot.queryParams['ref'];
     if (Referral){
@@ -57,13 +59,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.model.ref_username = Referral;
       console.log(this.model.ref_username);
     }
+
+
+  }
+
+  scrollToTop(){
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)) {
         return ;
       }
       window.scrollTo(0,0);
     });
-
   }
 
   ionViewWillEnter(){
@@ -78,6 +84,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.showForm = true;
     this.model.package = value;
     this.model.role = role;
+    this.scrollToTop();
+
   }
 
 
@@ -87,12 +95,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
   onSubmit(form: NgForm) {
     // over ride form role value...
     form.value.role = this.userRole;
-    this.showBtnLoading = true;
+    this.loading = true;
     console.log(this.model);
 
     this.userService.postUser(this.model).subscribe(
       res => {
-        this.showBtnLoading = false;
+        this.loading = false;
         this.resetForm(form);
         this.showSelection = true;
         this.userService.generalAlert('success', res['message']);
@@ -101,7 +109,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         },3000)
       },
       err => {
-          this.showBtnLoading = false;
+          this.loading = false;
           this.userService.generalToast('error', err.error.message, 3000);
 
       },

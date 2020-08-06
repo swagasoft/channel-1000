@@ -21,7 +21,19 @@ export class AppComponent {
 
     {
       title: 'Transactions',
-      url: '/transactions',
+      url: '/user-transactions',
+      icon: 'paper-plane'
+    },
+
+
+    {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'person'
+    },
+    {
+      title: 'My referals',
+      url: '/downline',
       icon: 'paper-plane'
     },
 
@@ -37,7 +49,14 @@ export class AppComponent {
     },
 
   ];
-  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = [
+    {title:'Inactive', url:'/admin-inactive'},
+    {title:'Cashout request', url:'/admin-cashout'},
+    {title:'Search user', url:'/admin-search-user'},
+    {title:'Payouts', url:'/admin-payout'},
+    {title:'Admin dashboard', url:'/admin-dash'},
+
+  ];
 
   constructor(
     private platform: Platform,

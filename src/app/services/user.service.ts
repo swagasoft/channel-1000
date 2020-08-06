@@ -69,10 +69,18 @@ export class UserService {
      authCredentials, this.noAuthHeader);
   }
 
+  getDownline(){
+    return this.http.get(environment.apiBaseUrl + '/get-my-downline');
+  }
+
 
   // SECURED ROUTE IN THE SERVER SIDE...
   getUserProfile() {
     return this.http.get(environment.apiBaseUrl + '/dashboard');
+  }
+
+  updateUserProfile(profile){
+    return this.http.put(environment.apiBaseUrl + '/update-profile', profile);
   }
   cashout(amount){
     return this.http.post(environment.apiBaseUrl + '/user-cashout', amount);
@@ -137,8 +145,8 @@ export class UserService {
   deleteUser(user_id){
     return this.http.get(environment.apiBaseUrl + `/delete-user${user_id}`);
   }
-  queryUserDetails(detaills){
-    return this.http.get(environment.apiBaseUrl + `/query-user-details${detaills}`);
+  searchUserDetails(username){
+    return this.http.put(environment.apiBaseUrl + `/query-user-details`,username);
   }
   deleteTrasaction(user_id){
     return this.http.get(environment.apiBaseUrl + `/delete-transactions${user_id}`);

@@ -67,6 +67,8 @@ import { NavMobileAdminComponent } from './components/nav-mobile-admin/nav-mobil
 import { IonicModule } from '@ionic/angular';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { LogedinNavComponent } from './components/logedin-nav/logedin-nav.component';
+import { DownlineComponent } from './components/downline/downline.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 
 
@@ -115,9 +117,12 @@ import { LogedinNavComponent } from './components/logedin-nav/logedin-nav.compon
     NavMobileAdminComponent,
     TabsComponent,
     LogedinNavComponent,
-    LogedinNavComponent
+    LogedinNavComponent,
+    DownlineComponent,
+    EditProfileComponent
 
   ],
+  entryComponents:[EditProfileComponent],
   imports: [
     BrowserModule,
     NgbModule,

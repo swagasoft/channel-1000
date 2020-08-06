@@ -35,6 +35,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { RewardsComponent } from './components/rewards/rewards.component';
 import { ReferandearnComponent } from './components/referandearn/referandearn.component';
 import { UserReferalComponent } from './components/user-referal/user-referal.component';
+import { DownlineComponent } from './components/downline/downline.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -82,7 +83,9 @@ const routes: Routes = [
   { path: 'admin-level3', component: AdminLevel3Component,
   canActivate:[AuthgaurdGuard, AdminguardGuard]},
   { path: 'admin-level4', component: AdminLevel4Component,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]}
+   canActivate:[AuthgaurdGuard, AdminguardGuard]},
+   { path: 'downline', component: DownlineComponent,
+   canActivate:[AuthgaurdGuard]}
 
 
 ];

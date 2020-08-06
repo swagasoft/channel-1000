@@ -1,215 +1,40 @@
+<app-logedin-nav></app-logedin-nav>
 
-  <!-- ######################################## -->
-  <link href="../../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-  <link href="../../../assets/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-  <link href="../../../assets/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
-  <!-- Main CSS-->
-  <link href="../../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
+<ion-content>
 
 
-<div class="page-wrapper">
-  <!-- HEADER MOBILE-->
-  <header class="header-mobile d-block d-lg-none">
-      <div class="header-mobile__bar">
-          <div class="container-fluid">
-              <div class="header-mobile-inner">
-                  <a class="logo" >
-                      <img src="../../../assets/dashboard/images/icon/logo.png" alt="CoolAdmin" />
-                  </a>
 
-                  <button class="hamburger hamburger--slider" type="button">
-                      <span class="hamburger-box">
-                          <span class="hamburger-inner"></span>
-                      </span>
-                  </button>
-              </div>
-          </div>
-      </div>
+  <!-- table -->
+  <table class="table-responsive text-nowrap table blue-gradient text-white">
+    <thead >
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col">package</th>
+        <th scope="col">Date</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let item of inActiveInvestors; index as i">
+      <tr class="panel">
+        <th scope="row">{{i+1}} </th>
+        <td>{{item.email}}  </td>
+        <td>{{item.package}}</td>
+        <td>{{item.createdAt | date:'medium'}} </td>
+        <td>
+          <ion-icon color="danger" name="trash"size="large" (click)="deleteConfirm(item._id,item.username)" ></ion-icon>
+        </td>
+      </tr>
 
-      <!-- MOBILE NAV -->
-      <nav class="navbar-mobile">
-        <div class="container-fluid">
-            <ul class="navbar-mobile__list list-unstyled">
-                <li class="has-sub">
-                    <a [routerLink]="['/admin-dash']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-investors']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-chart-bar"></i>Investors</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-inactive']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-table"></i>InActive</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-cashout']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Cashouts</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level1']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-1</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level2']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-2</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level3']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-3</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level4']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-4</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-transaction']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-calendar-alt"></i>Transaction</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-account']" >
-                        <i class="fas fa-map-marker-alt"></i>Account</a>
-                </li>
-
-                <li class="has-sub">
-                    <a (click)="logOut()">
-                        <i class="fas fa-desktop"></i>Logout</a>
-
-                </li>
-            </ul>
-        </div>
-    </nav>
-  </header>
-  <!-- END HEADER MOBILE-->
-
-  <!-- MENU SIDEBAR-->
-  <app-admin-sidemenu></app-admin-sidemenu>
-  <!-- END MENU SIDEBAR-->
-
-  <!-- PAGE CONTAINER-->
-  <div class="page-container">
-      <!-- HEADER DESKTOP-->
-      <header class="header-desktop">
-          <div class="section__content section__content--p30">
-              <div class="container-fluid">
-                  <div class="header-wrap">
-
-                      <div class="header-button">
-                          <div class="noti-wrap">
-                              <div class="noti__item js-item-menu">
-
-                                 <!-- <p class="font-weight-bold"> {{userDetails?.username}} </p> -->
-                              </div>
-
-                          </div>
-                          <div class="account-wrap">
-                              <div class="account-item clearfix js-item-menu">
-
-                                  <div class="content">
-                                      <!-- <p class="js-acc-btn font-weight-bold">{{userDetails?.cust_id}} </p> -->
-                                  </div>
-                                  <div class="account-dropdown js-dropdown">
-                                      <div class="info clearfix">
-
-                                          <div class="content">
-                                              <h5 class="name">
-                                                  <!-- <a href="#">{{userDetails?.fullname}} </a> -->
-                                              </h5>
-                                              <!-- <span class="email">{{userDetails?.email}} </span> -->
-                                          </div>
-                                      </div>
-                                      <div class="account-dropdown__body">
-                                          <div class="account-dropdown__item">
-                                              <a [routerLink]="['/account']" routerLinkActive="router-link-active" >
-                                                  <i class="zmdi zmdi-account"></i>Account</a>
-                                          </div>
-                                          <div class="account-dropdown__item">
-                                              <a [routerLink]="['/cashout']" routerLinkActive="router-link-active" >
-                                                  <i class="zmdi zmdi-settings"></i>Cash out</a>
-                                          </div>
-                                          <div class="account-dropdown__item">
-                                              <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
-                                                  <i class="zmdi zmdi-money-box"></i>Payment</a>
-                                          </div>
-                                      </div>
-                                      <div class="account-dropdown__footer">
-                                          <a (click)="logOut()">
-                                              <i class="zmdi zmdi-power"></i>Logout</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </header>
-      <!-- HEADER DESKTOP-->
-
-      <!-- MAIN CONTENT-->
-      <div class="main-content">
-          <div class="section__content section__content--p30">
-              <div class="container-fluid">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="overview-wrap">
-                              <h4 class="title-1 font-weight-bold">InActive Investor</h4>
-                              <flash-messages></flash-messages>
-                          </div>
-                      </div>
-                  </div>
+    </tbody>
+  </table>
 
 
-                  <!-- ######### cards ##############3 -->
 
-
-<!--Table-->
-<div class="table-responsive" >
-    <table class="table table-striped w-auto">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th>Role</th>
-            <th>Date</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <!--Table head-->
-        <!--Table body-->
-        <tbody>
-          <tr class="table-info"  *ngFor="let details of inActiveInvestors; index as i">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ details.email }} </td>
-            <td>{{ details.username}}</td>
-            <td>{{ details.role }}</td>
-            <td>{{ details.date |  date:'medium'  }}</td>
-            <td>
-              <button style=" margin-left:2px" type="button"
-               class="btn btn-sm btn-danger" (click)="deleteUser(details._id, details.username)">X</button>
-               </td>
-          </tr>
-        </tbody>
-        <!--Table body-->
-      </table>
+  <!-- loader -->
+  <div *ngIf="loading" class="spinner-container">
+    <div class="loader">
     </div>
-
-
-
-                  <!-- ######### cards ##############3 -->
-
-
-
-              </div>
-          </div>
-      </div>
-      <!-- END MAIN CONTENT-->
-      <!-- END PAGE CONTAINER-->
   </div>
 
-</div>
-
-
-
+</ion-content>

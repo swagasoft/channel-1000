@@ -2,6 +2,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin-inactive',
@@ -9,65 +10,101 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./admin-inactive.component.scss']
 })
 export class AdminInactiveComponent implements OnInit {
-inActiveInvestors: any;
+inActiveInvestors: any = [];
+loading = false;
+
   constructor(
     private router: Router,
+    public alertController: AlertController,
     private flashMessage: FlashMessagesService,
     private userService: UserService) { }
 
   ngOnInit() {
+
+  }
+
+  ionViewWillEnter(){
     this.loadInactive();
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
-
-
     this.router.events.subscribe((evt) => {
       if(!(evt instanceof NavigationEnd)){
         return ;
       }
       window.scrollTo(0, 0);
     });
+
   }
 
-  loadScript(url: string){
-    const body = <HTMLDivElement> document.body;
-    const script = document.createElement('script');
-    script.innerHTML = '';
-    script.src = url;
-    script.async = false;
-    script.defer = true;
-    body.appendChild(script);
-  }
+
   logOut(){
     this.userService.logout();
   }
 
   loadInactive(){
+    this.loading  = true;
     this.userService.getInActiveUsers().subscribe(
       res => {
+        this.loading = false;
         console.log(res);
         this.inActiveInvestors = res['doc'];
       },
       err => {
+        this.loading = false;
         console.log(err);
+        this.userService.generalAlert('No content', err.error.message);
       }
     );
   }
 
-  deleteUser(id, username){
-    console.log(id);
-    this.userService.deleteUser(id).subscribe(
-      response => {
-        this.flashMessage.show(`${username} deleted successful...`,
-           {cssClass: ' text-success bg-warning text-center font-weight-bold', timeout: 2000});
-        this.loadInactive();
-      },
-      err => {
-        this.flashMessage.show(`error deleting ${username}`,
-        {cssClass: ' text-danger bg-warning text-center font-weight-bold', timeout: 2000});
-        this.loadInactive();
-      }
-    );
+  async deleteConfirm(id) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Message <strong> delete user?</strong>!!!',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.loading = true;
+            this.userService.deleteUser(id).subscribe(
+              response => {
+                this.loading = false;
+               this.userService.generalToast('success', response['message'], 3000);
+                this.loadInactive();
+              },
+              err => {
+                this.loading = false;
+                this.userService.generalToast('error', err.error.message, 3000);
+                this.loadInactive();
+              }
+            );
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
+
+  // deleteUser(id, username){
+  //   console.log(id);
+  //   this.userService.deleteUser(id).subscribe(
+  //     response => {
+  //      this.userService.generalToast('success', response['message'], 3000);
+  //       this.loadInactive();
+  //     },
+  //     err => {
+  //       this.userService.generalToast('error', err.error.message, 3000);
+  //       this.loadInactive();
+  //     }
+  //   );
+  // }
 
 }

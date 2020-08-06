@@ -1,0 +1,59 @@
+
+<ion-header>
+  <ion-button (click)="dismiss()"  color="danger"><ion-icon  name="close"></ion-icon></ion-button>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+
+
+    <form class="mt-5" #editUser="ngForm" name="form" >
+      <ion-list>
+        <ion-item color="light">
+          <ion-label>fullname</ion-label>
+          <input  type="text" #fullname name="fullname" clearInput [(ngModel)]="userProps.fullname"
+          required="true">
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item color="light">
+          <ion-label>email</ion-label>
+          <input readonly type="email" #email name="email" clearInput [(ngModel)]="userProps.email"
+          required="true">
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item color="light">
+          <ion-label>username</ion-label>
+          <input  type="text" #username name="username" clearInput [(ngModel)]="userProps.username"
+          required="true">
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item color="light">
+          <ion-label>phone</ion-label>
+          <input  type="tel" #phone name="phone" clearInput [(ngModel)]="userProps.phone"
+          >
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item color="light">
+          <ion-label>phone</ion-label>
+          <input readonly type="text" #phone name="role" clearInput [(ngModel)]="userProps.role"
+          required="true">
+        </ion-item>
+      </ion-list>
+
+      <div class="ion-text-center"  type="submit" (click)="editUser.valid && confirmEdit()">
+        <ion-button>SUBMIT</ion-button>
+
+      </div>
+
+    </form>
+
+
+
+    <div *ngIf="loading" class="spinner-container">
+      <div class="loader"></div>
+     </div>
+
+  </ion-content>

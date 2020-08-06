@@ -1,0 +1,40 @@
+<app-logedin-nav></app-logedin-nav>
+
+<ion-content>
+
+<div class="">
+
+  <ion-list  *ngFor="let item of downline">
+  <ion-card color="light" class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <div>Email :{{item.email}} </div>
+        <div>username{{item.username}} </div>
+      </ion-col>
+      <ion-col>
+        <div>Package : {{item.package}} </div>
+        <div>Investment: {{item.investment}} </div>
+      </ion-col>
+      <ion-col>
+        <ion-icon *ngIf="item.activate" size="large" color="success" name="checkmark"></ion-icon>
+        <ion-icon *ngIf="!item.activate" size="large" color="danger" name="close"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="person"></ion-icon>
+        <div>{{item.downline_count}} </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-card>
+
+  </ion-list>
+
+</div>
+
+                <!-- loader -->
+                <div *ngIf="loading" class="spinner-container">
+                  <div class="loader">
+                  </div>
+                </div>
+
+</ion-content>

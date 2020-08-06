@@ -165,13 +165,13 @@
 
 
                   <div class="container">
-                        <form class="form-inline" #searchUserForm="ngForm"  (submit)="searchUserForm.valid && searchUser(searchUserForm)">
+                        <form class="form-inline" #searchUserForm="ngForm"  (submit)="searchUserForm.valid && searchUser()">
                             <div class="form-group mx-sm-3 mb-2">
                               <label for="username" class="sr-only">Username</label>
                               <input class="form-control " type="text" name=""  name="search"
                               #cashout="ngModel"  [(ngModel)]="model.searchOption" placeholder="enter username ">
                             </div>
-                            <button type="submit" class="btn btn-primary mb-2">Search</button>
+                            <button [disabled]="!model.searchOption" type="submit" class="btn btn-primary mb-2">Search</button>
                           </form>
                   </div>
 

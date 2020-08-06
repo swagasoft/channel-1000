@@ -25,8 +25,7 @@ userQuery: any;
   };
 
   ngOnInit() {
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
+
     this.loading = false;
 
     this.router.events.subscribe((evt) => {
@@ -37,43 +36,24 @@ userQuery: any;
       window.scrollTo(0, 0);
     });
   }
-  loadScript(url: string){
-    const body = <HTMLDivElement> document.body;
-    const script = document.createElement('script');
-    script.innerHTML = '';
-    script.src = url;
-    script.async = false;
-    script.defer = true;
-    body.appendChild(script);
-  }
+
+
   logOut(){
     this.userService.logout();
   }
-  searchUser(form: NgForm){
+  searchUser(){
     this.loading = true;
-    const query = form.value.search;
-    console.log(query);
-    this.userService.queryUserDetails(query).subscribe(
+    console.log(this.model)
+    this.userService.searchUserDetails(this.model).subscribe(
         response => {
           console.log(response);
-         this.userQuery = query
-         this.payout =  response['payout'];
-         this.userDetails = response['userDetails'];
-         this.transaction = (response['trans']);
-         console.log(this.transaction);
-
-         this.userInvestment =  response['queryInvest'];
-         console.log(this.userDetails);
-
-         form.value.search = '';
          this.loading = false;
          console.log(response);
 
         },
         err => {
           this.loading = false;
-          this.flashMessage.show("user not found", {cssClass:
-            'font-weight-bold text-white bg-danger text-center', timeout: 3000});
+          this.userService.generalAlert('no content', err.error.message);
 
           console.log(err);
         }

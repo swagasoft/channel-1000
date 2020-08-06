@@ -19,13 +19,15 @@
         </ion-menu-toggle>
       </ion-list>
 
-      <ion-list id="labels-list">
-        <ion-list-header>Labels</ion-list-header>
+      <ion-list id="labels-list" *ngIf="userService.getUserRole() == 'ADMIN'">
+        <ion-list-header class="text-center">ADMIN</ion-list-header>
 
-        <!-- <ion-item *ngFor="let label of labels" lines="none">
-          <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-          <ion-label>{{ label }}</ion-label>
-        </ion-item> -->
+        <ion-menu-toggle>
+          <ion-item color="light" *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label tappable [routerLink]="label.url" >{{ label.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>

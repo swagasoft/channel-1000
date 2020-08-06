@@ -37,7 +37,7 @@
                               </div>
                               <div class="row mt-3">
                                   <div class="col-12 text-center">
-                                      <h3 class="text-info"> {{userDetails$?.downline.length}}/2</h3>
+                                      <h3 class="text-info"> {{userDetails$?.downline?.length}}/2</h3>
                                       <p class="text-secondary display -4 ">
                                         Expected Referral </p>
 
@@ -96,7 +96,7 @@
                               <div class="row mt-3">
                                   <div class="col-12 text-center">
                                       <h3 class="text-info"> {{userDetails$?.earnings | currency:'₦'}} </h3>
-                                      <p class="text-secondary">total earnings</p>
+                                      <p class="text-secondary"> earnings</p>
                                         <br>
 
                                   </div>
@@ -105,14 +105,18 @@
 
                       </div>
                   </div>
-
-
+              </div>
+              <div class="text-center">
+                <ion-item >
+                  Total earning = {{userDetails$?.earnings + userDetails$?.bonus | currency:'₦'}}
+                </ion-item>
 
               </div>
 
+
               <ion-card color="dark">
                 <small class="text-white text-center"> share your referal link to earn bonus</small>
-               <ion-input [value]="userDetails$?.ref_link"> </ion-input>
+               <ion-input readonly [value]="userDetails$?.ref_link"> </ion-input>
               </ion-card>
           </div>
       </div>
@@ -174,8 +178,8 @@
                               </div>
                               <div class="row mt-3 text-center">
                                   <div class="col-12 ">
-                                      <h5 class="text-info text-center pl-3">{{userDetails$?.role}} </h5>
-                                      <!-- <p class="text-secondary text-center "> marketer</p> -->
+                                      <h5 class="text-info text-center pl-3">{{userDetails$?.all_referals.length}} </h5>
+                                      <p class="text-secondary text-center "> total referal</p>
 
                                   </div>
                               </div>
@@ -194,7 +198,7 @@
                                   <div class="col-12 text-center">
                                       <h3 class="text-info"> {{userDetails$?.downline.length}} </h3>
                                       <p class="text-secondary">
-                                       <span>All Referrals </span> </p>
+                                       <span>Active Referrals </span> </p>
 
                                   </div>
                               </div>
@@ -226,10 +230,17 @@
 
               </div>
 
-              <ion-card color="dark">
-                <p class="text-center">Referral Link : {{userDetails$?.ref_link}} </p>
-              </ion-card>
+              <div class="text-center">
+                <ion-item >
+                  Total earning = {{userDetails$?.earnings + userDetails$?.bonus | currency:'₦'}}
+                </ion-item>
 
+              </div>
+
+              <ion-card color="dark">
+                <small class="text-white text-center"> share your referal link to earn bonus</small>
+               <ion-input readonly [value]="userDetails$?.ref_link"> </ion-input>
+              </ion-card>
 
           </div>
       </div>
@@ -244,12 +255,134 @@
 
 
 
-              <!-- loading.... -->
-              <div *ngIf="loading" #loading class="  col d-flex justify-content-center affix">
-                <div class="toast-container">
-                  <div class="lds-spinner"><div></div><div></div><div></div><div></div><div>
-                  </div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                </div>
+<!-- marketer dashboard -->
+<section *ngIf="userService.getUserRole() =='ADMIN'" class="d-flex bg-light" id="feature-cards" >
+  <div class="container d-flex justify-content-center">
+      <div class="row align-items-center justify-content-center">
+          <div class="col-12 align-self-center">
+              <div class="row">
+                  <div class="col-12 col-lg-7 mx-auto text-center">
+                      <h6 class="text-muted font-weight-bold mb-5 "
+                      >Hello  {{userDetails$?.fullname}} </h6>
+                  </div>
+
               </div>
+
+              <h2 class="text-center font-weight-bold">
+                <ion-chip outline color="primary">{{userDetails$?.package}} </ion-chip> </h2>
+
+
+              <div class="row text-center">
+                  <div class="col-6 col-lg-6">
+                      <div class="card mb-3">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col mx-auto text-center">
+                                      <i class="fa fa-boxes -alt fa-4x text-info"></i>
+                                  </div>
+                              </div>
+                              <div class="row mt-3">
+                                  <div class="col-12 text-center">
+                                      <!-- <h3 class="text-info"> {{userDetails$?.downline.length}}</h3> -->
+                                      <p class="text-secondary display -4 ">
+                                        ADMIN  </p>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-6 col-lg-6">
+                      <div class="card mb-3">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col mx-auto text-center">
+                                      <i class="fa fa-chart-line fa-4x text-warning"></i>
+                                  </div>
+                              </div>
+                              <div class="row mt-3 text-center">
+                                  <div class="col-12 ">
+                                      <!-- <h5 class="text-info text-center pl-3">{{userDetails$?.all_referals.length}} </h5> -->
+                                      <p class="text-secondary text-center "> ADMIN</p>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-6 col-lg-6">
+                      <div class="card mb-3">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col mx-auto text-center">
+                                      <i class="fa fa-user fa-4x text-success"></i>
+                                  </div>
+                              </div>
+                              <div class="row mt-3" >
+                                  <div class="col-12 text-center">
+                                      <!-- <h3 class="text-info"> {{userDetails$?.downline.length}} </h3> -->
+                                      <p class="text-secondary">
+                                       <span>ADMIN </span> </p>
+
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-6 col-lg-6">
+                      <div class="card mb-3">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col mx-auto text-center">
+                                      <i class="fa fa-dollar fa-4x text-danger"></i>
+                                  </div>
+                              </div>
+                              <div class="row mt-3">
+                                  <div class="col-12 text-center">
+                                      <!-- <h3 class="text-info">{{userDetails$?.earnings  | currency:'₦'}} </h3> -->
+                                      <p class="text-secondary">ADMIN</p>
+                                        <br>
+
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
+
+              </div>
+
+              <!-- <div class="text-center">
+                <ion-item >
+                  Total earning = {{userDetails$?.earnings + userDetails$?.bonus | currency:'₦'}}
+                </ion-item>
+
+              </div> -->
+
+              <!-- <ion-card color="dark">
+                <small class="text-white text-center"> share your referal link to earn bonus</small>
+               <ion-input readonly [value]="userDetails$?.ref_link"> </ion-input>
+              </ion-card> -->
+
+          </div>
+      </div>
+
+
+  </div>
+
+
+
+
+</section>
+
+
+  <!-- loader -->
+  <div *ngIf="loading" class="spinner-container">
+    <div class="loader">
+    </div>
+  </div>
 
 </ion-content>
