@@ -1,6 +1,7 @@
 import { UserService } from './../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-admin-payout',
@@ -9,48 +10,55 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AdminPayoutComponent implements OnInit {
 payouts : any;
+loading = false;
+
+
+displayedColumns: string[] = [ 'email','package', 'payout','date'];
+@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  dataSource: any;
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    this.readCurrentPayouts();
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
-
-    this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
-        return ;
-      }
-
-      window.scrollTo(0,0);
-    });
+ 
+   
   }
 
-  loadScript(url: string){
-    const body = <HTMLDivElement> document.body;
-    const script = document.createElement('script');
-    script.innerHTML = '';
-    script.src = url;
-    script.async = false;
-    script.defer = true;
-    body.appendChild(script);
-  }
-  logOut(){
-    this.userService.logout();
-  }
+ 
 
   readCurrentPayouts(){
     this.userService.getPayoutList().subscribe(
-      val => {
-        console.log(val);
-        this.payouts = val['doc'];
+      res => {
+        console.log(res);
+        this.payouts = res['doc'];
+        this.dataSource = new MatTableDataSource(res['result']);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.filterPredicate = (data: any, filter: string): boolean => {
+         const dataStr = Object.keys(data).reduce((currentTerm: string, key: string) => {
+           return (currentTerm + (data as { [key: string]: any })[key] + '◬');
+         }, '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+   
+         const transformedFilter = filter.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+   
+         return dataStr.indexOf(transformedFilter) != -1;
+       }
       },
+      
       err => {
         console.log(err);
 
       }
     );
   }
+
+  
   deleteUser(id){
     console.log(id);
+  }
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

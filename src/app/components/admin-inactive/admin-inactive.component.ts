@@ -1,8 +1,9 @@
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-admin-inactive',
@@ -12,6 +13,11 @@ import { AlertController } from '@ionic/angular';
 export class AdminInactiveComponent implements OnInit {
 inActiveInvestors: any = [];
 loading = false;
+
+displayedColumns: string[] = [ 'email','package', 'investment', 'earnings', 'date','action'];
+@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  dataSource: any;
 
   constructor(
     private router: Router,
@@ -39,13 +45,29 @@ loading = false;
     this.userService.logout();
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
+
   loadInactive(){
     this.loading  = true;
     this.userService.getInActiveUsers().subscribe(
       res => {
         this.loading = false;
-        console.log(res);
-        this.inActiveInvestors = res['doc'];
+        this.dataSource = new MatTableDataSource(res['doc']);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.filterPredicate = (data: any, filter: string): boolean => {
+          const dataStr = Object.keys(data).reduce((currentTerm: string, key: string) => {
+            return (currentTerm + (data as { [key: string]: any })[key] + '◬');
+          }, '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    
+          const transformedFilter = filter.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    
+          return dataStr.indexOf(transformedFilter) != -1;
+        }
       },
       err => {
         this.loading = false;

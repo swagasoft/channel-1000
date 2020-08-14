@@ -1,3 +1,5 @@
+import { ActiveComponent } from './components/active/active.component';
+import { MaterialModule } from './modules/material/material.module';
 import { RouterModule } from '@angular/router';
 import { AuthgaurdGuard } from './auth/authgaurd.guard';
 // built-in import
@@ -55,7 +57,6 @@ import { AdminInvestorsComponent } from './components/admin-investors/admin-inve
 import { AdminInactiveComponent } from './components/admin-inactive/admin-inactive.component';
 import { AdminCashoutComponent } from './components/admin-cashout/admin-cashout.component';
 import { AdminTransactionComponent } from './components/admin-transaction/admin-transaction.component';
-import { AdminAccountComponent } from './components/admin-search/admin-search.component';
 import { AdminPayoutComponent } from './components/admin-payout/admin-payout.component';
 import { AdminLevel1Component } from './components/admin-level1/admin-level1.component';
 import { AdminLevel2Component } from './components/admin-level2/admin-level2.component';
@@ -104,9 +105,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     AdminSidemenuComponent,
     AdminInvestorsComponent,
     AdminInactiveComponent,
+    ActiveComponent,
     AdminCashoutComponent,
     AdminTransactionComponent,
-    AdminAccountComponent,
     AdminPayoutComponent,
     AdminLevel1Component,
     AdminLevel2Component,
@@ -127,6 +128,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     BrowserModule,
     NgbModule,
     IonicModule,
+    MaterialModule,
     FormsModule,
     MatSidenavModule,
     MatToolbarModule,

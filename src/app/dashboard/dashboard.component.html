@@ -37,7 +37,7 @@
                               </div>
                               <div class="row mt-3">
                                   <div class="col-12 text-center">
-                                      <h3 class="text-info"> {{userDetails$?.downline?.length}}/2</h3>
+                                      <h3 class="text-info"> {{userDetails$?.count}}/2</h3>
                                       <p class="text-secondary display -4 ">
                                         Expected Referral </p>
 
@@ -107,9 +107,13 @@
                   </div>
               </div>
               <div class="text-center">
-                <ion-item >
+                <ion-item color="primary">
                   Total earning = {{userDetails$?.earnings + userDetails$?.bonus | currency:'₦'}}
                 </ion-item>
+                <ion-item color="primary">
+                    Cashout Request = {{userDetails$?.cashout | currency:'₦'}}
+                  </ion-item>
+  
 
               </div>
 
@@ -234,6 +238,9 @@
                 <ion-item >
                   Total earning = {{userDetails$?.earnings + userDetails$?.bonus | currency:'₦'}}
                 </ion-item>
+                <ion-item >
+                  Cashout Request = {{userDetails$?.cashout | currency:'₦'}}
+                </ion-item>
 
               </div>
 
@@ -255,7 +262,7 @@
 
 
 
-<!-- marketer dashboard -->
+<!-- admin dashboard -->
 <section *ngIf="userService.getUserRole() =='ADMIN'" class="d-flex bg-light" id="feature-cards" >
   <div class="container d-flex justify-content-center">
       <div class="row align-items-center justify-content-center">
@@ -355,12 +362,15 @@
 
               </div>
 
-              <!-- <div class="text-center">
+              <div class="text-center">
                 <ion-item >
                   Total earning = {{userDetails$?.earnings + userDetails$?.bonus | currency:'₦'}}
                 </ion-item>
 
-              </div> -->
+              </div>
+              <ion-item color="success">
+                Cashout Request = {{userDetails$?.cashout | currency:'₦'}}
+              </ion-item>
 
               <!-- <ion-card color="dark">
                 <small class="text-white text-center"> share your referal link to earn bonus</small>

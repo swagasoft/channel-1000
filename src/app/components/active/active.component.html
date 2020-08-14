@@ -1,9 +1,7 @@
 <app-logedin-nav></app-logedin-nav>
 
 <ion-content class="ion-padding">
-
 <h4 class="text-center font-weight-bold p-1"> ACTIVE CUSTOMERS</h4>
-
 
   <div >
   <ion-item color="dark">
@@ -28,7 +26,7 @@
       </ng-container>
 
       <ng-container matColumnDef="investment">
-        <th  mat-header-cell *matHeaderCellDef> INVESTMENT </th>
+        <th mat-header-cell *matHeaderCellDef> INVESTMENT </th>
         <td mat-cell  *matCellDef="let element"> {{element.investment}} </td>
       </ng-container>
   
@@ -44,10 +42,9 @@
           </td>
       </ng-container>
   
-      <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef > ACTION </th>
-          <td  mat-cell *matCellDef="let element" > 
-            <ion-icon color="danger" name="trash"size="large" (click)="deleteConfirm(element._id,element.username)" ></ion-icon>
+      <ng-container matColumnDef="downline">
+          <th mat-header-cell *matHeaderCellDef > DOWNLINE </th>
+          <td  mat-cell *matCellDef="let element" >  {{element.count}}
           </td>
       </ng-container>
 

@@ -1,3 +1,4 @@
+import { ActiveComponent } from './components/active/active.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { AdminguardGuard } from './auth/adminguard.guard';
 import { AdminLevel4Component } from './components/admin-level4/admin-level4.component';
@@ -5,7 +6,6 @@ import { AdminLevel3Component } from './components/admin-level3/admin-level3.com
 import { AdminLevel2Component } from './components/admin-level2/admin-level2.component';
 import { AdminLevel1Component } from './components/admin-level1/admin-level1.component';
 import { AdminPayoutComponent } from './components/admin-payout/admin-payout.component';
-import { AdminAccountComponent } from './components/admin-search/admin-search.component';
 import { AdminTransactionComponent } from './components/admin-transaction/admin-transaction.component';
 import { AdminCashoutComponent } from './components/admin-cashout/admin-cashout.component';
 import { AdminInactiveComponent } from './components/admin-inactive/admin-inactive.component';
@@ -68,11 +68,11 @@ const routes: Routes = [
    canActivate:[AuthgaurdGuard, AdminguardGuard]},
   { path: 'admin-inactive', component: AdminInactiveComponent,
   canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-active', component: ActiveComponent,
+  canActivate:[AuthgaurdGuard, AdminguardGuard]},
   { path: 'admin-cashout', component: AdminCashoutComponent,
    canActivate:[AuthgaurdGuard, AdminguardGuard]},
   { path: 'admin-transaction', component: AdminTransactionComponent,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-search-user', component: AdminAccountComponent,
    canActivate:[AuthgaurdGuard, AdminguardGuard]},
   { path: 'admin-payout', component: AdminPayoutComponent,
    canActivate:[AuthgaurdGuard, AdminguardGuard]},

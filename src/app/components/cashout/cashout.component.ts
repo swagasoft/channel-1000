@@ -13,6 +13,7 @@ export class CashoutComponent implements OnInit {
   account: any;
   earnings: number;
   userRole: any;
+loading = true;
 
   constructor(
     private userService: UserService,
@@ -21,7 +22,7 @@ export class CashoutComponent implements OnInit {
 
    }
    model = {
-    cashout: '',
+    cashout:  null,
   };
 
   ngOnInit() {
@@ -33,46 +34,51 @@ export class CashoutComponent implements OnInit {
       window.scrollTo(0, 0);
     });
 
+    this.loading = true;
     this.userService.loadBalance().subscribe(
       res => {
+        this.loading = false;
         console.log(res['doc']);
         this.account =  res['doc'];
-       this.earnings = res['doc']['earnings'];
-       console.log(res['doc']['earnings']);
+        this.earnings = res['doc']['earnings'];
+        console.log(res['doc']['earnings']);
     },
       err => {
+        this.loading = false;
         console.log('ERROR', err);
       }
     );
-    this.loadScript('../../assets/dashboard/vendor/jquery-3.2.1.min.js');
-    this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/popper.min.js');
-    this.loadScript('../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.js');
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
 
 
   }
-  cashOut(form:NgForm, id){
-    form.value.user = id;
-    if(form.value.cashout < 1000){
+  
+  
+  cashOut(){
+
+    if(this.model.cashout < 1000){
       console.log('USER BALANCE', this.earnings );
       this.flashMessage.show('cash out must be above 1000', {cssClass:
         ' text-danger text-center font-weight-bold ', timeout: 5000});
+        this.userService.generalToast("error", "cash out must be above 1000",2000);
+
     }else{
-      if(form.value.cashout  > this.earnings ){
+      if(this.model.cashout  > this.earnings ){
         console.log('USER BALANCE', this.earnings );
-        this.flashMessage.show('You requested more than your balance', {cssClass:
-          ' text-danger text-center font-weight-bold ', timeout: 5000});
+        this.userService.generalToast("error", "You requested more than your balance",4000);
       }else{
-        this.flashMessage.show(`₦ ${form.value.cashout} cashout successful...`, {cssClass:
-          ' text-success text-center font-weight-bold', timeout: 8000});
-        this.userService.postCashout(form.value.cashout).subscribe(
+       
+        
+          this.loading = true;
+          this.userService.postCashout(this.model.cashout ).subscribe(
           res => {
+            this.userService.generalAlert("message", "cashout successful!");
+            this.loading = false;
             console.log('response', res);
             this.account = res['doc'];
             this.returnCashoutTozero();
           },
           err => {
+            this.loading = false;
             console.log(err);
           }
         );
@@ -81,19 +87,8 @@ export class CashoutComponent implements OnInit {
 
   }
   returnCashoutTozero(){
-    this.model.cashout = '';
+    this.model.cashout =  0;
   }
 
-loadScript(url: string){
-  const body = <HTMLDivElement> document.body;
-  const script = document.createElement('script');
-  script.innerHTML = '';
-  script.src = url;
-  script.async = false;
-  script.defer = true;
-  body.appendChild(script);
-}
-logOut(){
-  this.userService.logout();
-}
+
 }

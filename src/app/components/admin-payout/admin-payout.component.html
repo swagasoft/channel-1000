@@ -1,209 +1,66 @@
+<app-logedin-nav></app-logedin-nav>
 
-  <!-- ######################################## -->
-  <link href="../../../assets/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-  <link href="../../../assets/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-  <link href="../../../assets/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
-  <!-- Main CSS-->
-  <link href="../../../assets/dashboard/css/theme.css" rel="stylesheet" media="all">
+<ion-content class="ion-padding">
 
+    <h4 class="text-center font-weight-bold p-1"> PAYOUT</h4>
 
-<div class="page-wrapper">
-  <!-- HEADER MOBILE-->
-  <header class="header-mobile d-block d-lg-none">
-      <div class="header-mobile__bar">
-          <div class="container-fluid">
-              <div class="header-mobile-inner">
-                  <a class="logo" href="index.html">
-                      <img src="../../../assets/dashboard/images/icon/logo.png" alt="CoolAdmin" />
-                  </a>
+  <div >
+  <ion-item color="dark">
+    <mat-form-field>
+      <!-- <mat-label class="ion-padding">filter </mat-label> -->
+      <!-- <ion-label position="floating">filter</ion-label> -->
+      <input matInput (keyup)="applyFilter($event)" placeholder="filter record">
+    </mat-form-field>
+  </ion-item>
 
-                  <button class="hamburger hamburger--slider" type="button">
-                      <span class="hamburger-box">
-                          <span class="hamburger-inner"></span>
-                      </span>
-                  </button>
-              </div>
-          </div>
-      </div>
+    <table class="table-responsive"  mat-table [dataSource]="dataSource"  >
 
-      <!-- MOBILE NAV -->
-      <nav class="navbar-mobile">
-        <div class="container-fluid">
-            <ul class="navbar-mobile__list list-unstyled">
-                <li class="has-sub">
-                    <a [routerLink]="['/admin-dash']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+      <ng-container matColumnDef="email">
+        <th  mat-header-cell *matHeaderCellDef> EMAIL </th>
+        <td   mat-cell *matCellDef="let element" > {{element.email}} </td>
+      </ng-container>
+  
 
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-investors']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-chart-bar"></i>Investors</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-inactive']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-table"></i>InActive</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-cashout']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Cashouts</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level1']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-1</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level2']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-2</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level3']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-3</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-level4']" routerLinkActive="router-link-active" >
-                        <i class="far fa-check-square"></i>Level-4</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-transaction']" routerLinkActive="router-link-active" >
-                        <i class="fas fa-calendar-alt"></i>Transaction</a>
-                </li>
-                <li>
-                    <a [routerLink]="['/admin-account']" >
-                        <i class="fas fa-map-marker-alt"></i>Account</a>
-                </li>
+      <ng-container matColumnDef="package">
+        <th mat-header-cell *matHeaderCellDef> PACKAGE </th>
+        <td   mat-cell *matCellDef="let element" > {{element.package}} </td>
+      </ng-container>
 
-                <li class="has-sub">
-                    <a (click)="logOut()">
-                        <i class="fas fa-desktop"></i>Logout</a>
+      <ng-container matColumnDef="payout">
+        <th  mat-header-cell *matHeaderCellDef> CASHOUT </th>
+        <td mat-cell  *matCellDef="let element"> {{element.cashout}} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef > ACTION </th>
+          <td mat-cell  *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
 
-                </li>
-            </ul>
-        </div>
-    </nav>
-  </header>
-  <!-- END HEADER MOBILE-->
-
-  <!-- MENU SIDEBAR-->
-  <app-admin-sidemenu></app-admin-sidemenu>
-  <!-- END MENU SIDEBAR-->
-
-  <!-- PAGE CONTAINER-->
-  <div class="page-container">
-      <!-- HEADER DESKTOP-->
-      <header class="header-desktop">
-          <div class="section__content section__content--p30">
-              <div class="container-fluid">
-                  <div class="header-wrap">
-
-                      <div class="header-button">
-                          <div class="noti-wrap">
-                              <div class="noti__item js-item-menu">
-
-                                 <!-- <p class="font-weight-bold"> {{userDetails?.username}} </p> -->
-                              </div>
-
-                          </div>
-                          <div class="account-wrap">
-                              <div class="account-item clearfix js-item-menu">
-
-                                  <div class="content">
-                                      <!-- <p class="js-acc-btn font-weight-bold">{{userDetails?.cust_id}} </p> -->
-                                  </div>
-                                  <div class="account-dropdown js-dropdown">
-                                      <div class="info clearfix">
-
-                                          <div class="content">
-                                              <h5 class="name">
-                                                  <!-- <a href="#">{{userDetails?.fullname}} </a> -->
-                                              </h5>
-                                              <!-- <span class="email">{{userDetails?.email}} </span> -->
-                                          </div>
-                                      </div>
-                                      <div class="account-dropdown__body">
-                                          <div class="account-dropdown__item">
-                                              <a [routerLink]="['/account']" routerLinkActive="router-link-active" >
-                                                  <i class="zmdi zmdi-account"></i>Account</a>
-                                          </div>
-                                          <div class="account-dropdown__item">
-                                              <a [routerLink]="['/cashout']" routerLinkActive="router-link-active" >
-                                                  <i class="zmdi zmdi-settings"></i>Cash out</a>
-                                          </div>
-                                          <div class="account-dropdown__item">
-                                              <a [routerLink]="['/payment']" routerLinkActive="router-link-active" >
-                                                  <i class="zmdi zmdi-money-box"></i>Payment</a>
-                                          </div>
-                                      </div>
-                                      <div class="account-dropdown__footer">
-                                          <a (click)="logOut()">
-                                              <i class="zmdi zmdi-power"></i>Logout</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </header>
-      <!-- HEADER DESKTOP-->
-
-      <!-- MAIN CONTENT-->
-      <div class="main-content">
-          <div class="section__content section__content--p30">
-              <div class="container-fluid">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="overview-wrap">
-                              <h4 class="title-1 font-weight-bold">admin payout</h4>
-
-                          </div>
-                      </div>
-                  </div>
-
-
-                  <!-- ######### cards ##############3 -->
-
-                  <p>admin- payout!</p>
-
-                  <div class="table-responsive" >
-                    <table class="table table-striped w-auto">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Role</th>
-
-                          </tr>
-                        </thead>
-                        <!--Table head-->
-                        <!--Table body-->
-                        <tbody>
-                          <tr class="table-info"  *ngFor="let details of payouts; index as i">
-                        <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ details.amount }} </td>
-                            <td>{{ details.username}}</td>
-                            <td>{{ details.date |  date}}</td>
-
-                            <td>
-                              <button style=" margin-left:2px" type="button"
-                               class="btn btn-sm btn-danger" (click)="deleteUser(details._id)">X</button>
-                               </td>
-                          </tr>
-                        </tbody>
-                        <!--Table body-->
-                      </table>
-                    </div>
-
-                  <!-- ######### cards ##############3 -->
-
-
-
-              </div>
-          </div>
-      </div>
-      <!-- END MAIN CONTENT-->
-      <!-- END PAGE CONTAINER-->
+   
+  
+      <tr  mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+      <tr    mat-row *matRowDef="let row; columns: displayedColumns; let even=even;"
+      tappable   [ngClass]="{gray: even}"> </tr>
+    </table>
+  
+   <ion-item >
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+   </ion-item>
   </div>
 
-</div>
+
+
+<!-- end mat table -->
+
+ 
+
+
+  <!-- loader -->
+  <div *ngIf="loading" class="spinner-container">
+    <div class="loader">
+    </div>
+  </div>
+
+</ion-content>
+

@@ -38,6 +38,11 @@ export class AppComponent {
     },
 
     {
+      title: 'Cashout',
+      url: '/cashout',
+      icon: 'wallet'
+    },
+    {
       title: 'Payment',
       url: '/payment',
       icon: 'archive'
@@ -50,11 +55,11 @@ export class AppComponent {
 
   ];
   public labels = [
-    {title:'Inactive', url:'/admin-inactive'},
-    {title:'Cashout request', url:'/admin-cashout'},
-    {title:'Search user', url:'/admin-search-user'},
-    {title:'Payouts', url:'/admin-payout'},
-    {title:'Admin dashboard', url:'/admin-dash'},
+    {title:'INACTIVE', url:'/admin-inactive'},
+    {title:'CASHOUT', url:'/admin-cashout'},
+    {title:'ACTIVE', url:'/admin-active'},
+    {title:'PAYOUT', url:'/admin-payout'},
+    // {title:'Admin dashboard', url:'/admin-dash'},
 
   ];
 

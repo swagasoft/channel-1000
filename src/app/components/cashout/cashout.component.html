@@ -2,49 +2,38 @@
 <app-logedin-nav></app-logedin-nav>
           <!-- MAIN CONTENT-->
       <ion-content>
-        <div class="main-content">
-          <div class="section__content section__content--p30">
+      
 
-              <div class="d-flex row justify-content-center">
-                  <!-- ######### cards ##############3 -->
+      <ion-row class="ion-padding cashout"> 
+          <ion-col size="6">
+              <ion-card color="primary">
+                <div class="card-desc">
+                    <h3 class="text-center text-white "> {{account?.earnings | currency:'₦ '}} </h3>
+                    <p class="text-center"> Total earnings</p>
+                </div>
+              </ion-card>
+          </ion-col>
 
-                  <section class="details-card ">
-                      <div class="col d-flex justify-content-center affix">
-                          <div class="toast-container mb-5">
-                              <flash-messages ></flash-messages>
-                          </div>
-                          </div>
+          <ion-col size="6">
+              <ion-card>
+                
+                  <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"
+                    [(ngModel)]="model.cashout"  #cashout="ngModel">
+                   <!-- <input type="submit"  value="CASHOUT"> -->
+                   <ion-button (click)="cashOut()" type="submit" expand="block" color="primary" shape="round">
+                       cashout
+                   </ion-button>
+              </ion-card>
+          </ion-col>
+      </ion-row>
 
-                    <div class="container">
-                        <div class="">
-                            <div class="col-6" >
-                                <div class="card-content">
-                                    <div class="card-desc">
-                                        <h3>₦ {{account?.earnings | number}} </h3>
-                                        <p> Total earnings</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                  <div class="col-6 ">
-                    <!-- <small>you can  only cashout when your balance is more than 1000 </small> -->
-                    <form  #cashoutForm="ngForm" class="bg-dark" (submit)="cashoutForm.valid
-                     && cashOut(cashoutForm, account.user_id)">
-                       <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"
-                         [(ngModel)]="model.cashout"  #cashout="ngModel">
-                        <input type="submit"  value="CASHOUT">
-                    </form>
-                    </div>
-                        </div>
-                    </div>
-                  </section>
-
-                  <!-- ######### cards ##############3 -->
+       <!-- loader -->
+  <div *ngIf="loading" class="spinner-container">
+    <div class="loader">
+    </div>
+  </div>
 
 
-              </div>
-          </div>
-      </div>
       <app-footer></app-footer>
 
       </ion-content>

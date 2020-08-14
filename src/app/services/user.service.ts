@@ -142,6 +142,10 @@ export class UserService {
   getInActiveUsers(){
     return this.http.get(environment.apiBaseUrl + '/get-inactive-users');
   }
+
+  getActiveUser(){
+    return this.http.get(environment.apiBaseUrl +'/get-active-users');
+  }
   deleteUser(user_id){
     return this.http.get(environment.apiBaseUrl + `/delete-user${user_id}`);
   }
@@ -194,6 +198,8 @@ export class UserService {
   deleteToken() {
     window.localStorage.removeItem('token');
   }
+
+
 
   public getToken(): string {
   this.token = localStorage.getItem('token');
