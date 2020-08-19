@@ -55,10 +55,12 @@ export class AppComponent {
 
   ];
   public labels = [
-    {title:'INACTIVE', url:'/admin-inactive'},
-    {title:'CASHOUT', url:'/admin-cashout'},
-    {title:'ACTIVE', url:'/admin-active'},
-    {title:'PAYOUT', url:'/admin-payout'},
+    {title:'MANUAL-PAY', url:'/admin-manual-pay'},
+    {title:'TRANSACTION LIST', url:'/admin-transaction'},
+    {title:'IN-ACTIVE USERS', url:'/admin-inactive'},
+    {title:'CASHOUT REQUEST', url:'/admin-cashout'},
+    {title:'ACTIVE USERS', url:'/admin-active'},
+    {title:'PAYOUT RECORDS', url:'/admin-payout'},
     // {title:'Admin dashboard', url:'/admin-dash'},
 
   ];

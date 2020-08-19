@@ -74,6 +74,9 @@ displayedColumns: string[] = [ 'email','package', 'cashout','action'];
       res => {
         console.log(res);
         this.users_cashout = res['result'];
+        setTimeout(()=> {
+          window.location.reload();
+        },2000);
       },
       err => {
         console.log(err);

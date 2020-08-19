@@ -20,7 +20,7 @@ displayedColumns: string[] = [ 'email','package', 'payout','date'];
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
- 
+    this.readCurrentPayouts()
    
   }
 
@@ -31,7 +31,7 @@ displayedColumns: string[] = [ 'email','package', 'payout','date'];
       res => {
         console.log(res);
         this.payouts = res['doc'];
-        this.dataSource = new MatTableDataSource(res['result']);
+        this.dataSource = new MatTableDataSource(res['doc']);
         this.dataSource.paginator = this.paginator;
         this.dataSource.filterPredicate = (data: any, filter: string): boolean => {
          const dataStr = Object.keys(data).reduce((currentTerm: string, key: string) => {

@@ -1,3 +1,4 @@
+import { ManualPaymentComponent } from './components/manual-payment/manual-payment.component';
 import { ActiveComponent } from './components/active/active.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { AdminguardGuard } from './auth/adminguard.guard';
@@ -83,6 +84,8 @@ const routes: Routes = [
   { path: 'admin-level3', component: AdminLevel3Component,
   canActivate:[AuthgaurdGuard, AdminguardGuard]},
   { path: 'admin-level4', component: AdminLevel4Component,
+   canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-manual-pay', component: ManualPaymentComponent,
    canActivate:[AuthgaurdGuard, AdminguardGuard]},
    { path: 'downline', component: DownlineComponent,
    canActivate:[AuthgaurdGuard]}

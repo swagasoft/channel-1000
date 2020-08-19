@@ -55,6 +55,7 @@ export class UserService {
     const toast = await this.toastController.create({
       header : `${header}`,
       message: `${message}`,
+      position: 'middle',
       duration:  3000
     });
     toast.present();
@@ -67,6 +68,14 @@ export class UserService {
   login(authCredentials) {
     return this.http.post(environment.apiBaseUrl  + '/authenticate',
      authCredentials, this.noAuthHeader);
+  }
+
+  manualTransaction(trans){
+    return this.http.put(environment.apiBaseUrl + '/manual-transaction', trans);
+  }
+
+  confirmManualTrans(trans){
+    return this.http.put(environment.apiBaseUrl + '/confirm-manual-transaction', trans);
   }
 
   getDownline(){

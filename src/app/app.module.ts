@@ -70,6 +70,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { LogedinNavComponent } from './components/logedin-nav/logedin-nav.component';
 import { DownlineComponent } from './components/downline/downline.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ManualPaymentComponent } from './components/manual-payment/manual-payment.component';
 
 
 
@@ -120,7 +121,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     LogedinNavComponent,
     LogedinNavComponent,
     DownlineComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ManualPaymentComponent
 
   ],
   entryComponents:[EditProfileComponent],

@@ -19,31 +19,14 @@ export class AdminTransactionComponent implements OnInit {
      ) { }
 
   ngOnInit() {
-    this.readTransactions();
-    this.loadScript('../../assets/dashboard/vendor/animsition/animsition.min.js');
-    this.loadScript('../../assets/dashboard/js/main.js');
 
-    // this.router.events.subscribe((evt) => {
-    //   if(!(evt instanceof NavigationEnd)){
-    //     return ;
-    //   }
+  }
 
-    //   window.scrollTo(0,0);
-    // });
+  ionViewWillEnter(){
+   this.readTransactions();
+  
   }
-  loadScript(url: string){
-    const body = <HTMLDivElement> document.body;
-    const script = document.createElement('script');
-    script.innerHTML = '';
-    script.src = url;
-    script.async = false;
-    script.defer = true;
-    body.appendChild(script);
-  }
-  logOut(){
-    this.userService.logout();
-    this.loading = false;
-  }
+
   readTransactions() {
     this.loading = true;
     this.userService.getAllTransactions().subscribe( val => {
@@ -61,8 +44,7 @@ export class AdminTransactionComponent implements OnInit {
     this.userService.deleteTrasaction(id).subscribe(
       response => {
         this.loading = false;
-        this.flashMessage.show(`Transaction deleted `,
-        {cssClass: ' text-white bg-info text-center font-weight-bold', timeout: 2000});
+        this.userService.generalToast("success", "transaction deleted!", 2000);
         this.readTransactions();
       }
     );

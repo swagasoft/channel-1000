@@ -11,8 +11,8 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="filter record">
     </mat-form-field>
   </ion-item>
-
-    <table class="table-responsive"  mat-table [dataSource]="dataSource"  >
+  <div class="">
+    <table class="table-responsive  text-center"  mat-table [dataSource]="dataSource"  >
 
       <ng-container matColumnDef="email">
         <th  mat-header-cell *matHeaderCellDef> EMAIL </th>
@@ -54,11 +54,14 @@
       <tr    mat-row *matRowDef="let row; columns: displayedColumns; let even=even;"
       tappable   [ngClass]="{gray: even}"> </tr>
     </table>
+  </div>
   
-   <ion-item >
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+   <ion-item color="dark">
+    <mat-paginator [pageSizeOptions]="[ 10, 20, 50]" showFirstLastButtons></mat-paginator>
    </ion-item>
   </div>
+
+
 
 
 
