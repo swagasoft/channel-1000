@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
@@ -9,27 +10,18 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
   styleUrls: ['./admin-cashout.component.scss']
 })
 export class AdminCashoutComponent implements OnInit {
-  users_cashout: any;
+  users_cashout: any [];
   loading = false;
 
-
-displayedColumns: string[] = [ 'email','package', 'cashout','action'];
-@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
-  dataSource: any;
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, public alertController: AlertController) { }
 
   ngOnInit() {
-
-
 
   }
 
 
   ionViewWillEnter(){
     this.getAllCashout();
-  
-
   }
 
 
@@ -41,20 +33,12 @@ displayedColumns: string[] = [ 'email','package', 'cashout','action'];
         this.loading = false;
         console.log(res['result']);
         this.users_cashout = res['result'];
-        this.dataSource = new MatTableDataSource(res['result']);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.filterPredicate = (data: any, filter: string): boolean => {
-         const dataStr = Object.keys(data).reduce((currentTerm: string, key: string) => {
-           return (currentTerm + (data as { [key: string]: any })[key] + '◬');
-         }, '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-   
-         const transformedFilter = filter.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-   
-         return dataStr.indexOf(transformedFilter) != -1;
-       }
+    
       },
       err => {
+        console.log('THE ERROR')
         this.loading = false;
+        this.users_cashout = [];
         this.userService.generalAlert("Content", err.error.msg);
         console.log(err);
       }
@@ -68,28 +52,50 @@ displayedColumns: string[] = [ 'email','package', 'cashout','action'];
   }
 
 
-  payUser(id, username, amount){
-    console.log(id, username, amount);
-    this.userService.payOutUser(id, username, amount).subscribe(
+  payUser(user){
+    this.loading = true;
+    let object = {id:user._id, username: user.username, amount: user.cashout, email: user.email, package:user.package};
+    this.userService.payOutUser(object).subscribe(
       res => {
+        this.loading = false;
         console.log(res);
-        this.users_cashout = res['result'];
-        setTimeout(()=> {
-          window.location.reload();
-        },2000);
+        this.userService.generalToast("success", res['message'], 2000);
+        this.getAllCashout();
+       
       },
       err => {
+        this.loading = false;
         console.log(err);
       }
     )
 
   }
 
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  async confirmPayout(user) {
+    const alert = await this.alertController.create({
+      header: `payout ₦${user.cashout}`,
+      subHeader: ` to ${ user.username}`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.payUser(user)
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
   }
+
 
 
 }

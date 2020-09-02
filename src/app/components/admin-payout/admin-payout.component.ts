@@ -13,7 +13,7 @@ payouts : any;
 loading = false;
 
 
-displayedColumns: string[] = [ 'email','package', 'payout','date'];
+displayedColumns: string[] = [ 'email', 'username','package', 'payout','date'];
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   dataSource: any;

@@ -18,7 +18,7 @@
          <ion-row class="m-5 p-5">
            <ion-col class="p-1" >
 
-              <div class="card-content" style="width: 200px; height: 300px;">
+              <div class="card-content" style="width: 200px; height: 350px;">
                   <div class="card-img">
                       <img class="package" src="../../assets/bronze.png" width="100" height="100" alt="">
                   </div>
@@ -35,9 +35,10 @@
                        </div>
 
 
-                          <div class="text-center">
-                            <button class="btn-card"
-                              (click)="selectPackage('PACKAGE1000','CUSTOMER')">select</button>
+                          <div class="ion-text-center">
+                            <ion-button (click)="selectPackage('PACKAGE1000','CUSTOMER')" expand="block" fill="outline" shape="round">
+                              select
+                            </ion-button>
                           </div>
                   </div>
               </div>
@@ -45,7 +46,7 @@
 
            <ion-col class="p-1">
 
-              <div class="card-content"  style="width: 200px; height: 300px;">
+              <div class="card-content"  style="width: 200px; height: 350px;">
                   <div class="card-img">
                       <img class="package" src="../../assets/silver.jpeg" width="100" height="100" alt="">
                   </div>
@@ -60,16 +61,18 @@
                         <div>job application letter</div>
                        </div>
 
-                          <div class="text-center">
-                            <button class="btn-card"
-                            (click)="selectPackage('PACKAGE2000','CUSTOMER')">select</button>
-                          </div>
+                          
+                            <div class="ion-text-center">
+                              <ion-button (click)="selectPackage('PACKAGE2000','CUSTOMER')" expand="block" fill="outline" shape="round">
+                                select
+                              </ion-button>
+                            </div>
                   </div>
               </div>
            </ion-col>
            <ion-col class="p-1">
 
-              <div class="card-content" style="width: 200px; height: 300px;">
+              <div class="card-content" style="width: 200px; height: 350px;">
                   <div class="card-img">
                       <img class="package" src="../../assets/gold.jpg" width="100" height="100" alt="">
                   </div>
@@ -82,16 +85,18 @@
                         <div>skill training videos</div>
 
                        </div>
-                          <div class="text-center">
-                            <button class="btn-card"
-                             (click)="selectPackage('PACKAGE5000','CUSTOMER')">select</button>
+                        
+                          <div class="ion-text-center">
+                            <ion-button  (click)="selectPackage('PACKAGE5000','CUSTOMER')" expand="block" fill="outline" shape="round">
+                              select
+                            </ion-button>
                           </div>
                   </div>
               </div>
            </ion-col>
            <ion-col class="p-1">
 
-              <div class="card-content" style="width: 200px; height: 300px;">
+              <div class="card-content" style="width: 200px; height: 350px;">
                   <div class="card-img ion-text-center">
                       <img class="package" src="../../assets/daimond.jpg" width="100" height="100" class="package"   alt="">
 
@@ -105,9 +110,15 @@
                         <div>professional example documents (e.g IELTS)</div>
                         <div>soft skill training</div>
                        </div>
-                          <div class="text-center">
+                          <!-- <div class="text-center">
                             <button class="btn-card"
                              (click)="selectPackage('PACKAGE10000','CUSTOMER')">select</button>
+                          </div> -->
+
+                          <div class="ion-text-center">
+                            <ion-button  (click)="selectPackage('PACKAGE10000','CUSTOMER')" expand="block" fill="outline" shape="round">
+                              select
+                            </ion-button>
                           </div>
                   </div>
               </div>
@@ -126,9 +137,12 @@
                         <div>no activation fee</div>
 
                        </div>
-                          <div class="text-center">
-                            <button class="btn-card"
-                             (click)="selectPackage('MARKETER','MARKETER')">select</button>
+                         
+
+                          <div class="ion-text-center">
+                            <ion-button   (click)="selectPackage('MARKETER','MARKETER')" expand="block" fill="outline" shape="round">
+                              select
+                            </ion-button>
                           </div>
                   </div>
               </div>
@@ -141,84 +155,96 @@
 
 
     <!-- ############################ -->
-    <div  *ngIf="showForm" class="page-wrapper">
-      <div class="page-content--bge5">
+    <div  *ngIf="showForm" class="">
+      <div class="">
+         <!-- <ion-card> -->
           <div class="container">
-              <div class="login-wrap">
-                  <div class="login-content">
-                      <div class="login-logo">
-                          <a>
-                              <img src="../../assets/ch_logo.jpg" width="100" height="100" alt="ch_logo" width="200">
-                          </a>
+            <div class="login-wrap">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a>
+                            <img src="../../assets/ch_logo.jpg" width="100" height="100" alt="ch_logo" width="200">
+                        </a>
+                    </div>
+
+
+                      <!-- form -->
+                    <ion-card  color="light" class=" my-card col -d-flex justify-content-center ion-padding">
+                      <div  class="login-form  pb-5 ">
+                        <form    #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)"
+                        (keydown.enter)="signup_form.valid && onSubmit(signup_form)">
+                        <div class="text-center p-5">
+                          <h3 class="ion-padding">CREATE ACCOUNT </h3>
+   
+                           </div>
+  
+                      <div class="form-group">
+                        <label class="ml-4">Fullname</label>
+                          <input class="au-input au-input--full" type="text"  #fullname="ngModel"
+                          [(ngModel)]="model.fullname" required
+                           name="fullname" placeholder="Joe don" required> 
                       </div>
-
-
-                        <!-- form -->
-
-                      <div  class="login-form pb-5 text-center">
-                          <form    #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)"
-                          (keydown.enter)="signup_form.valid && onSubmit(signup_form)">
-
-                        <div class="form-group">
-                            <input class="au-input au-input--full" type="text"  #fullname="ngModel"
-                            [(ngModel)]="model.fullname" required
-                             name="fullname" placeholder="Fullname">
+                      <div *ngIf="fullname.dirty && fullname.errors"  class=" text-danger text-center">
+                          <small class="text-danger " >fullname is required</small>
                         </div>
-                        <div *ngIf="signup_form.submitted && !fullname.valid"  class=" text-danger text-center">
-                            <small >fullname is required</small>
+  
+  
+                      <div class="form-group">
+                        <label  class="ml-4">Email</label>
+                        <input class="au-input au-input--full" type="email"  #email="ngModel"
+                        [(ngModel)]="model.email" required [pattern]="emailRegex" name="email" placeholder="example133@mail.com">
+                    </div>
+                    <div *ngIf="email.dirty && email.errors" class=" text-danger text-center">
+                        <small class="text-danger " *ngIf="email?.errors.required" >email is required</small>
+                        <small class="text-danger " *ngIf="email?.errors.pattern" >email must be valid.</small>
+                      </div>
+  
+                      <div class="form-group">
+                        <label  class="ml-4">Username</label>
+                          <input class="au-input au-input--full" type="text"  #username="ngModel"
+                          [(ngModel)]="model.username" required 
+                           name="username" placeholder="example133">
+                      </div>
+                      <div *ngIf="username.dirty && username.errors"  class=" text-danger text-center">
+                          <small class="text-danger " >username is required</small>
+                        </div>
+  
+  
+  
+                      <div class="form-group">
+                        <label  class="ml-4">password</label>
+                          <input class="au-input au-input--full" type="password" name="password"  required
+                           #password="ngModel" minlength="6"  [(ngModel)]="model.password"
+                          placeholder="Password">
+                      </div>
+                      <div *ngIf="password.dirty && password.errors" class=" text-danger text-center">
+                          <small class="text-danger " *ngIf="password?.errors.invalid">password is required</small>
+                          <small class="text-danger " *ngIf="password?.errors.minlength">password must be at least 6 </small>
+                        </div>
+  
+                      <div class="form-group">
+                        <label  class="ml-4">Confirm password</label>
+                          <input class="au-input au-input--full" type="password" name="passwordConf"  required
+                           #passwordConf="ngModel" minlength="6"  [(ngModel)]="model.confirmPassword"
+                          placeholder="Confirm password">
+                      </div>
+                      <div *ngIf="passwordConf.dirty && password.value !== model.confirmPassword" class=" text-center">
+                        <small class="text-danger ">password not matched</small>
+                       
+                      </div>
+  
+                      <div class="login-checkbox">
+                          <div class="text-dark">
+                             by creating account you Agree to the terms and <a [routerLink]="['/policy']" > policy</a>
                           </div>
-
-
-                        <div class="form-group">
-                            <!-- <small>Username</small> -->
-                            <input class="au-input au-input--full" type="text"  #username="ngModel"
-                            [(ngModel)]="model.username" required
-                             name="username" placeholder="Username">
-                        </div>
-                        <div *ngIf="signup_form.submitted && !username.valid"  class=" text-danger text-center">
-                            <small >username is required</small>
+                      </div>
+                      
+                           <div class="ion-text-center">
+                              <ion-button type="submit" shape="round" [disabled]="showBtnLoading"> sign up</ion-button>
+  
                           </div>
-
-
-                        <div class="form-group">
-                            <!-- <small>Email Address</small> -->
-                            <input class="au-input au-input--full" type="email"  #email="ngModel"
-                            [(ngModel)]="model.email" required [pattern]="emailRegex"
-                             name="email" placeholder="Email Address">
-                        </div>
-                        <div *ngIf="signup_form.submitted && email.errors" class=" text-danger text-center">
-                            <small *ngIf="email?.errors.required" >email is required</small>
-                            <small *ngIf="email?.errors.pattern" >email must be valid.</small>
-                          </div>
-
-                        <div class="form-group">
-                            <!-- <small>Password</small> -->
-                            <input class="au-input au-input--full" type="password" name="password"  required
-                             #password="ngModel" minlength="6"  [(ngModel)]="model.password"
-                            placeholder="Password">
-                        </div>
-                        <div *ngIf="signup_form.submitted && password.errors" class=" text-danger text-center">
-                            <small *ngIf="password?.errors.invalid">password is required</small>
-                            <small *ngIf="password?.errors.minlength">password must be at least 6 </small>
-                          </div>
-
-                        <div class="form-group">
-                            <!-- <small>Password</small> -->
-                            <input class="au-input au-input--full" type="password" name="passwordConf"  required
-                             #passwordConf="ngModel" minlength="6"  [(ngModel)]="model.confirmPassword"
-                            placeholder="Confirm password">
-                        </div>
-                        <div class="login-checkbox">
-                            <small class="text-dark">
-                               by creating account you Agree to the terms and <a [routerLink]="['/policy']" > policy</a>
-                            </small>
-                        </div>
-                        <button [disabled]="password.value !== model.confirmPassword || showBtnLoading"
-                         class="au-btn au-btn--block primary-color-dark p-b-20" type="submit">
-
-                            <i class="fa fa-spinner fa-spin" *ngIf="showBtnLoading"></i> register</button>
-
-                    </form>
+  
+                  </form>
                     <div class="register-link">
                               <p>
                                   Already have account?
@@ -226,11 +252,15 @@
                               </p>
                           </div>
                       </div>
-                  </div>
-              </div>
-          </div>
+                    </ion-card>
+                  
+                </div>
+            </div>
+        </div>
+         <!-- </ion-card> -->
       </div>
 
+     
   </div>
 
    <!-- loader -->
@@ -238,6 +268,7 @@
     <div class="loader">
     </div>
   </div>
+ 
   <app-footer></app-footer>
 
 

@@ -51,15 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.scrollToTop();
-    console.log('referal', this.route.snapshot.queryParams['ref']);
-    const Referral =  this.route.snapshot.queryParams['ref'];
-    if (Referral){
-      console.log('there is referal')
-      this.model.ref_username = Referral;
-      console.log(this.model.ref_username);
-    }
-
+   
 
   }
 
@@ -76,6 +68,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.selectpackage = true;
     this.showForm = false;
     this.showBtnLoading = false;
+    this.scrollToTop();
+    console.log('referal', this.route.snapshot.queryParams['ref']);
+    const Referral =  this.route.snapshot.queryParams['ref'];
+    if (Referral){
+      console.log('there is referal')
+      this.model.ref_username = Referral;
+      console.log(this.model.ref_username);
+    }
    }
 
   selectPackage(value, role){

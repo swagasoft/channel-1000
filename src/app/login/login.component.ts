@@ -1,8 +1,10 @@
+import { ModalController } from '@ionic/angular';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { LostPasswordComponent } from '../components/lost-password/lost-password.component';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,7 @@ loading: boolean;
     public userService : UserService,
     private router: Router,
     private flashMessage: FlashMessagesService,
+    public modalController:  ModalController
 
     ) { }
 
@@ -61,5 +64,17 @@ loading: boolean;
       }
     );
   }
+
+  async lostPssword() {
+    const modal = await this.modalController.create({
+    component: LostPasswordComponent,
+    componentProps: { value: 123 }
+    });
+  
+    await modal.present();
+  
+  }
+
+  
 
 }

@@ -29,7 +29,7 @@
                         <!-- <h3>Torama User</h3> -->
                         <p>{{userDetails?.fullname}} </p>
                       </ion-label>
-                      <ion-button (click)="editProfile()"
+                      <ion-button (click)="passwordAlert()"
                       color="primary">edit</ion-button>
                     </ion-item>
                     <ion-item color="light" >
@@ -72,8 +72,28 @@
                        <ion-icon name="key"></ion-icon>
                         <p> {{userDetails?.role}} </p>
                       </ion-label>
-
                     </ion-item>
+
+                    <ion-item color="light" >
+                      <ion-label>
+                       <ion-icon name="business"></ion-icon>
+                        <p> bank : {{userDetails?.bank}} </p>
+                      </ion-label>
+                    </ion-item>
+                    <ion-item color="light" >
+                      <ion-label>
+                       <ion-icon name="card"></ion-icon>
+                        <p>  account no : {{userDetails?.bank_account_no}} </p>
+                      </ion-label>
+                    </ion-item>
+
+                    <ion-item color="light" >
+                      <ion-label>
+                       <ion-icon name="person"></ion-icon>
+                        <p> account name : {{userDetails?.bank_account_name}} </p>
+                      </ion-label>
+                    </ion-item>
+                    
                   </ng-container>
                 </ion-list>
                </ion-col>
@@ -81,5 +101,14 @@
 
 
   </ion-grid>
+
+
+
+  <!-- loader -->
+  <div *ngIf="loading" class="spinner-container">
+    <div class="loader">
+    </div>
+  </div>
+  <!-- <ion-button (click)="passwordAlert()" >password</ion-button> -->
 
 </ion-content>

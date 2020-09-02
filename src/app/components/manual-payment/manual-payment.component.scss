@@ -8,11 +8,7 @@
      
       
      }
-     .error{
-       color: red;
-       text-align: center;
-     }
-    
+   
  // form{
  //   justify-content: center;
  //     padding-top: 5%; 
@@ -42,11 +38,12 @@
    display: flex;
    justify-content: center;
    border: 2px blue($color: #000000);
+  
  }
  
- .align-center{
-   text-align: center;
- }
+//  .align-center{
+//    text-align: center;
+//  }
  .myButton{
    padding:10px;
    display: flex;
@@ -58,6 +55,4 @@
    padding:15px
  }
 
- .card{
-     width: 50%;
- }
+ 

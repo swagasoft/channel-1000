@@ -1,3 +1,4 @@
+import { CompletedUsersComponent } from './components/completed-users/completed-users.component';
 import { ManualPaymentComponent } from './components/manual-payment/manual-payment.component';
 import { ActiveComponent } from './components/active/active.component';
 import { TabsComponent } from './components/tabs/tabs.component';
@@ -65,30 +66,19 @@ const routes: Routes = [
   { path: 'cashout', component: CashoutComponent, canActivate:[AuthgaurdGuard]},
   { path: 'admin-dash', component: AdmindashboardComponent,
   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-investors', component: AdminInvestorsComponent,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-inactive', component: AdminInactiveComponent,
-  canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-active', component: ActiveComponent,
-  canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-cashout', component: AdminCashoutComponent,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-transaction', component: AdminTransactionComponent,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-payout', component: AdminPayoutComponent,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-level1', component: AdminLevel1Component,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-level2', component: AdminLevel2Component,
-  canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-level3', component: AdminLevel3Component,
-  canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-level4', component: AdminLevel4Component,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-  { path: 'admin-manual-pay', component: ManualPaymentComponent,
-   canActivate:[AuthgaurdGuard, AdminguardGuard]},
-   { path: 'downline', component: DownlineComponent,
-   canActivate:[AuthgaurdGuard]}
+  { path: 'admin-investors', component: AdminInvestorsComponent, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-inactive', component: AdminInactiveComponent, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-active', component: ActiveComponent,canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-cashout', component: AdminCashoutComponent, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-transaction', component: AdminTransactionComponent, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-payout', component: AdminPayoutComponent, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-level1', component: AdminLevel1Component, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-level2', component: AdminLevel2Component, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-level3', component: AdminLevel3Component, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-level4', component: AdminLevel4Component, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'admin-manual-pay', component: ManualPaymentComponent, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+  { path: 'completed-users', component: CompletedUsersComponent, canActivate:[AuthgaurdGuard, AdminguardGuard]},
+   { path: 'downline', component: DownlineComponent, canActivate:[AuthgaurdGuard]}
 
 
 ];

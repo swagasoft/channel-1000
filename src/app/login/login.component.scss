@@ -17,6 +17,15 @@ font-family: 'Oxygen', sans-serif;
 margin-top: 70px;
 }
 
+img{
+  width: 150px !important;
+  height: 80 !important;
+}
+
+.my-card{
+// padding-top: 70px;
+}
+
 
 h1.title {
 font-size: 50px;
@@ -77,10 +86,3 @@ form{
   margin-bottom: 40px;
 }
 
-.toast-container{
-  position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
-}

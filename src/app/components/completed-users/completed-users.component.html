@@ -2,7 +2,7 @@
 
 <ion-content class="ion-padding">
 
-    <h4 class="text-center font-weight-bold p-1"> CASHOUT REQUEST</h4>
+    <h4 class="text-center font-weight-bold p-1"> COMPLETED USERS</h4>
 
   
 
@@ -19,10 +19,8 @@
           <th class="text-white p-2">USERNAME</th>
           <th class="text-white p-2">PACKAGE</th>
           <th class="text-white p-2">EARNINGS</th>
+          <th class="text-white p-2">BONUS</th>
           <th class="text-white p-2">CASHOUT</th>
-          <th class="text-white p-2">BANK</th>
-          <th class="text-white p-2">ACC NO</th>
-          <th class="text-white p-2">ACC NAME</th>
           <th class="text-white p-2">ACTION</th>
           
         </tr>
@@ -30,18 +28,16 @@
       <!--Table head-->
       <!--Table body-->
       <tbody>
-        <tr class="table-primary"  *ngFor="let details of users_cashout; index as i">
+        <tr class="table-success"  *ngFor="let user of completedUsers; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td>{{ details.email }} </td>
-          <td>{{ details.username}}</td>
-          <td>{{ details.package}}</td>
-          <td>{{ details.earnings | currency:'₦'}}</td>
-          <td>{{ details.cashout | currency:'₦'}}</td>
-          <td>{{ details.bank}}</td>
-          <td>{{ details.bank_account_no}}</td>
-          <td>{{ details.bank_account_name}}</td>
+      <td>{{ user.email }} </td>
+          <td>{{ user.username}}</td>
+          <td>{{ user.package}}</td>
+          <td>{{ user.earnings | currency:'₦'}}</td>
+          <td>{{ user.bonus | currency:'₦'}}</td>
+          <td>{{ user.cashout | currency:'₦'}}</td>
           <td>
-           <ion-button (click)="confirmPayout(details)" >payout</ion-button>
+           <ion-icon size="large" (click)="confirmDelete(user)" name="trash" color="danger"></ion-icon>
              </td>
         </tr>
       </tbody>
@@ -50,12 +46,6 @@
   </div>
 
 
-
-    <!-- loader -->
-<div *ngIf="loading" class="spinner-container">
-<div class="loader">
-</div>
-</div>
 
 <!-- end -->
  

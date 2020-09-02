@@ -1,3 +1,4 @@
+
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -62,6 +63,12 @@ export class UserService {
   }
 
 
+  getCompletedUsers(){
+    return this.http.get(environment.apiBaseUrl +'/get-completed-users');
+  }
+
+ 
+
   postUser(userDetails) {
     return this.http.post(environment.apiBaseUrl + '/register' , userDetails, this.noAuthHeader);
   }
@@ -85,7 +92,11 @@ export class UserService {
 
   // SECURED ROUTE IN THE SERVER SIDE...
   getUserProfile() {
-    return this.http.get(environment.apiBaseUrl + '/dashboard');
+    return this.http.get(environment.apiBaseUrl + '/get-profile');
+  }
+
+  validatepassword(password){
+    return this.http.put(environment.apiBaseUrl +'/validate-password',  password);
   }
 
   updateUserProfile(profile){
@@ -100,13 +111,23 @@ export class UserService {
   postCashout(post){
     return this.http.get(environment.apiBaseUrl + `/post-user-cashout${post}`);
   }
-  payOutUser(id, username,amount){
-    return this.http.get(environment.apiBaseUrl + `/payout-user${id},${username},${amount}`);
+  payOutUser(payment){
+    return this.http.put(environment.apiBaseUrl + `/payout-user`, payment);
   }
 
   getPayoutList(){
     return this.http.get(environment.apiBaseUrl + `/get-recent-payouts`);
   }
+
+
+  checkEmail(mail){
+    return this.http.put(environment.apiBaseUrl +'/check-email', mail);
+  }
+
+  updatePassword(newPasswordObj){
+    return this.http.patch(environment.apiBaseUrl + '/update-password', newPasswordObj);
+  }
+
 
   getTransaction(): Observable <any>{
     return this.http.get(environment.apiBaseUrl + '/get-transactions');
@@ -155,6 +176,7 @@ export class UserService {
   getActiveUser(){
     return this.http.get(environment.apiBaseUrl +'/get-active-users');
   }
+
   deleteUser(user_id){
     return this.http.get(environment.apiBaseUrl + `/delete-user${user_id}`);
   }

@@ -1,4 +1,55 @@
-<p>user-trasanctions works!</p>
+<app-logedin-nav></app-logedin-nav>
 
-<!-- user side nav -->
-<app-side-nav></app-side-nav>
+<ion-content>
+
+
+
+    <!-- Segment with anchors -->
+<ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="payin">
+      <ion-label>Product</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="payout">
+      <ion-label>Payout</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <ion-list  *ngIf="segment=='payin'">
+    <ion-card *ngFor="let item of payIn">
+     <ion-item color="light" >
+         <ion-item-group>
+             <ion-item-option>{{item.amount |currency:' ₦'}} </ion-item-option>
+             <ion-item-option> status :  {{item.status}} </ion-item-option>
+             <ion-item-option> id:  {{item.transaction}} </ion-item-option>
+             <ion-item-option> date:  {{item.date |date:'short'}} </ion-item-option>
+         </ion-item-group>
+     </ion-item>
+    </ion-card>
+
+   </ion-list>
+
+
+
+   <!-- segment two -->
+   <ion-list *ngIf="segment=='payout'">
+    <ion-card *ngFor="let item of payOut">
+     <ion-item color="light">
+         <ion-item-group>
+             <ion-item-option>Amount :{{item.amount |currency:' ₦'}} </ion-item-option>
+             <ion-item-option  > email :  {{item.email}} </ion-item-option>
+             <ion-item-option > package:  {{item.package}} </ion-item-option>
+             <ion-item-option  >  username:  {{item.username}} </ion-item-option>
+             <ion-item-option > date:  {{item.date |date:'short'}} </ion-item-option>
+         </ion-item-group>
+     </ion-item>
+    </ion-card>
+
+   </ion-list>
+
+
+      <!-- loader -->
+   <div *ngIf="loading" class="spinner-container">
+    <div class="loader">
+    </div>
+  </div>
+</ion-content>

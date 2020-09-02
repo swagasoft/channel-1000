@@ -71,6 +71,8 @@ import { LogedinNavComponent } from './components/logedin-nav/logedin-nav.compon
 import { DownlineComponent } from './components/downline/downline.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ManualPaymentComponent } from './components/manual-payment/manual-payment.component';
+import { CompletedUsersComponent } from './components/completed-users/completed-users.component';
+import { LostPasswordComponent } from './components/lost-password/lost-password.component';
 
 
 
@@ -122,10 +124,12 @@ import { ManualPaymentComponent } from './components/manual-payment/manual-payme
     LogedinNavComponent,
     DownlineComponent,
     EditProfileComponent,
-    ManualPaymentComponent
+    ManualPaymentComponent,
+    CompletedUsersComponent,
+    LostPasswordComponent
 
   ],
-  entryComponents:[EditProfileComponent],
+  entryComponents:[EditProfileComponent, LostPasswordComponent],
   imports: [
     BrowserModule,
     NgbModule,

@@ -16,6 +16,9 @@ export class EditProfileComponent implements OnInit {
   @Input() role: string;
   @Input() phone: string;
   @Input() _id: string;
+  @Input() bank: string;
+  @Input() bank_account_no: string;
+  @Input() bank_account_name: string;
   loading = false;
   constructor(public modalControl : ModalController, private userService: UserService) { }
 
@@ -25,7 +28,10 @@ export class EditProfileComponent implements OnInit {
     email : '',
     role: '',
     phone: '',
-    id:''
+    id:'',
+    bank:'',
+    bank_account_no:'',
+    bank_account_name:'',
   }
 
   ngOnInit() {
@@ -41,7 +47,10 @@ export class EditProfileComponent implements OnInit {
       email : this.email,
       role: this.role,
       phone: this.phone,
-      id:this._id
+      id:this._id,
+      bank: this.bank,
+      bank_account_no: this.bank_account_no,
+      bank_account_name: this.bank_account_name,
     }
 
   }
@@ -58,12 +67,12 @@ export class EditProfileComponent implements OnInit {
       res => {
         this.loading = false;
         this.dismiss()
-        this.userService.generalToast('error',res['message'], 2000);
+        this.userService.generalToast('success',res['msg'], 2000);
         console.log(res);
       },
       err => {
         this.loading = false;
-        this.userService.generalToast('error',err.error.message, 3000);
+        this.userService.generalToast('error',err.error.msg, 3000);
       }
     )
 

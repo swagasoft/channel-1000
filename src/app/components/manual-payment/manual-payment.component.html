@@ -8,61 +8,61 @@
     <div class="text-center"> <ion-chip  outline><h4>MANUAL PAYMENT</h4> </ion-chip></div>
 
   <!-- manual -->
-  <div class="center"  *ngIf="formOne">
+  <div class="center  "  *ngIf="formOne">
 
     <ion-card class="ion-padding ion-margin card">
       <div class="d-flex justify-content-center">
         <img class="my-img" src="../../../assets/atm_cards2.jpg" alt="">
       </div>
-    <form  #manualPay="ngForm" name="manualPay" >
-      <!-- <img class="ion-padding" src="assets/icon/logo.jpg"> -->
-    
-
-      <div *ngIf="loading">
-        <ion-progress-bar type="indeterminate"></ion-progress-bar>
-      </div>
-
-      <ion-item class="ion-margin-bottom" color="light">
-        <ion-label color="dark" position="floating">Email</ion-label>
-        <ion-input type="email" name="email" clearInput [(ngModel)]="model.email" 
-           required="true"></ion-input>
-          <ion-icon name="mail" slot="end"></ion-icon>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom" color="light">
-        <ion-label color="dark" position="floating">Username</ion-label>
-        <ion-input type="text" name="username" clearInput [(ngModel)]="model.username" 
-           required="true"></ion-input>
-          <ion-icon name="person" slot="end"></ion-icon>
-      </ion-item>
-
-
-      <ion-item color="light" class="">
-        <ion-label position="floating">Amount</ion-label>
-        <ion-input class="" type="number"   name="investment"  [(ngModel)]="model.investment"
-        clearInput required="true">
-        </ion-input>
-        <ion-icon name="cash" slot="end"></ion-icon>
-      </ion-item>
-
-      <ion-item color="light" class="">
-        <ion-label position="floating">package</ion-label>
-        <ion-input class="" type="text"   name="package"  [(ngModel)]="model.package"
-        clearInput required="true">
-        </ion-input>
-        <ion-icon name="cash" slot="end"></ion-icon>
-      </ion-item>
+      <form  #manualPay="ngForm" name="manualPay" >
+        <!-- <img class="ion-padding" src="assets/icon/logo.jpg"> -->
       
-
-
-      <div class="myButton md-button " #submitBtn>
-        <ion-button (click)="submit(manualPay)" [disabled]="loading"
-         type="submit" color="success"> 
-         SUBMIT</ion-button>
-      </div>
-      
-      
-    </form>
+  
+        <div *ngIf="loading">
+          <ion-progress-bar type="indeterminate"></ion-progress-bar>
+        </div>
+  
+        <ion-item class="ion-margin-bottom" color="light">
+          <ion-label color="dark" position="floating">Email</ion-label>
+          <ion-input type="email" name="email" clearInput [(ngModel)]="model.email" 
+             required="true"></ion-input>
+            <ion-icon name="mail" slot="end"></ion-icon>
+        </ion-item>
+  
+        <ion-item class="ion-margin-bottom" color="light">
+          <ion-label color="dark" position="floating">Username</ion-label>
+          <ion-input type="text" name="username" clearInput [(ngModel)]="model.username" 
+             required="true"></ion-input>
+            <ion-icon name="person" slot="end"></ion-icon>
+        </ion-item>
+  
+  
+        <ion-item color="light" class="">
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input class="" type="number"   name="investment"  [(ngModel)]="model.investment"
+          clearInput required="true">
+          </ion-input>
+          <div slot="end"> <h5>₦ </h5> </div>
+        </ion-item>
+  
+        <ion-item color="light" class="">
+          <ion-label position="floating">package</ion-label>
+          <ion-input class="" type="text"   name="package"  [(ngModel)]="model.package"
+          clearInput required="true">
+          </ion-input>
+          <ion-icon name="cash" slot="end"></ion-icon>
+        </ion-item>
+        
+  
+  
+        <div class="myButton md-button " #submitBtn>
+          <ion-button (click)="submit(manualPay)" [disabled]="loading"
+           type="submit" color="success"> 
+           SUBMIT</ion-button>
+        </div>
+        
+        
+      </form>
   </ion-card>
   </div>
 

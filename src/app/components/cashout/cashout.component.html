@@ -4,28 +4,39 @@
       <ion-content>
       
 
-      <ion-row class="ion-padding cashout"> 
-          <ion-col size="6">
-              <ion-card color="primary">
-                <div class="card-desc">
-                    <h3 class="text-center text-white "> {{account?.earnings | currency:'₦ '}} </h3>
-                    <p class="text-center"> Total earnings</p>
-                </div>
-              </ion-card>
-          </ion-col>
-
-          <ion-col size="6">
-              <ion-card>
-                
-                  <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"
-                    [(ngModel)]="model.cashout"  #cashout="ngModel">
-                   <!-- <input type="submit"  value="CASHOUT"> -->
-                   <ion-button (click)="cashOut()" type="submit" expand="block" color="primary" shape="round">
-                       cashout
-                   </ion-button>
-              </ion-card>
+      <ion-row class=" cashout "> 
+          <ion-col class="d-flex justify-content-center">
+              <ion-item>
+                <ion-card class="ion-padding" color="primary">
+                    <div class="card-desc">
+                        <h3 class="text-center text-white "> {{earnings| currency:'₦ '}} </h3>
+                        <p class="text-center"> Total earnings</p>
+                    </div>
+                  </ion-card>
+              </ion-item>
           </ion-col>
       </ion-row>
+      <ion-row >
+        <ion-col  class="d-flex justify-content-center">
+              
+                <ion-item>
+                    <input type="number" name="cashout" id="cashout" placeholder="enter cashout amount"
+                  [(ngModel)]="model.cashout"  #cashout="ngModel">
+                </ion-item>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row >
+        <ion-col  class="d-flex justify-content-center">
+              
+                <ion-item>
+                    <ion-button (click)="passwordAlert()" type="submit" size="large" expand="block" color="primary" shape="round">
+                        cashout
+                    </ion-button>
+                </ion-item>
+        </ion-col>
+      </ion-row>
+      
 
        <!-- loader -->
   <div *ngIf="loading" class="spinner-container">

@@ -55,12 +55,13 @@ export class AppComponent {
 
   ];
   public labels = [
-    {title:'MANUAL-PAY', url:'/admin-manual-pay'},
-    {title:'TRANSACTION LIST', url:'/admin-transaction'},
-    {title:'IN-ACTIVE USERS', url:'/admin-inactive'},
-    {title:'CASHOUT REQUEST', url:'/admin-cashout'},
-    {title:'ACTIVE USERS', url:'/admin-active'},
-    {title:'PAYOUT RECORDS', url:'/admin-payout'},
+    {title:'MANUAL-PAY', url:'/admin-manual-pay',icon:'wallet'},
+    {title:'TRANSACTION LIST', url:'/admin-transaction', icon:'swap'},
+    {title:'IN-ACTIVE USERS', url:'/admin-inactive', icon:'thumbs-down'},
+    {title:'CASHOUT REQUEST', url:'/admin-cashout', icon:'star'},
+    {title:'ACTIVE USERS', url:'/admin-active', icon:'thumbs-up'},
+    {title:'PAYOUT RECORDS', url:'/admin-payout', icon:'logo-usd'},
+    {title:'COMPLETED USERS', url:'/completed-users', icon:'checkmark'},
     // {title:'Admin dashboard', url:'/admin-dash'},
 
   ];
