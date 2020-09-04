@@ -44,27 +44,14 @@ import { UserTrasanctionsComponent } from './components/user-trasanctions/user-t
 import { CounterComponent } from './components/counter/counter.component';
 import { FaqComponent } from './faq/faq.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { AccountComponent } from './components/account/account.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { WhyitworksComponent } from './components/whyitworks/whyitworks.component';
-import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { CashoutComponent } from './components/cashout/cashout.component';
-import { RewardsComponent } from './components/rewards/rewards.component';
-import { ReferandearnComponent } from './components/referandearn/referandearn.component';
-import { AdminSidemenuComponent } from './components/admin-sidemenu/admin-sidemenu.component';
-import { AdminInvestorsComponent } from './components/admin-investors/admin-investors.component';
 import { AdminInactiveComponent } from './components/admin-inactive/admin-inactive.component';
 import { AdminCashoutComponent } from './components/admin-cashout/admin-cashout.component';
 import { AdminTransactionComponent } from './components/admin-transaction/admin-transaction.component';
 import { AdminPayoutComponent } from './components/admin-payout/admin-payout.component';
-import { AdminLevel1Component } from './components/admin-level1/admin-level1.component';
-import { AdminLevel2Component } from './components/admin-level2/admin-level2.component';
-import { AdminLevel3Component } from './components/admin-level3/admin-level3.component';
-import { AdminLevel4Component } from './components/admin-level4/admin-level4.component';
-import { UserReferalComponent } from './components/user-referal/user-referal.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
-import { NavMobileAdminComponent } from './components/nav-mobile-admin/nav-mobile-admin.component';
 import { IonicModule } from '@ionic/angular';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { LogedinNavComponent } from './components/logedin-nav/logedin-nav.component';
@@ -98,27 +85,14 @@ import { LostPasswordComponent } from './components/lost-password/lost-password.
     CounterComponent,
     FaqComponent,
     PaymentComponent,
-    AccountComponent,
     WhyitworksComponent,
-    AdmindashboardComponent,
-    SidemenuComponent,
     CashoutComponent,
-    RewardsComponent,
-    ReferandearnComponent,
-    AdminSidemenuComponent,
-    AdminInvestorsComponent,
     AdminInactiveComponent,
     ActiveComponent,
     AdminCashoutComponent,
     AdminTransactionComponent,
     AdminPayoutComponent,
-    AdminLevel1Component,
-    AdminLevel2Component,
-    AdminLevel3Component,
-    AdminLevel4Component,
-    UserReferalComponent,
     ForgetPasswordComponent,
-    NavMobileAdminComponent,
     TabsComponent,
     LogedinNavComponent,
     LogedinNavComponent,

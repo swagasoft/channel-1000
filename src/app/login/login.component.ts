@@ -48,19 +48,18 @@ loading: boolean;
         this.userService.saveUserRole(response);
         this.loading = false;
         this.userService.setToken(response['token']);
-      localStorage.setItem('username', response['doc']['username']);
-      localStorage.setItem('fullname',response['doc']['fullname']);
-      localStorage.setItem('package',response['doc']['package']);
-      localStorage.setItem('role',response['doc']['role']);
+        localStorage.setItem('username', response['doc']['username']);
+        localStorage.setItem('fullname',response['doc']['fullname']);
+        localStorage.setItem('package',response['doc']['package']);
+        localStorage.setItem('role',response['doc']['role']);
 
         this.router.navigateByUrl('/dashboard');
       },
       err => {
         console.log(err);
 
-          this.loading = false;
-          this.flashMessage.show(err.error.message, {cssClass:
-          'font-weight-bold text-white bg-danger text-center', timeout: 3000});
+        this.loading = false;
+        this.userService.generalAlert('error', err.error.message);
       }
     );
   }
