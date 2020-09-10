@@ -9,58 +9,69 @@
                     <div class="login-logo">
                        
                     </div>
-                    <div class="col d-flex justify-content-center affix">
-                        <img src="../../assets/ch_logo.jpg" width="200" alt="ch_logo">
-                      </div>
+                   
 
-                      <ion-card color="light" class="my-card">
+                      <ion-card color="light" class="">
                     <div class="login-form">
-                        <form   #loginForm="ngForm"  (submit)="loginForm.valid && onSubmit(loginForm)"
-                        (keydown.enter)="loginForm.valid && onSubmit(loginForm)">
-                        <div class="text-center p-5">
-                          
-                       <h3 class="ion-padding">LOGIN </h3>
-
-                        </div>
-
-                            <div class="form-group ">
-                                <label class="ml-4">Email Address</label>
-                                <input class="au-input au-input--full" type="email" name="email"
-                                  #email="ngModel"  [(ngModel)]="model.email" placeholder="example@mail.com" 
-                                  required [pattern]="emailRegex">
-                                  <div *ngIf="email.dirty && email.errors" class=" text-center">
-                                      <label class="text-danger " *ngIf="email?.errors.required" >email is required</label>
-                                      <label class="text-danger " *ngIf="email?.errors.pattern" >email must be valid.</label>
+                        
+                        <div class="col d-flex justify-content-center">
+                            <img src="../../assets/ch_logo.png" width="300" alt="ch_logo">
+                          </div>
+                        <ion-grid fixed class="d-flex justify-content-center">
+                           
+                            <ion-row >
+                                <ion-col size="12">
+                                    <form class=""  #loginForm="ngForm"  (submit)="loginForm.valid && onSubmit(loginForm)"
+                                    (keydown.enter)="loginForm.valid && onSubmit(loginForm)">
+                                    <div class="text-center ">
+                                      
+                                   <h3 class="ion-padding">LOGIN </h3>
+            
                                     </div>
-                            </div>
+            
+                                        <div class="form-group  ">
+                                            <label >Email </label>
+                                            <input class="au-input au-input--full" type="email" name="email"
+                                              #email="ngModel"  [(ngModel)]="model.email" placeholder="example@mail.com" 
+                                              required [pattern]="emailRegex">
+                                              <div *ngIf="email.dirty && email.errors" class=" text-center">
+                                                  <label class="text-danger " *ngIf="email?.errors.required" >email is required</label>
+                                                  <label class="text-danger " *ngIf="email?.errors.pattern" >email must be valid.</label>
+                                                </div>
+                                        </div>
+            
+                                        <div class="form-group">
+                                            <label class="ml-5">Password</label>
+                                            <input class="au-input au-input--full" type="password" name="password"
+                                            #password="ngModel"  [(ngModel)]="model.password" placeholder="*******"
+                                            required  minlength="6">
+            
+                                             <div *ngIf="password.dirty && password.errors" class=" text-danger text-center">
+                                                <label class="text-danger " *ngIf="password?.errors.required">password is required</label>
+                                                <label class="text-danger " *ngIf="password?.errors.minlength">password must be at least 6 char </label>
+                                              </div>
+                                              
+                                        </div>
+                                        <div class="login-checkbox">
+                                            
+                                            <label>
+                                               <ion-chip color="primary" (click)="lostPssword()"> <a>Forgotten Password?</a></ion-chip>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="ion-text-center">
+                                            <ion-button type="submit" shape="round" [disabled]="loading"> sign in</ion-button>
+            
+                                        </div>
+            
+                                    </form>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
 
-                            <div class="form-group">
-                                <label class="ml-5">Password</label>
-                                <input class="au-input au-input--full" type="password" name="password"
-                                #password="ngModel"  [(ngModel)]="model.password" placeholder="*******"
-                                required  minlength="6">
 
-                                 <div *ngIf="password.dirty && password.errors" class=" text-danger text-center">
-                                    <label class="text-danger " *ngIf="password?.errors.required">password is required</label>
-                                    <label class="text-danger " *ngIf="password?.errors.minlength">password must be at least 6 char </label>
-                                  </div>
-                                  
-                            </div>
-                            <div class="login-checkbox">
-                                
-                                <label>
-                                   <ion-chip color="primary" (click)="lostPssword()"> <a>Forgotten Password?</a></ion-chip>
-                                </label>
-                            </div>
-                            
-                            <div class="ion-text-center">
-                                <ion-button type="submit" shape="round" [disabled]="loading"> sign in</ion-button>
-
-                            </div>
-
-                        </form>
-                        <div class="register-link">
-                            <p>
+                        <div class="text-center">
+                            <p >
                                 Don't you have account?
                                 <a [routerLink]="['/register']" >Sign Up Here</a>
                             </p>

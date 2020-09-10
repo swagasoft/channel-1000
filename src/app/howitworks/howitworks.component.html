@@ -4,12 +4,13 @@
 
 <ion-content>
 
+
 <!-- header -->
 <div class="jumbotron p-0  grey lighten-4 text-dark">
 
   <!-- Card image -->
   <div class="view overlay rounded-top waves-light" mdbWavesEffect>
-    <img src="../../assets/how-it-works.jpg" class="img-fluid" alt="Sample image">
+    <img src="../../assets/img/pexels-anna-shvets-3727464.jpg" class="img-fluid" alt="Sample image">
     <a >
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -22,12 +23,12 @@
     <h3 class="card-title h3 my-4"><strong>HOW IT WORKS</strong></h3>
     <!-- Text -->
     <!-- Button -->
-    <a mdbBtn  routerLink="/" rounded="true" class=" primary-color-dark text-white mb-4" mdbWavesEffect>Home</a>
+    <ion-button routerLink="/">home</ion-button>
   </div>
 </div>
 <!-- Jumbotron -->
 
-<ion-grid class="ion-text-center">
+<!-- <ion-grid class="ion-text-center">
   <ion-row>
     <ion-col size="6">
       <div class="feature">
@@ -53,123 +54,61 @@
     </div>
     </ion-col>
   </ion-row>
-</ion-grid>
+</ion-grid> -->
 
-<ion-grid>
-  <div class="feature">
-    <div class=" text-center feature-icon">
-       <i class="fa fa-cogs" aria-hidden="true"></i>
-    </div>
 
-  <div class="text-center">
-    <h5>Where the 2 down-lines were registered by a marketer; </h5>
+<ion-list>
+  <ion-list-header></ion-list-header>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold">Log on to <a routerLink="/login">www.channel-1000.com</a> and register an account. </div>
+  </ion-item>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold"> A link is generated for you immediately after registration.  </div>
+  </ion-item>
 
-  </div>    
-    <ion-row>
-      <ion-col size="4">
-
-    <p>
-      For N1,000 option, the company pays N125 each for the two down lines
-       (i.e. N250) to the marketer(s) that registered the down lines and takes
-        N125 each for the two  down lines (i.e. N250) as service charge and
-       pays the customer a bonus of N1,500. This gives a total of the N2,000.
-    </p>
-
-      </ion-col>
-      <ion-col size="4">
-        <p>
-          For N5,000 option, the company pays N500 each for the two down lines (i.e. N1000)
-           to the marketer(s) that registered the down lines and takes N750 each for the two
-            down lines (i.e. N1,500)
-          as service charge and pays the customer a bonus of N7,500. This gives a total of the N10,000.
-        </p>
-      </ion-col>
-      <ion-col size="4">
-        <p>
-          For N10,000 option, the company pays N1,000 each for the two down lines
-           (i.e. N2,000) to the marketer(s) that registered the down lines and takes
-            N1,500 each for the two  down lines (i.e. N3,000) as service charge and pays
-          the customer a bonus of N15,000. This gives a total of the N20,000.
-        </p>
-      </ion-col>
-    </ion-row>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold"> Initiate an online payment for any of the product packages  </div>
+  </ion-item>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold"> selected or pay to our corporate bank account with details below: </div>
    
-  
-   
-</div>
-</ion-grid>
+  </ion-item>
+  <ion-item class="ion-padding">
+    <div class="ion-text-center col d-flex justify-content-center">
+      <ion-card class="p-2">
+        <ion-card-header>
+          <ion-card-title>Channel1000 Multi Ventures</ion-card-title>
+          <ion-card-title>1022597129</ion-card-title>
+          <ion-card-title>United Bank for Africa (UBA)</ion-card-title>
+        </ion-card-header>
+      </ion-card>
 
-
-<!-- end header -->
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-sm-6">
-            <div class="feature">
-                <div class="feature-icon">
-                   <i class="fa fa-cogs" aria-hidden="true"></i>
-                </div>
-                <h5>Select your package</h5>
-                <p>
-                    <a class="font-weight-bold" routerLink="/register">Register </a>
-                    register with either N1,000, N2,000, N5,000 or N10,000 depending on the product type.
-                </p>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa fa-line-chart" aria-hidden="true"></i>
-                </div>
-                <h5>Structure </h5>
-                <p>
-                  The customer registers 2 persons below his or her down-line
-
-                </p>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-                </div>
-                <h5>Funds Transfer</h5>
-                <p>
-                    You will need to send your payment details (like username, email, phone etc)
-                    to the admin Via...
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-6 col-sm-6">
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                </div>
-                <h5>Risks and Uncertainties</h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                </div>
-                <h5>Buyer and Seller</h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa fa-bullhorn" aria-hidden="true"></i>
-                </div>
-                <h5>Marketing and Distribution of goods</h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-            </div>
-        </div>
     </div>
-</div>
+  </ion-item>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold"> Text/whatsapp payment name, Email, Username, Amount and Package 
+      to 08097439900 for the admin to get your account activated.  </div>
+  </ion-item>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold"> Text/Whatsapp the name of the product purchased with 
+      the email you wish to receive it to 08097439900 </div>
+  </ion-item>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold"> Share your link on your social media handles (Whatsapp, Facebook, 
+      twitter, instagram etc) to enable you get buyers for the company (optional). </div>
+  </ion-item>
+  <ion-item>
+    <ion-icon slot="start" name="arrow-forward"></ion-icon>
+    <div class="font-weight-bold"> Get paid as soon as two other buyers queue under you.  </div>
+  </ion-item>
+</ion-list>
+
 <app-footer></app-footer>
 </ion-content>
