@@ -7,7 +7,7 @@
 
   <!-- packages selection -->
 
- <ion-card>
+ <ion-card color="light">
   <section *ngIf="selectpackage" class="details-card">
     <ion-card-title class="text-center">SELECT YOUR PACKAGE</ion-card-title>
       <div class="containerd-flex justify-content-center">
@@ -164,7 +164,7 @@
                     </div> -->
 
 
-                    <ion-card  color="light" >
+                    <ion-card  color="medium" >
                       <div class="col d-flex justify-content-center">
                         <img src="../../assets/ch_logo.png" >
                       </div>
@@ -174,12 +174,12 @@
                             <form    #signup_form="ngForm"  (submit)="signup_form.valid && onSubmit(signup_form)"
                             (keydown.enter)="signup_form.valid && onSubmit(signup_form)">
                             <div>
-                              <h3 class="ion-padding">CREATE ACCOUNT </h3>
+                              <h3 class="ion-padding text-white">CREATE ACCOUNT </h3>
        
                                </div>
       
                           <div class="form-group">
-                            <label class="ml-4">Fullname</label>
+                            <label class="ml-4 text-white">Fullname</label>
                               <input class="au-input au-input--full" type="text"  #fullname="ngModel"
                               [(ngModel)]="model.fullname" required
                                name="fullname" placeholder="Joe don" required> 
@@ -190,7 +190,7 @@
       
       
                           <div class="form-group">
-                            <label  class="ml-4">Email</label>
+                            <label  class="ml-4 text-white">Email</label>
                             <input class="au-input au-input--full" type="email"  #email="ngModel"
                             [(ngModel)]="model.email" required [pattern]="emailRegex" name="email" placeholder="example133@mail.com">
                         </div>
@@ -200,7 +200,7 @@
                           </div>
       
                           <div class="form-group">
-                            <label  class="ml-4">Username</label>
+                            <label  class="ml-4 text-white">Username</label>
                               <input class="au-input au-input--full" type="text"  #username="ngModel"
                               [(ngModel)]="model.username" required 
                                name="username" placeholder="example133">
@@ -212,7 +212,7 @@
       
       
                           <div class="form-group">
-                            <label  class="ml-4">password</label>
+                            <label  class="ml-4 text-white">password</label>
                               <input class="au-input au-input--full" type="password" name="password"  required
                                #password="ngModel" minlength="6"  [(ngModel)]="model.password"
                               placeholder="Password">
@@ -223,7 +223,7 @@
                             </div>
       
                           <div class="form-group">
-                            <label  class="ml-4">Confirm password</label>
+                            <label  class="ml-4 text-white">Confirm password</label>
                               <input class="au-input au-input--full" type="password" name="passwordConf"  required
                                #passwordConf="ngModel" minlength="6"  [(ngModel)]="model.confirmPassword"
                               placeholder="Confirm password">
@@ -234,8 +234,8 @@
                           </div>
       
                           <div class="login-checkbox">
-                              <div class="text-dark">
-                                 by creating account you Agree to the terms and <a [routerLink]="['/policy']" > policy</a>
+                              <div class="text-white">
+                                 by creating account you Agree to the terms and <a [routerLink]="['/policy']" > <strong>policy</strong> </a>
                               </div>
                           </div>
                           
