@@ -180,7 +180,7 @@
       
                           <div class="form-group">
                             <label class="ml-4 text-white">Fullname</label>
-                              <input class="au-input au-input--full" type="text"  #fullname="ngModel"
+                              <input class="au-input au-input--full text-dark" type="text"  #fullname="ngModel"
                               [(ngModel)]="model.fullname" required
                                name="fullname" placeholder="Joe don" required> 
                           </div>
@@ -191,7 +191,7 @@
       
                           <div class="form-group">
                             <label  class="ml-4 text-white">Email</label>
-                            <input class="au-input au-input--full" type="email"  #email="ngModel"
+                            <input class="au-input au-input--full text-dark" type="email"  #email="ngModel"
                             [(ngModel)]="model.email" required [pattern]="emailRegex" name="email" placeholder="example133@mail.com">
                         </div>
                         <div *ngIf="email.dirty && email.errors" class=" text-danger text-center">
@@ -201,7 +201,7 @@
       
                           <div class="form-group">
                             <label  class="ml-4 text-white">Username</label>
-                              <input class="au-input au-input--full" type="text"  #username="ngModel"
+                              <input class="au-input au-input--full text-dark" type="text"  #username="ngModel"
                               [(ngModel)]="model.username" required 
                                name="username" placeholder="example133">
                           </div>
@@ -213,7 +213,7 @@
       
                           <div class="form-group">
                             <label  class="ml-4 text-white">password</label>
-                              <input class="au-input au-input--full" type="password" name="password"  required
+                              <input class="au-input au-input--full text-dark" type="password" name="password"  required
                                #password="ngModel" minlength="6"  [(ngModel)]="model.password"
                               placeholder="Password">
                           </div>
@@ -224,7 +224,7 @@
       
                           <div class="form-group">
                             <label  class="ml-4 text-white">Confirm password</label>
-                              <input class="au-input au-input--full" type="password" name="passwordConf"  required
+                              <input class="au-input au-input--full text-dark" type="password" name="passwordConf"  required
                                #passwordConf="ngModel" minlength="6"  [(ngModel)]="model.confirmPassword"
                               placeholder="Confirm password">
                           </div>
@@ -250,7 +250,7 @@
                       </ion-grid>
                     
                     
-                              <p>
+                              <p class="text-center">
                                   Already have account?
                                   <a [routerLink]="['/login']"  >Sign In</a>
                               </p>
